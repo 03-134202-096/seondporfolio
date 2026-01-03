@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import {
   Header,
   Hero,
@@ -9,7 +8,6 @@ import {
   Contact,
   Footer,
 } from '@/components';
-import SuccessToast from '@/components/SuccessToast/SuccessToast';
 
 export default function Home() {
   return (
@@ -24,9 +22,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      <Suspense fallback={null}>
-        <SuccessToast />
-      </Suspense>
     </>
   );
 }
