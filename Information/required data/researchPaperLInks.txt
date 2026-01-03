@@ -1,0 +1,11 @@
+1. Inner Speech Decoding: A Comprehensive Review
+https://doi.org/10.1002/wcs.70016
+
+2. Attention-Based Approach for Arabic Sign Language Recognition, Supporting Differently Abled Persons
+http://doi.org/10.57197/JDR-2025-0586
+
+3. Graph Attention Networks for Skin Lesion Classification with CNN-Driven Node Features
+https://doi.org/10.32604/cmc.2025.069162
+
+4.  From Radiomics to Transformers in Pancreatic Cancer Detection and Prognosis
+https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2025.1731922/abstract

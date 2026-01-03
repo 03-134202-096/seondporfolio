@@ -1,0 +1,177 @@
+________________________ChatGPT____________________________________
+
+
+1. Journal‑style formatting – Adjust a manuscript’s margins, fonts and headings to meet specificjournal guidelines.
+2. Copyediting – Review a document line‑by‑line to fix grammar, spelling and punctuation
+3. Proofreading – Perform a final check for surface errors and formatting
+4. Fact‑checking – Verify statistics and factual claims in manuscripts.
+5. Citation formatting – Ensure references comply with APA, MLA, Chicago or journal‑specific styles
+6. Plagiarism screening – Run plagiarism‑detection software and report issues.
+7. English‑language editing – Refine grammar and phrasing for non‑native authors.
+8. Literature search – Conduct database searches to find relevant studies.
+9. Systematic‑review support – Screen and collect articles based on inclusion criteria.
+10. Annotated bibliography – Summarize and evaluate each source in a list.
+11. Article summarization – Write concise summaries of research papers.
+12. Research gap analysis – Identify unexplored areas in a field.
+13. Data collection – Gather data from surveys, APIs or public sources.
+14. Survey design – Develop questionnaires or forms for data collection.
+15. Data entry – Input information into spreadsheets or CRMs
+16. Data cleaning – Remove duplicates and correct errors in datasets.
+17. Data annotation – Label images or text for machine‑learning tasks.
+18. Chart creation – Produce graphs using Python.
+19. Infographic design – Build visual summaries of research findings.
+20. Diagram creation – Draw conceptual models or flowcharts for papers.
+21. Table formatting – Create tables that follow journal specifications.
+22. Presentation slides – Design slides for conferences or lectures.
+23. Poster design – Create academic posters for conferences.
+24. Grant proposal writing – Assist with drafting research funding proposals.
+25. Humanizing the text.
+
+Grant proposal editing – Proofread and structure proposals.
+
+Curriculum vitae (CV) editing – Improve researchers’ CVs for applications.
+
+portfolio maker
+next js,nest js full stack web development.
+AWS deployment
+AWS handling.
+
+Cover‑letter writing – Draft cover letters for jobs or funding.
+
+Statement‑of‑purpose editing – Refine application essays.
+
+Research‑plan writing – Prepare research objectives and methodology sections.
+
+Journal selection research – Recommend suitable journals for a manuscript.
+
+Reviewer‑response assistance – Draft responses to peer‑review comments.
+
+Blog writing – Write blog posts summarizing research for general audiences.
+
+Paraphrasing and rewriting – Reword text to avoid plagiarism.
+
+Abstract writing – Compose or edit the abstract for papers or talks.
+
+Keyword selection – Choose effective keywords for indexing and SEO.
+
+Social‑media content – Create posts summarizing findings for Twitter/LinkedIn.
+
+Website content updates – Maintain news and publications sections on lab websites.
+
+Email drafting – Compose professional emails to collaborators, reviewers or donors.
+
+Agenda preparation – Draft agendas for lab meetings or workshops.
+
+Book topic research
+
+Student application assistance – Help students draft research proposals and CVs.
+
+Document conversion – Convert between Word, PDF and LaTeX.
+
+LaTeX formatting – Format manuscripts using LaTeX classes and templates.
+
+Indexing – Create indices for books or large reports.
+
+Footnote/endnote formatting – Ensure notes follow style guidelines.
+
+Appendices formatting – Format appendices and supplementary files.
+
+Visualization coding – Write scripts to generate plots or charts.
+
+Experiment execution – Run provided AI/ML code and log results.
+
+Parameter tuning – Adjust model hyperparameters for experiments.
+Web scraping
+data preparation through webscraping.
+Dataset curation – Gather and preprocess datasets for training.
+
+Benchmarking – Run performance comparisons of models.
+
+Code documentation – Comment and document code bases for reproducibility.
+
+Recruitment materials – Design flyers and ads for participant recruitment.
+
+Survey data summarization – Prepare summary statistics and charts.
+
+Reference cross‑checking – Verify that in‑text citations match reference lists.
+
+Plagiarism Checker
+APA Citation Generator
+MLA Citation Generator
+Chicago Citation Generator
+Vancouver Citation Generator
+Citation Style Guides
+
+basic ml,ai,dl,attention based training execution
+dataset finder
+any specific topic deep research
+any book summery 
+book reading and getting the cores of the book
+Meta ads
+any internet research
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
