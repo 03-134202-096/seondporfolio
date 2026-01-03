@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.css';
@@ -25,8 +25,25 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = () => {
+  const handleNavClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
     setIsMobileMenuOpen(false);
+    
+    const targetId = href.replace('#', '');
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      const headerHeight = 80; // Account for fixed header
+      const targetPosition = targetElement.offsetTop - headerHeight;
+      
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+      
+      // Update URL hash without triggering default scroll
+      window.history.pushState(null, '', href);
+    }
   };
 
   return (
@@ -60,14 +77,18 @@ export default function Header() {
                 <Link
                   href={item.href}
                   className={styles.navLink}
-                  onClick={handleNavClick}
+                  onClick={(e) => handleNavClick(e, item.href)}
                 >
                   {item.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <Link href="#contact" className={`btn btn-primary ${styles.ctaButton}`} onClick={handleNavClick}>
+          <Link 
+            href="#contact" 
+            className={`btn btn-primary ${styles.ctaButton}`} 
+            onClick={(e) => handleNavClick(e, '#contact')}
+          >
             Get in Touch
           </Link>
         </nav>
