@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #3b82f6; border-bottom: 2px solid #3b82f6; padding-bottom: 10px;">
-            🚀 New Quote Request - DeepDivers Portfolio
+            Team DeepDivers
           </h2>
           
           <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
@@ -112,13 +112,6 @@ export async function POST(request: NextRequest) {
           <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; margin: 20px 0;">
             <h3 style="margin-top: 0; color: #374151;">📝 Project Details:</h3>
             <p style="white-space: pre-wrap; line-height: 1.6; color: #4b5563;">${message}</p>
-          </div>
-          
-          <div style="background: #dbeafe; border-radius: 8px; padding: 15px; margin-top: 20px;">
-            <p style="margin: 0; color: #1e40af;">
-              <strong>💡 Quick Actions:</strong><br>
-              Reply directly to this email to respond to ${name}
-            </p>
           </div>
           
           <p style="color: #9ca3af; font-size: 12px; margin-top: 30px; text-align: center;">
