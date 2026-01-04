@@ -5,6 +5,10 @@ import styles from './FAQ.module.css';
 
 const faqs = [
   {
+    question: 'How can I track my project progress?',
+    answer: 'Once you place an order, we assign a dedicated team member exclusively to your project. Your assigned expert focuses solely on your work and is available 24/7 to provide real-time progress updates, answer questions, and implement your feedback. You can request status updates, suggest changes, or discuss your project anytime via WhatsApp, email, or your preferred communication channel — we respond promptly, day or night.'
+  },
+  {
     question: 'What payment methods do you accept?',
     answer: 'We accept all major payment methods including credit/debit cards, bank transfers, and PayPal. Payments are processed securely through Payoneer, which supports 190+ countries and 150+ currencies. You don\'t need a Payoneer account — simply use your preferred payment method. For projects on Fiverr, Upwork, or Freelancer, we also work through platform escrow for your protection.'
   },

@@ -143,7 +143,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className={styles.platformBadge}
                 >
-                  🐙 GitHub
+                  🔵 GitHub
                 </a>
                 <span className={styles.platformBadge}>🟢 Fiverr</span>
                 <span className={styles.platformBadge}>🟢 Upwork</span>
