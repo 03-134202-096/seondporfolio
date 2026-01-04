@@ -320,6 +320,104 @@
   font-size: 0.8125rem;
 }
 
+/* File Input Wrapper */
+.fileInputWrapper {
+  position: relative;
+}
+
+.fileInputError {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.fileInputError:hover {
+  border-color: #dc2626 !important;
+}
+
+/* Selected File Display */
+.selectedFile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  color: #22c55e;
+}
+
+.selectedFileIcon {
+  font-size: 1rem;
+}
+
+.selectedFileName {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.clearFileBtn {
+  background: none;
+  border: none;
+  color: #22c55e;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  font-size: 0.875rem;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.clearFileBtn:hover {
+  background: rgba(34, 197, 94, 0.2);
+  color: #16a34a;
+}
+
+/* File Error Message */
+.fileErrorMessage {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  color: #ef4444;
+  animation: shake 0.5s ease-in-out;
+}
+
+.fileErrorIcon {
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+/* Disabled Submit Button */
+.formSubmitDisabled {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%) !important;
+  cursor: not-allowed !important;
+  opacity: 0.8;
+}
+
+.formSubmitDisabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.warningIcon {
+  margin-right: 0.5rem;
+}
+
 @media (max-width: 1024px) {
   .contactGrid {
     grid-template-columns: 1fr;

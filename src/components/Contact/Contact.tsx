@@ -1,14 +1,20 @@
 'use client';
 
-import { useState, useRef, FormEvent } from 'react';
+import { useState, useRef, FormEvent, ChangeEvent } from 'react';
 import styles from './Contact.module.css';
+
+const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4MB in bytes
+const MAX_FILE_SIZE_DISPLAY = '4MB';
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [copiedField, setCopiedField] = useState<'email' | 'phone' | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
+  const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleCopy = async (text: string, field: 'email' | 'phone') => {
     try {
@@ -28,8 +34,47 @@ export default function Contact() {
     }
   };
 
+  const formatFileSize = (bytes: number): string => {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+  };
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    setFileError(null);
+    setSelectedFileName(null);
+    
+    if (file) {
+      if (file.size > MAX_FILE_SIZE) {
+        const fileSize = formatFileSize(file.size);
+        setFileError(`File size (${fileSize}) exceeds ${MAX_FILE_SIZE_DISPLAY} limit. Please use Google Drive or Dropbox link instead.`);
+        // Clear the file input
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
+      } else {
+        setSelectedFileName(`${file.name} (${formatFileSize(file.size)})`);
+      }
+    }
+  };
+
+  const clearFileSelection = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+    setSelectedFileName(null);
+    setFileError(null);
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    // Prevent submission if there's a file error
+    if (fileError) {
+      return;
+    }
+    
     setIsSubmitting(true);
     setSubmitStatus('idle');
     setErrorMessage('');
@@ -48,19 +93,25 @@ export default function Contact() {
       if (response.ok && result.success) {
         setSubmitStatus('success');
         form.reset();
+        setSelectedFileName(null);
+        setFileError(null);
         // Scroll to success message
         formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
         setSubmitStatus('error');
+        // Show specific error message from server
         setErrorMessage(result.error || 'Failed to send message. Please try again.');
       }
     } catch {
       setSubmitStatus('error');
-      setErrorMessage('Network error. Please check your connection and try again.');
+      setErrorMessage('Unable to connect. Please check your internet connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  // Check if form can be submitted
+  const canSubmit = !isSubmitting && !fileError;
 
   return (
     <section id="contact" className={`section ${styles.contact}`}>
@@ -86,7 +137,7 @@ export default function Contact() {
                   <h4>Email Us</h4>
                   <p className={styles.contactWithCopy}>
                     <a 
-                      href="mailto:support@deepdivers.services" 
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=support@deepdivers.services" 
                       target="_blank" 
                       rel="noopener noreferrer"
                     >
@@ -182,7 +233,7 @@ export default function Contact() {
                       WhatsApp
                     </a>{' '}
                     or{' '}
-                    <a href="mailto:support@deepdivers.services" target="_blank" rel="noopener noreferrer">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support@deepdivers.services" target="_blank" rel="noopener noreferrer">
                       Email
                     </a>
                   </p>
@@ -276,27 +327,57 @@ export default function Contact() {
               <label htmlFor="attachment" className={styles.formLabel}>
                 Attachment <span className={styles.formLabelOptional}>(Optional - Max 4MB)</span>
               </label>
-              <input
-                type="file"
-                id="attachment"
-                name="attachment"
-                className={styles.formFileInput}
-                accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg,.zip,.rar,.xlsx,.pptx"
-                disabled={isSubmitting}
-              />
+              <div className={styles.fileInputWrapper}>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  id="attachment"
+                  name="attachment"
+                  className={`${styles.formFileInput} ${fileError ? styles.fileInputError : ''}`}
+                  accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg,.zip,.rar,.xlsx,.pptx"
+                  disabled={isSubmitting}
+                  onChange={handleFileChange}
+                />
+                {selectedFileName && (
+                  <div className={styles.selectedFile}>
+                    <span className={styles.selectedFileIcon}>📎</span>
+                    <span className={styles.selectedFileName}>{selectedFileName}</span>
+                    <button 
+                      type="button" 
+                      className={styles.clearFileBtn}
+                      onClick={clearFileSelection}
+                      title="Remove file"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                )}
+              </div>
+              {fileError && (
+                <div className={styles.fileErrorMessage}>
+                  <span className={styles.fileErrorIcon}>⚠️</span>
+                  <span>{fileError}</span>
+                </div>
+              )}
               <p className={styles.formFileHint}>
                 📁 For files larger than 4MB, please share via <strong>Google Drive</strong> or <strong>Dropbox</strong> link in your message.
               </p>
             </div>
             <button 
               type="submit" 
-              className={`btn btn-primary ${styles.formSubmit}`}
-              disabled={isSubmitting}
+              className={`btn btn-primary ${styles.formSubmit} ${!canSubmit ? styles.formSubmitDisabled : ''}`}
+              disabled={!canSubmit}
+              title={fileError ? 'Please fix file size issue before sending' : 'Send your message'}
             >
               {isSubmitting ? (
                 <>
                   <span className={styles.spinner}></span>
                   Sending...
+                </>
+              ) : fileError ? (
+                <>
+                  <span className={styles.warningIcon}>⚠️</span>
+                  Fix File Size Issue
                 </>
               ) : (
                 'Send Message'
