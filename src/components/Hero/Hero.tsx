@@ -4,27 +4,27 @@ import styles from './Hero.module.css';
 
 export default function Hero() {
   return (
-    <section id="hero" className={styles.hero}>
+    <section id="hero" className={styles.hero} aria-label="DeepDivers - Professional Research and Data Science Services">
       <div className={styles.heroInner}>
         <div className={styles.heroContent}>
           <span className={`badge ${styles.heroBadge}`}>
             Dive Until Satisfaction
           </span>
           <h1 className={styles.heroTitle}>
-            Empowering Your <span className={styles.heroHighlight}>Research</span> &{' '}
-            <span className={styles.heroHighlight}>Data</span> Success
+            Professional <span className={styles.heroHighlight}>Research</span> &{' '}
+            <span className={styles.heroHighlight}>Data Science</span> Services
           </h1>
           <p className={styles.heroDescription}>
-            We are a dedicated team of research specialists, data scientists, and content
-            experts delivering publication-ready manuscripts, AI/ML solutions, and
-            professional content services for academics and businesses globally.
+            Expert freelance team offering research paper writing, data analysis, machine learning, 
+            AI solutions, and academic services. We deliver publication-ready manuscripts and 
+            professional content for researchers, students, and businesses worldwide. Available 24/7 on Fiverr, Upwork & Freelancer.
           </p>
           <div className={styles.heroButtons}>
-            <Link href="#services" className="btn btn-primary">
+            <Link href="#services" className="btn btn-primary" aria-label="View our services">
               Explore Services
             </Link>
-            <Link href="#contact" className="btn btn-secondary">
-              Request a Quote
+            <Link href="#contact" className="btn btn-secondary" aria-label="Get a free quote">
+              Get Free Quote
             </Link>
           </div>
           <div className={styles.heroStats}>
@@ -47,7 +47,7 @@ export default function Hero() {
             <div className={styles.heroImageBg} />
             <Image
               src="/ProfilePicture.webp"
-              alt="DeepDivers Team Lead"
+              alt="DeepDivers Team - Professional Research and Data Science Experts"
               width={400}
               height={400}
               className={styles.heroImage}

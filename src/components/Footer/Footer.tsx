@@ -8,18 +8,20 @@ import styles from './Footer.module.css';
 const quickLinks = [
   { label: 'Home', href: '#hero' },
   { label: 'Services', href: '#services' },
-  { label: 'Publications', href: '#publications' },
+  { label: 'Why Choose Us', href: '#why-us' },
   { label: 'Portfolio', href: '#portfolio' },
-  { label: 'About', href: '#about' },
+  { label: 'How It Works', href: '#process' },
+  { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' },
 ];
 
 const services = [
-  { label: 'Research Support', href: '#services' },
-  { label: 'Data Analysis', href: '#services' },
-  { label: 'AI/ML Solutions', href: '#services' },
-  { label: 'Content Writing', href: '#services' },
-  { label: 'Web Development', href: '#services' },
+  { label: 'Research Paper Writing', href: '#services' },
+  { label: 'Data Analysis & SPSS', href: '#services' },
+  { label: 'Machine Learning & AI', href: '#services' },
+  { label: 'Statistical Analysis', href: '#services' },
+  { label: 'Literature Review', href: '#services' },
+  { label: 'Thesis & Dissertation', href: '#services' },
 ];
 
 function NewsletterForm() {
@@ -155,11 +157,10 @@ export default function Footer() {
         </div>
         <div className={styles.footerBottom}>
           <p className={styles.footerCopyright}>
-            © {currentYear} DeepDivers. All rights reserved.
+            © {currentYear} DeepDivers. All rights reserved. | Professional Research & Data Science Services
           </p>
           <div className={styles.footerLegal}>
-            <Link href="#contact">Privacy Policy</Link>
-            <Link href="#contact">Terms of Service</Link>
+            <span>Available on: Fiverr • Upwork • Freelancer</span>
           </div>
         </div>
       </div>
