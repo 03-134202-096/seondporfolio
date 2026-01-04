@@ -104,7 +104,7 @@ export default function FAQ() {
             <div className={styles.supportMethods}>
               <div className={styles.method}>
                 <span>📧</span>
-                <span>teamdeepdivers@gmail.com</span>
+                <span>support@deepdivers.services</span>
               </div>
               <div className={styles.method}>
                 <span>📱</span>

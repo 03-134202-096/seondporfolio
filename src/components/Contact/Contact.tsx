@@ -86,16 +86,16 @@ export default function Contact() {
                   <h4>Email Us</h4>
                   <p className={styles.contactWithCopy}>
                     <a 
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=teamdeepdivers@gmail.com" 
+                      href="mailto:support@deepdivers.services" 
                       target="_blank" 
                       rel="noopener noreferrer"
                     >
-                      teamdeepdivers@gmail.com
+                      support@deepdivers.services
                     </a>
                     <button 
                       type="button"
                       className={styles.copyBtn}
-                      onClick={() => handleCopy('teamdeepdivers@gmail.com', 'email')}
+                      onClick={() => handleCopy('support@deepdivers.services', 'email')}
                       title="Copy email"
                     >
                       {copiedField === 'email' ? '✓' : '📋'}

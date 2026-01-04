@@ -135,7 +135,7 @@ export default function RootLayout({
         },
         description:
           "Professional freelance team offering research paper writing, data analysis, machine learning, AI solutions, and content services.",
-        email: "teamdeepdivers@gmail.com",
+        email: "support@deepdivers.services",
         contactPoint: {
           "@type": "ContactPoint",
           telephone: "+92-312-5065538",
