@@ -8,9 +8,10 @@ import styles from './Header.module.css';
 const navItems = [
   { label: 'Home', href: '#hero' },
   { label: 'Services', href: '#services' },
-  { label: 'Publications', href: '#publications' },
   { label: 'Portfolio', href: '#portfolio' },
+  { label: 'Process', href: '#process' },
   { label: 'About', href: '#about' },
+  { label: 'FAQ', href: '#faq' },
 ];
 
 export default function Header() {

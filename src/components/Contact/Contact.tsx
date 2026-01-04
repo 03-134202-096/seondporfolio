@@ -250,11 +250,11 @@ export default function Contact() {
                   disabled={isSubmitting}
                 >
                   <option value="">Select budget</option>
+                  <option value="$25 - $50">$25 - $50</option>
                   <option value="$50 - $100">$50 - $100</option>
-                  <option value="$100 - $300">$100 - $300</option>
-                  <option value="$300 - $500">$300 - $500</option>
-                  <option value="$500 - $1000">$500 - $1000</option>
-                  <option value="$1000+">$1000+</option>
+                  <option value="$100 - $200">$100 - $200</option>
+                  <option value="$200 - $500">$200 - $500</option>
+                  <option value="$500+">$500+</option>
                   <option value="Custom / Negotiable">Custom / Negotiable</option>
                 </select>
               </div>

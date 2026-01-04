@@ -152,8 +152,7 @@ export default function Portfolio() {
           <h2>Sample Work</h2>
           <p>
             A curated selection of our data visualizations, architecture diagrams, and
-            research graphics from published papers and client projects.
-          </p>
+            research graphics from our published papers.          </p>
         </div>
 
         <div className={styles.portfolioTabs}>
