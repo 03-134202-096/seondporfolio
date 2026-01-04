@@ -182,8 +182,8 @@ export default function Contact() {
                       WhatsApp
                     </a>{' '}
                     or{' '}
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=teamdeepdivers@gmail.com" target="_blank" rel="noopener noreferrer">
-                      Gmail
+                    <a href="mailto:support@deepdivers.services" target="_blank" rel="noopener noreferrer">
+                      Email
                     </a>
                   </p>
                 </div>
