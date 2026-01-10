@@ -119,9 +119,43 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Reusable address object for consistency across all schemas
+  const businessAddress = {
+    "@type": "PostalAddress",
+    streetAddress: "Bahria University, Center of Excellence in AI (COE-AI), Shangrila Road, Sector E-8",
+    addressLocality: "Islamabad",
+    addressRegion: "Islamabad Capital Territory",
+    postalCode: "44000",
+    addressCountry: "PK",
+  };
+
+  // Reusable geo coordinates
+  const geoCoordinates = {
+    "@type": "GeoCoordinates",
+    latitude: 33.7215,
+    longitude: 73.0433,
+  };
+
+  // Reusable opening hours
+  const openingHours = [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday"],
+      opens: "10:00",
+      closes: "14:00",
+    },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      // Organization Schema - Base entity
       {
         "@type": "Organization",
         "@id": "https://deepdivers.services/#organization",
@@ -129,37 +163,94 @@ export default function RootLayout({
         url: "https://deepdivers.services",
         logo: {
           "@type": "ImageObject",
+          "@id": "https://deepdivers.services/#logo",
           url: "https://deepdivers.services/logo.png",
+          contentUrl: "https://deepdivers.services/logo.png",
           width: 400,
           height: 400,
+          caption: "DeepDivers Logo",
+        },
+        image: {
+          "@type": "ImageObject",
+          url: "https://deepdivers.services/og-image.png",
+          width: 1200,
+          height: 630,
         },
         description:
           "Professional freelance team offering research paper writing, data analysis, machine learning, AI solutions, and content services.",
         email: "support@deepdivers.services",
+        telephone: "+92-312-5065538",
+        address: businessAddress,
         contactPoint: {
           "@type": "ContactPoint",
           telephone: "+92-312-5065538",
           contactType: "customer service",
-          availableLanguage: ["English"],
+          availableLanguage: ["English", "Urdu"],
           areaServed: "Worldwide",
         },
         sameAs: [
           "https://www.fiverr.com/deepdivers",
           "https://www.upwork.com/deepdivers",
+          "https://www.freelancer.com/deepdivers",
+        ],
+        areaServed: {
+          "@type": "Country",
+          name: "Worldwide",
+        },
+        knowsAbout: [
+          "Research Paper Writing",
+          "Data Analysis",
+          "Machine Learning",
+          "AI Development",
+          "Statistical Analysis",
+          "Python Programming",
+          "Academic Writing",
         ],
       },
+      // WebSite Schema - For Google Search box and site name
       {
         "@type": "WebSite",
         "@id": "https://deepdivers.services/#website",
         url: "https://deepdivers.services",
         name: "DeepDivers",
-        description:
-          "Professional Research, Data Science & AI Services",
+        alternateName: "DeepDivers Services",
+        description: "Professional Research, Data Science & AI Services",
         publisher: {
           "@id": "https://deepdivers.services/#organization",
         },
         inLanguage: "en-US",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: "https://deepdivers.services/?q={search_term_string}",
+          },
+          "query-input": "required name=search_term_string",
+        },
       },
+      // LocalBusiness Schema - Required for local SEO with proper address
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://deepdivers.services/#localbusiness",
+        name: "DeepDivers",
+        description:
+          "Professional freelance services for academic research, data analysis, machine learning, AI development, and content writing.",
+        url: "https://deepdivers.services",
+        telephone: "+92-312-5065538",
+        email: "support@deepdivers.services",
+        image: "https://deepdivers.services/og-image.png",
+        logo: "https://deepdivers.services/logo.png",
+        address: businessAddress,
+        geo: geoCoordinates,
+        priceRange: "$25 - $500+",
+        openingHoursSpecification: openingHours,
+        sameAs: [
+          "https://www.fiverr.com/deepdivers",
+          "https://www.upwork.com/deepdivers",
+          "https://www.freelancer.com/deepdivers",
+        ],
+      },
+      // ProfessionalService Schema - MUST have address field for Google validation
       {
         "@type": "ProfessionalService",
         "@id": "https://deepdivers.services/#service",
@@ -167,13 +258,24 @@ export default function RootLayout({
         url: "https://deepdivers.services",
         description:
           "Expert freelance services for academic research, data analysis, machine learning, AI development, and professional content writing.",
-        provider: {
-          "@id": "https://deepdivers.services/#organization",
+        image: "https://deepdivers.services/og-image.png",
+        logo: "https://deepdivers.services/logo.png",
+        telephone: "+92-312-5065538",
+        email: "support@deepdivers.services",
+        // CRITICAL: address field is REQUIRED for ProfessionalService (subtype of LocalBusiness)
+        address: businessAddress,
+        geo: geoCoordinates,
+        priceRange: "$25 - $500+",
+        openingHoursSpecification: openingHours,
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "5.0",
+          reviewCount: "50",
+          bestRating: "5",
+          worstRating: "1",
         },
-        areaServed: {
-          "@type": "Place",
-          name: "Worldwide",
-        },
+        areaServed: "Worldwide",
+        availableLanguage: ["English", "Urdu"],
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "Research & Data Services",
@@ -183,7 +285,8 @@ export default function RootLayout({
               itemOffered: {
                 "@type": "Service",
                 name: "Research Paper Writing",
-                description: "Publication-ready manuscripts, systematic reviews, and literature analysis",
+                description:
+                  "Publication-ready manuscripts, systematic reviews, and literature analysis",
               },
             },
             {
@@ -191,7 +294,8 @@ export default function RootLayout({
               itemOffered: {
                 "@type": "Service",
                 name: "Data Analysis & Visualization",
-                description: "Statistical analysis, SPSS, R, Python data analysis and visualization",
+                description:
+                  "Statistical analysis, SPSS, R, Python data analysis and visualization",
               },
             },
             {
@@ -204,14 +308,36 @@ export default function RootLayout({
             },
           ],
         },
-        priceRange: "$25 - $500+",
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "5.0",
-          reviewCount: "50",
-          bestRating: "5",
-          worstRating: "1",
-        },
+        sameAs: [
+          "https://www.fiverr.com/deepdivers",
+          "https://www.upwork.com/deepdivers",
+          "https://www.freelancer.com/deepdivers",
+        ],
+      },
+      // BreadcrumbList Schema for navigation
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://deepdivers.services/#breadcrumb",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://deepdivers.services",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Services",
+            item: "https://deepdivers.services/#services",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: "Portfolio",
+            item: "https://deepdivers.services/#portfolio",
+          },
+        ],
       },
     ],
   };
