@@ -5,20 +5,32 @@ import styles from './FAQ.module.css';
 
 const faqs = [
   {
+    question: 'How do I place an order?',
+    answer: 'Browse our Service Catalog to find what you need, then click "Order Now" or fill out the contact form with your project details. We\'ll respond within 24 hours with a detailed quote. Once approved, you pay securely and we begin work immediately.'
+  },
+  {
     question: 'How can I track my project progress?',
     answer: 'Once you place an order, we assign a dedicated team member exclusively to your project. Your assigned expert focuses solely on your work and is available 24/7 to provide real-time progress updates, answer questions, and implement your feedback. You can request status updates, suggest changes, or discuss your project anytime via WhatsApp, email, or your preferred communication channel — we respond promptly, day or night.'
   },
   {
-    question: 'What payment methods do you accept?',
-    answer: 'We accept all major payment methods including credit/debit cards, bank transfers, and PayPal. Payments are processed securely through Payoneer, which supports 190+ countries and 150+ currencies. You don\'t need a Payoneer account — simply use your preferred payment method. For projects on Fiverr, Upwork, or Freelancer, we also work through platform escrow for your protection.'
+    question: 'How does payment work with Payoneer?',
+    answer: 'After your quote is approved, we send you a Payoneer payment link. You can pay using credit card (Visa, Mastercard, Amex), debit card, bank transfer, or Payoneer balance. You do NOT need a Payoneer account to pay — simply use your preferred payment method. Payoneer supports 190+ countries and 150+ currencies with fast, secure processing.'
+  },
+  {
+    question: 'What other payment methods do you accept?',
+    answer: 'Our primary payment method is Payoneer (credit/debit card, bank transfer, Payoneer balance). For projects through freelance platforms (Fiverr, Upwork, Freelancer), we also accept platform escrow payments. Contact us if you need alternative payment arrangements.'
   },
   {
     question: 'How long does a typical project take?',
-    answer: 'Project timelines vary based on complexity. Simple tasks (data entry, basic analysis) take 1-3 days. Research papers and complex analyses typically take 1-2 weeks. We always provide an estimated timeline with your quote and prioritize meeting your deadlines.'
+    answer: 'Project timelines vary based on complexity. Simple tasks (data entry, basic analysis, proofreading) take 1-3 days. Research papers, ML models, and complex analyses typically take 1-2 weeks. Web development projects take 1-4 weeks. We always provide an estimated timeline with your quote and prioritize meeting your deadlines.'
   },
   {
     question: 'Do you offer revisions?',
     answer: 'Absolutely! We offer unlimited revisions until you\'re 100% satisfied with the work. Our goal is your complete satisfaction, and we won\'t consider a project complete until you\'re happy with the results.'
+  },
+  {
+    question: 'What are your pricing packages?',
+    answer: 'We offer three main packages: Starter (from $25) for single tasks and quick turnarounds, Professional (from $100) for complete research papers and medium projects, and Enterprise (from $300) for multi-deliverable projects and ongoing support. Every project also gets a custom quote based on your specific requirements.'
   },
   {
     question: 'Is my data and project confidential?',
@@ -38,16 +50,16 @@ const faqs = [
   },
   {
     question: 'Can you work on projects in different time zones?',
-    answer: 'Absolutely! We work with clients globally and are flexible with communication times. We ensure timely responses regardless of your location and can schedule calls at convenient times for you.'
+    answer: 'Absolutely! We work with clients from 190+ countries and are flexible with communication times. We ensure timely responses regardless of your location and can schedule calls at convenient times for you.'
   },
   {
     question: 'What file formats do you deliver?',
     answer: 'We deliver in any format you need: Word (.docx), PDF, Excel, LaTeX, PowerPoint, Python notebooks (.ipynb), code repositories, and more. Just specify your preferred format, and we\'ll accommodate.'
   },
   {
-    question: 'How do I get started?',
-    answer: 'Simply fill out our contact form with your project details, or reach out via WhatsApp or email. We\'ll respond within 24 hours with questions (if any) and a detailed quote. Once approved, we begin work immediately!'
-  }
+    question: 'Is my payment secure?',
+    answer: 'Yes, all payments are processed through Payoneer\'s secure payment infrastructure, which uses bank-level encryption and is regulated by financial authorities worldwide. Your payment information is never shared with us directly.'
+  },
 ];
 
 export default function FAQ() {

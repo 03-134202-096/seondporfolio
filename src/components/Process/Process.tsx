@@ -5,38 +5,38 @@ import styles from './Process.module.css';
 const processSteps = [
   {
     step: '01',
-    title: 'Submit Your Request',
-    description: 'Fill out our contact form with your project details, requirements, and deadline. Attach any relevant files or references.',
-    icon: '📝'
+    title: 'Browse & Select Service',
+    description: 'Explore our catalog of 60+ services. Pick the one you need, or describe a custom project. Attach files and requirements via our order form.',
+    icon: '🔍'
   },
   {
     step: '02',
-    title: 'Get a Quote',
-    description: 'We review your requirements and provide a detailed quote within 24 hours. No hidden fees, transparent pricing.',
+    title: 'Get a Detailed Quote',
+    description: 'We review your requirements and provide a transparent quote within 24 hours — no hidden fees. Includes scope, timeline, and deliverables.',
     icon: '💰'
   },
   {
     step: '03',
-    title: 'Confirm & Pay',
-    description: 'Once you approve the quote, make payment via Payoneer, PayPal, or platform escrow. We begin work immediately.',
-    icon: '✅'
+    title: 'Pay Securely via Payoneer',
+    description: 'Once you approve the quote, we send you a Payoneer payment link. Pay with credit/debit card, bank transfer, or Payoneer balance — no Payoneer account needed. Supports 190+ countries.',
+    icon: '🔒'
   },
   {
     step: '04',
-    title: 'Work in Progress',
-    description: 'We keep you updated throughout the process. Ask questions, request changes, or provide feedback anytime.',
+    title: 'Work Begins Immediately',
+    description: 'Your dedicated expert starts right away. Track progress 24/7 via WhatsApp or email. Request changes or ask questions anytime.',
     icon: '⚙️'
   },
   {
     step: '05',
-    title: 'Review & Revisions',
-    description: 'Receive your completed work for review. We offer free revisions until you\'re 100% satisfied with the results.',
+    title: 'Review & Free Revisions',
+    description: 'Receive your completed work for review. We offer unlimited free revisions until you are 100% satisfied with the quality and accuracy.',
     icon: '🔄'
   },
   {
     step: '06',
-    title: 'Final Delivery',
-    description: 'Get your polished, professional deliverables. We provide ongoing support for any questions after delivery.',
+    title: 'Final Delivery & Support',
+    description: 'Get your polished, professional deliverables in any format. We provide ongoing support and are available for follow-up questions after delivery.',
     icon: '🎉'
   }
 ];

@@ -8,9 +8,10 @@ import styles from './Header.module.css';
 const navItems = [
   { label: 'Home', href: '#hero' },
   { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#portfolio' },
+  { label: 'Catalog', href: '#service-catalog' },
+  { label: 'Pricing', href: '#pricing' },
   { label: 'Process', href: '#process' },
-  { label: 'About', href: '#about' },
+  { label: 'Portfolio', href: '#portfolio' },
   { label: 'FAQ', href: '#faq' },
 ];
 
@@ -132,7 +133,7 @@ export default function Header() {
             className={`btn btn-primary ${styles.ctaButton}`} 
             onClick={(e) => handleNavClick(e, '#contact')}
           >
-            Get in Touch
+            Order Now
           </Link>
         </nav>
       </div>

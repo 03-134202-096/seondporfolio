@@ -1,0 +1,212 @@
+'use client';
+
+import { useState } from 'react';
+import styles from './ServiceCatalog.module.css';
+
+type ServiceCategory =
+  | 'all'
+  | 'academic'
+  | 'data-ai'
+  | 'writing'
+  | 'development'
+  | 'tools';
+
+interface ServiceItem {
+  name: string;
+  category: ServiceCategory;
+  price: string;
+  delivery: string;
+  popular?: boolean;
+}
+
+const services: ServiceItem[] = [
+  // Academic & Research Services
+  { name: 'Journal-Style Formatting', category: 'academic', price: 'From $25', delivery: '1–2 days' },
+  { name: 'Copyediting', category: 'academic', price: 'From $30', delivery: '1–3 days' },
+  { name: 'Proofreading', category: 'academic', price: 'From $25', delivery: '1–2 days' },
+  { name: 'Fact-Checking', category: 'academic', price: 'From $30', delivery: '2–3 days' },
+  { name: 'Citation Formatting (APA/MLA/Chicago/Vancouver)', category: 'academic', price: 'From $25', delivery: '1–2 days', popular: true },
+  { name: 'Plagiarism Screening & Report', category: 'academic', price: 'From $20', delivery: '1 day' },
+  { name: 'English-Language Editing', category: 'academic', price: 'From $35', delivery: '2–3 days' },
+  { name: 'Literature Search', category: 'academic', price: 'From $50', delivery: '3–5 days', popular: true },
+  { name: 'Systematic Review Support', category: 'academic', price: 'From $150', delivery: '7–14 days' },
+  { name: 'Annotated Bibliography', category: 'academic', price: 'From $40', delivery: '2–4 days' },
+  { name: 'Article Summarization', category: 'academic', price: 'From $25', delivery: '1–2 days' },
+  { name: 'Research Gap Analysis', category: 'academic', price: 'From $60', delivery: '3–5 days' },
+  { name: 'Grant Proposal Writing', category: 'academic', price: 'From $200', delivery: '7–14 days' },
+  { name: 'Grant Proposal Editing', category: 'academic', price: 'From $80', delivery: '3–5 days' },
+  { name: 'CV Editing for Researchers', category: 'academic', price: 'From $35', delivery: '1–2 days' },
+  { name: 'Cover Letter Writing', category: 'academic', price: 'From $30', delivery: '1–2 days' },
+  { name: 'Statement of Purpose Editing', category: 'academic', price: 'From $35', delivery: '1–2 days' },
+  { name: 'Research Plan Writing', category: 'academic', price: 'From $100', delivery: '5–7 days' },
+  { name: 'Journal Selection Research', category: 'academic', price: 'From $30', delivery: '1–2 days' },
+  { name: 'Reviewer Response Assistance', category: 'academic', price: 'From $60', delivery: '3–5 days' },
+  { name: 'Abstract Writing', category: 'academic', price: 'From $25', delivery: '1–2 days' },
+  { name: 'Keyword Selection & SEO', category: 'academic', price: 'From $20', delivery: '1 day' },
+  { name: 'Student Application Assistance', category: 'academic', price: 'From $50', delivery: '2–4 days' },
+  { name: 'Reference Cross-Checking', category: 'academic', price: 'From $25', delivery: '1–2 days' },
+  { name: 'Humanizing AI Text', category: 'academic', price: 'From $25', delivery: '1–2 days', popular: true },
+  { name: 'Paraphrasing & Rewriting', category: 'academic', price: 'From $30', delivery: '1–3 days' },
+
+  // Data, AI & Technical Services
+  { name: 'Data Collection (Surveys/APIs/Public Sources)', category: 'data-ai', price: 'From $40', delivery: '2–5 days' },
+  { name: 'Survey Design & Development', category: 'data-ai', price: 'From $50', delivery: '2–4 days' },
+  { name: 'Data Entry', category: 'data-ai', price: 'From $25', delivery: '1–3 days' },
+  { name: 'Data Cleaning & Preprocessing', category: 'data-ai', price: 'From $40', delivery: '2–4 days', popular: true },
+  { name: 'Data Annotation for ML/AI', category: 'data-ai', price: 'From $50', delivery: '3–7 days' },
+  { name: 'Chart & Graph Creation (Python)', category: 'data-ai', price: 'From $30', delivery: '1–2 days' },
+  { name: 'Infographic Design', category: 'data-ai', price: 'From $40', delivery: '2–3 days' },
+  { name: 'Diagram & Flowchart Creation', category: 'data-ai', price: 'From $30', delivery: '1–2 days' },
+  { name: 'Table Formatting (Journal Specs)', category: 'data-ai', price: 'From $20', delivery: '1 day' },
+  { name: 'Visualization Coding (Python Scripts)', category: 'data-ai', price: 'From $50', delivery: '2–4 days' },
+  { name: 'ML/AI/DL Model Training', category: 'data-ai', price: 'From $150', delivery: '5–14 days', popular: true },
+  { name: 'Hyperparameter Tuning', category: 'data-ai', price: 'From $80', delivery: '3–7 days' },
+  { name: 'Experiment Execution & Logging', category: 'data-ai', price: 'From $100', delivery: '3–7 days' },
+  { name: 'Benchmarking & Model Comparison', category: 'data-ai', price: 'From $80', delivery: '3–5 days' },
+  { name: 'Web Scraping & Data Extraction', category: 'data-ai', price: 'From $50', delivery: '2–5 days', popular: true },
+  { name: 'Dataset Curation & Preprocessing', category: 'data-ai', price: 'From $60', delivery: '3–7 days' },
+  { name: 'Code Documentation', category: 'data-ai', price: 'From $40', delivery: '2–4 days' },
+  { name: 'Dataset Finder Service', category: 'data-ai', price: 'From $30', delivery: '1–3 days' },
+  { name: 'Survey Data Summarization', category: 'data-ai', price: 'From $40', delivery: '2–4 days' },
+
+  // Writing, Content & Admin
+  { name: 'Blog Writing & SEO Content', category: 'writing', price: 'From $30', delivery: '2–4 days' },
+  { name: 'Social Media Content (Twitter/LinkedIn)', category: 'writing', price: 'From $25', delivery: '1–2 days' },
+  { name: 'Website Content Updates', category: 'writing', price: 'From $30', delivery: '1–3 days' },
+  { name: 'Email Drafting (Professional)', category: 'writing', price: 'From $20', delivery: '1 day' },
+  { name: 'Agenda Preparation', category: 'writing', price: 'From $20', delivery: '1 day' },
+  { name: 'Book Topic Research', category: 'writing', price: 'From $50', delivery: '3–5 days' },
+  { name: 'Book Summary & Core Insights', category: 'writing', price: 'From $40', delivery: '2–4 days' },
+  { name: 'Deep Research on Any Topic', category: 'writing', price: 'From $50', delivery: '3–7 days', popular: true },
+  { name: 'Any Internet Research', category: 'writing', price: 'From $30', delivery: '1–3 days' },
+  { name: 'Recruitment Materials & Flyers', category: 'writing', price: 'From $35', delivery: '2–3 days' },
+  { name: 'Presentation Slides Design', category: 'writing', price: 'From $40', delivery: '2–4 days' },
+  { name: 'Academic Poster Design', category: 'writing', price: 'From $50', delivery: '2–4 days' },
+  { name: 'Meta Ads Campaign Management', category: 'writing', price: 'From $80', delivery: '3–7 days' },
+
+  // Development & Deployment
+  { name: 'Next.js Full-Stack Development', category: 'development', price: 'From $200', delivery: '7–21 days', popular: true },
+  { name: 'Nest.js Backend Development', category: 'development', price: 'From $200', delivery: '7–21 days' },
+  { name: 'Portfolio Website Development', category: 'development', price: 'From $150', delivery: '5–14 days', popular: true },
+  { name: 'AWS Deployment & Setup', category: 'development', price: 'From $100', delivery: '2–5 days' },
+  { name: 'AWS Cloud Infrastructure Management', category: 'development', price: 'From $100', delivery: '3–7 days' },
+
+  // Document & Format Tools
+  { name: 'Document Conversion (Word/PDF/LaTeX)', category: 'tools', price: 'From $20', delivery: '1 day' },
+  { name: 'LaTeX Formatting & Typesetting', category: 'tools', price: 'From $40', delivery: '1–3 days', popular: true },
+  { name: 'Indexing (Books/Reports)', category: 'tools', price: 'From $50', delivery: '3–5 days' },
+  { name: 'Footnote/Endnote Formatting', category: 'tools', price: 'From $25', delivery: '1–2 days' },
+  { name: 'Appendices & Supplementary Formatting', category: 'tools', price: 'From $30', delivery: '1–3 days' },
+];
+
+const categories: { label: string; value: ServiceCategory; count: number }[] = [
+  { label: 'All Services', value: 'all', count: services.length },
+  { label: 'Academic & Research', value: 'academic', count: services.filter(s => s.category === 'academic').length },
+  { label: 'Data, AI & ML', value: 'data-ai', count: services.filter(s => s.category === 'data-ai').length },
+  { label: 'Writing & Content', value: 'writing', count: services.filter(s => s.category === 'writing').length },
+  { label: 'Development', value: 'development', count: services.filter(s => s.category === 'development').length },
+  { label: 'Document Tools', value: 'tools', count: services.filter(s => s.category === 'tools').length },
+];
+
+export default function ServiceCatalog() {
+  const [activeCategory, setActiveCategory] = useState<ServiceCategory>('all');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredServices = services.filter((service) => {
+    const matchesCategory = activeCategory === 'all' || service.category === activeCategory;
+    const matchesSearch = service.name.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  return (
+    <section id="service-catalog" className={`section ${styles.catalog}`}>
+      <div className="container">
+        <div className="section-header">
+          <h2>Full Service Catalog</h2>
+          <p>
+            Browse our complete list of {services.length}+ services. Find exactly what you need
+            and place your order in minutes.
+          </p>
+        </div>
+
+        <div className={styles.searchBar}>
+          <span className={styles.searchIcon}>🔍</span>
+          <input
+            type="text"
+            placeholder="Search services... (e.g. LaTeX, data cleaning, web scraping)"
+            className={styles.searchInput}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          {searchQuery && (
+            <button
+              className={styles.clearSearch}
+              onClick={() => setSearchQuery('')}
+              aria-label="Clear search"
+            >
+              ✕
+            </button>
+          )}
+        </div>
+
+        <div className={styles.categoryTabs}>
+          {categories.map((cat) => (
+            <button
+              key={cat.value}
+              className={`${styles.categoryTab} ${activeCategory === cat.value ? styles.categoryTabActive : ''}`}
+              onClick={() => setActiveCategory(cat.value)}
+            >
+              {cat.label}
+              <span className={styles.categoryCount}>{cat.count}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className={styles.resultsInfo}>
+          Showing <strong>{filteredServices.length}</strong> services
+          {searchQuery && <> matching &quot;<strong>{searchQuery}</strong>&quot;</>}
+        </div>
+
+        <div className={styles.servicesGrid}>
+          {filteredServices.map((service) => (
+            <div key={service.name} className={styles.serviceCard}>
+              {service.popular && <span className={styles.popularTag}>Popular</span>}
+              <h4 className={styles.serviceName}>{service.name}</h4>
+              <div className={styles.serviceMeta}>
+                <span className={styles.servicePrice}>{service.price}</span>
+                <span className={styles.serviceDivider}>•</span>
+                <span className={styles.serviceDelivery}>⏱ {service.delivery}</span>
+              </div>
+              <a href="#contact" className={styles.orderBtn}>
+                Order Now →
+              </a>
+            </div>
+          ))}
+        </div>
+
+        {filteredServices.length === 0 && (
+          <div className={styles.noResults}>
+            <span className={styles.noResultsIcon}>🔍</span>
+            <h4>No services found</h4>
+            <p>Try a different search term or browse all categories.</p>
+            <button
+              className={styles.resetBtn}
+              onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}
+            >
+              Show All Services
+            </button>
+          </div>
+        )}
+
+        <div className={styles.catalogCta}>
+          <p>
+            Don&apos;t see what you need? We offer custom services tailored to your specific requirements.
+          </p>
+          <a href="#contact" className={styles.catalogCtaBtn}>
+            Request Custom Service →
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}

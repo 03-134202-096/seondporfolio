@@ -8,37 +8,37 @@ export default function Hero() {
       <div className={styles.heroInner}>
         <div className={styles.heroContent}>
           <span className={`badge ${styles.heroBadge}`}>
-            Dive Until Satisfaction
+            🚀 60+ Services • Trusted by Researchers Worldwide
           </span>
           <h1 className={styles.heroTitle}>
-            Professional <span className={styles.heroHighlight}>Research</span> &{' '}
-            <span className={styles.heroHighlight}>Data Science</span> Services
+            Order <span className={styles.heroHighlight}>Research</span>,{' '}
+            <span className={styles.heroHighlight}>Data Science</span> & AI Services Online
           </h1>
           <p className={styles.heroDescription}>
-            Expert freelance team offering research paper writing, data analysis, machine learning, 
-            AI solutions, and academic services. We deliver publication-ready manuscripts and 
-            professional content for researchers, students, and businesses worldwide. Available 24/7 on Fiverr, Upwork & Freelancer.
+            Browse 60+ professional services — from research paper writing and data analysis to 
+            machine learning, web development, and academic support. Select your service, get an 
+            instant quote, and pay securely via Payoneer. Delivered by experts, on time, every time.
           </p>
           <div className={styles.heroButtons}>
-            <Link href="#services" className="btn btn-primary" aria-label="View our services">
-              Explore Services
+            <Link href="#service-catalog" className="btn btn-primary" aria-label="Browse and order services">
+              Order Now →
             </Link>
-            <Link href="#contact" className="btn btn-secondary" aria-label="Get a free quote">
-              Get Free Quote
+            <Link href="#pricing" className="btn btn-secondary" aria-label="View pricing packages">
+              View Pricing
             </Link>
           </div>
           <div className={styles.heroStats}>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>4+</div>
-              <div className={styles.statLabel}>Published Papers</div>
+              <div className={styles.statNumber}>60+</div>
+              <div className={styles.statLabel}>Services Available</div>
             </div>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>50+</div>
-              <div className={styles.statLabel}>Services Offered</div>
+              <div className={styles.statNumber}>190+</div>
+              <div className={styles.statLabel}>Countries Served</div>
             </div>
             <div className={styles.statItem}>
               <div className={styles.statNumber}>100%</div>
-              <div className={styles.statLabel}>Client Satisfaction</div>
+              <div className={styles.statLabel}>Satisfaction Rate</div>
             </div>
           </div>
         </div>
