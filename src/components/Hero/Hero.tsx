@@ -1,6 +1,15 @@
+'use client';
+
 import Image from 'next/image';
-import Link from 'next/link';
 import styles from './Hero.module.css';
+
+const scrollTo = (id: string) => {
+  const el = document.getElementById(id);
+  if (el) {
+    const offset = el.offsetTop - 80;
+    window.scrollTo({ top: offset, behavior: 'smooth' });
+  }
+};
 
 export default function Hero() {
   return (
@@ -20,12 +29,12 @@ export default function Hero() {
             instant quote, and pay securely via Payoneer. Delivered by experts, on time, every time.
           </p>
           <div className={styles.heroButtons}>
-            <Link href="#service-catalog" className="btn btn-primary" aria-label="Browse and order services">
+            <button onClick={() => scrollTo('service-catalog')} className="btn btn-primary" aria-label="Browse and order services">
               Order Now →
-            </Link>
-            <Link href="#pricing" className="btn btn-secondary" aria-label="View pricing packages">
+            </button>
+            <button onClick={() => scrollTo('pricing')} className="btn btn-secondary" aria-label="View pricing packages">
               View Pricing
-            </Link>
+            </button>
           </div>
           <div className={styles.heroStats}>
             <div className={styles.statItem}>

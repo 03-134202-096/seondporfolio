@@ -6,8 +6,8 @@ const reasons = [
   {
     icon: '🎓',
     title: 'Expert Team',
-    description: 'Published researchers and experienced professionals with expertise across 50+ service areas.',
-    highlight: '4+ Papers Published'
+    description: 'Published researchers and experienced professionals with expertise across 60+ service areas.',
+    highlight: '5+ Papers Published'
   },
   {
     icon: '⚡',
@@ -43,23 +43,15 @@ const reasons = [
 
 const stats = [
   { value: '100%', label: 'Client Satisfaction' },
-  { value: '50+', label: 'Services Offered' },
-  { value: '4+', label: 'Published Papers' },
+  { value: '60+', label: 'Services Offered' },
+  { value: '5+', label: 'Published Papers' },
   { value: '24/7', label: 'Support Available' }
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-us" className={styles.whyChooseUs}>
+    <div className={styles.whyChooseUs}>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <span className={styles.badge}>Why DeepDivers?</span>
-          <h2 className={styles.title}>Why Clients Choose Us</h2>
-          <p className={styles.subtitle}>
-            We combine academic excellence with professional service to deliver exceptional results every time
-          </p>
-        </div>
-
         <div className={styles.reasonsGrid}>
           {reasons.map((reason, index) => (
             <div key={index} className={styles.reasonCard}>
@@ -95,6 +87,6 @@ export default function WhyChooseUs() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

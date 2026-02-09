@@ -1,0 +1,128 @@
+.collapsible {
+  background: linear-gradient(180deg, #0d1117 0%, #0f1722 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.collapsible:first-of-type {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Toggle Header Button */
+.toggleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 28px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.toggleHeader:hover {
+  opacity: 0.85;
+}
+
+.headerContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.headerTitle {
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.headerSubtitle {
+  font-size: 0.9375rem;
+  color: #8b949e;
+  margin: 6px 0 0 0;
+  line-height: 1.5;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.headerBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  background: rgba(59, 130, 246, 0.12);
+  color: #58a6ff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 20px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+/* Chevron */
+.chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: #58a6ff;
+  font-size: 1.25rem;
+  transition: transform 0.3s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.chevronUp {
+  transform: rotate(180deg);
+}
+
+/* Content Wrapper — Smooth Expand/Collapse */
+.contentWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+  overflow: hidden;
+}
+
+.contentExpanded {
+  grid-template-rows: 1fr;
+}
+
+.content {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.contentExpanded .content {
+  overflow: visible;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .toggleHeader {
+    padding: 20px 0;
+  }
+
+  .headerBadge {
+    display: none;
+  }
+}

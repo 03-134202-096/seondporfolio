@@ -70,16 +70,8 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className={styles.faq}>
+    <div className={styles.faq}>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <span className={styles.badge}>FAQ</span>
-          <h2 className={styles.title}>Frequently Asked Questions</h2>
-          <p className={styles.subtitle}>
-            Got questions? We&apos;ve got answers. Find quick solutions to common queries below.
-          </p>
-        </div>
-
         <div className={styles.faqGrid}>
           <div className={styles.faqList}>
             {faqs.map((faq, index) => (
@@ -126,6 +118,6 @@ export default function FAQ() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

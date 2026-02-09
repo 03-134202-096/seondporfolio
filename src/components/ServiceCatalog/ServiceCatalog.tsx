@@ -108,15 +108,161 @@ const categories: { label: string; value: ServiceCategory; count: number }[] = [
   { label: 'Document Tools', value: 'tools', count: services.filter(s => s.category === 'tools').length },
 ];
 
+// Smart search: synonym expansion for intelligent matching
+const searchExpansions: Record<string, string[]> = {
+  'latex': ['latex', 'typesetting', 'document conversion'],
+  'tex': ['latex', 'typesetting'],
+  'overleaf': ['latex', 'typesetting'],
+  'yolo': ['annotation', 'model training', 'object detection', 'benchmarking', 'ml/ai/dl'],
+  'object detection': ['annotation', 'model training', 'ml/ai/dl'],
+  'annotation': ['annotation', 'labeling'],
+  'labeling': ['annotation', 'labeling'],
+  'ghost': ['blog', 'book', 'deep research'],
+  'ghostwriting': ['blog', 'book', 'deep research'],
+  'technical writing': ['code documentation', 'blog'],
+  'publication': ['journal', 'citation', 'formatting', 'review', 'abstract'],
+  'paper': ['journal', 'formatting', 'citation', 'copyediting', 'proofreading', 'abstract', 'reviewer', 'research'],
+  'manuscript': ['journal', 'formatting', 'copyediting', 'proofreading', 'english-language'],
+  'thesis': ['research plan', 'proofreading', 'statement of purpose', 'student'],
+  'dissertation': ['research plan', 'proofreading', 'student'],
+  'resume': ['cv editing'],
+  'cv': ['cv editing', 'cover letter'],
+  'sop': ['statement of purpose'],
+  'website': ['next.js', 'portfolio', 'nest.js'],
+  'react': ['next.js'],
+  'node': ['nest.js'],
+  'python': ['chart', 'visualization', 'model training', 'web scraping', 'python'],
+  'spss': ['data', 'survey'],
+  'machine learning': ['ml', 'model training', 'hyperparameter', 'benchmarking', 'experiment', 'annotation'],
+  'deep learning': ['ml', 'dl', 'model training', 'hyperparameter'],
+  'nlp': ['ml', 'model training'],
+  'computer vision': ['ml', 'annotation', 'model training'],
+  'neural network': ['ml', 'model training'],
+  'cnn': ['model training', 'ml/ai/dl'],
+  'transformer': ['model training', 'ml/ai/dl'],
+  'bert': ['model training', 'ml/ai/dl'],
+  'gpt': ['humanizing ai', 'ml/ai/dl'],
+  'chatgpt': ['humanizing ai', 'paraphrasing'],
+  'pytorch': ['model training'],
+  'tensorflow': ['model training'],
+  'keras': ['model training'],
+  'aws': ['aws'],
+  'cloud': ['aws'],
+  'powerpoint': ['presentation', 'slides'],
+  'ppt': ['presentation', 'slides'],
+  'excel': ['data entry', 'table formatting'],
+  'pdf': ['document conversion'],
+  'word': ['document conversion'],
+  'ieee': ['journal', 'latex', 'citation'],
+  'acm': ['journal', 'latex'],
+  'springer': ['journal', 'latex'],
+  'elsevier': ['journal', 'latex'],
+  'frontiers': ['journal', 'latex'],
+  'apa': ['citation'],
+  'mla': ['citation'],
+  'chicago': ['citation'],
+  'vancouver': ['citation'],
+  'turnitin': ['plagiarism'],
+  'research': ['literature', 'systematic', 'research', 'gap', 'deep research', 'grant'],
+  'review': ['literature', 'systematic', 'reviewer', 'review'],
+  'bibliography': ['annotated bibliography', 'citation', 'reference'],
+  'scraping': ['web scraping', 'data extraction'],
+  'scrape': ['web scraping'],
+  'selenium': ['web scraping'],
+  'beautifulsoup': ['web scraping'],
+  'survey': ['survey', 'questionnaire', 'data collection'],
+  'diagram': ['diagram', 'flowchart'],
+  'flowchart': ['diagram', 'flowchart'],
+  'poster': ['academic poster', 'infographic'],
+  'conference': ['academic poster', 'presentation'],
+  'infographic': ['infographic'],
+  'seo': ['keyword', 'blog writing', 'seo'],
+  'marketing': ['meta ads', 'seo', 'blog'],
+  'facebook': ['meta ads'],
+  'instagram': ['meta ads'],
+  'advertising': ['meta ads'],
+  'plagiarism': ['plagiarism', 'humanizing'],
+  'grammar': ['proofreading', 'copyediting', 'english-language'],
+  'proofread': ['proofreading', 'copyediting'],
+  'edit': ['editing', 'copyediting', 'proofreading'],
+  'format': ['formatting', 'journal', 'latex', 'citation', 'document conversion', 'table', 'footnote', 'appendices'],
+  'citation': ['citation', 'reference', 'bibliography'],
+  'reference': ['reference', 'citation', 'bibliography', 'cross-checking'],
+  'grant': ['grant proposal'],
+  'admission': ['student application', 'statement of purpose', 'cv', 'cover letter'],
+  'scholarship': ['student application', 'statement of purpose'],
+  'blog': ['blog writing'],
+  'article': ['blog writing', 'article summarization'],
+  'book': ['book topic', 'book summary'],
+  'ebook': ['book topic', 'book summary'],
+  'prisma': ['systematic review'],
+  'meta-analysis': ['systematic review'],
+  'cleaning': ['data cleaning', 'preprocessing'],
+  'preprocessing': ['data cleaning', 'dataset curation'],
+  'visualization': ['chart', 'visualization', 'infographic', 'diagram'],
+  'dashboard': ['visualization', 'chart'],
+  'kaggle': ['dataset finder'],
+  'huggingface': ['dataset finder', 'model training'],
+  'linkedin': ['social media'],
+  'twitter': ['social media'],
+};
+
+function smartMatch(serviceName: string, query: string): boolean {
+  if (!query.trim()) return true;
+  const q = query.toLowerCase().trim();
+  const nameLower = serviceName.toLowerCase();
+
+  // Direct name match
+  if (nameLower.includes(q)) return true;
+
+  // Exact synonym expansion
+  const expansion = searchExpansions[q];
+  if (expansion) {
+    return expansion.some(term => nameLower.includes(term));
+  }
+
+  // Partial key match (min 3 chars to avoid noise)
+  if (q.length >= 3) {
+    for (const [key, terms] of Object.entries(searchExpansions)) {
+      if (key.startsWith(q) || q.startsWith(key)) {
+        if (terms.some(term => nameLower.includes(term))) return true;
+      }
+    }
+  }
+
+  return false;
+}
+
 export default function ServiceCatalog() {
   const [activeCategory, setActiveCategory] = useState<ServiceCategory>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 9;
 
   const filteredServices = services.filter((service) => {
     const matchesCategory = activeCategory === 'all' || service.category === activeCategory;
-    const matchesSearch = service.name.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    const matchesSearchQuery = smartMatch(service.name, searchQuery);
+    // When searching, show results from all categories for better discovery
+    return searchQuery.trim() ? matchesSearchQuery : (matchesCategory && matchesSearchQuery);
   });
+
+  const totalPages = Math.ceil(filteredServices.length / ITEMS_PER_PAGE);
+  const paginatedServices = filteredServices.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  // Reset page when filters change
+  const handleCategoryChange = (category: ServiceCategory) => {
+    setActiveCategory(category);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+    setCurrentPage(1);
+    if (value.trim()) setActiveCategory('all');
+  };
 
   return (
     <section id="service-catalog" className={`section ${styles.catalog}`}>
@@ -133,15 +279,15 @@ export default function ServiceCatalog() {
           <span className={styles.searchIcon}>🔍</span>
           <input
             type="text"
-            placeholder="Search services... (e.g. LaTeX, data cleaning, web scraping)"
+            placeholder="Search services... (e.g. LaTeX, YOLO, thesis, Python, ghostwriting)"
             className={styles.searchInput}
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => handleSearchChange(e.target.value)}
           />
           {searchQuery && (
             <button
               className={styles.clearSearch}
-              onClick={() => setSearchQuery('')}
+              onClick={() => handleSearchChange('')}
               aria-label="Clear search"
             >
               ✕
@@ -154,7 +300,7 @@ export default function ServiceCatalog() {
             <button
               key={cat.value}
               className={`${styles.categoryTab} ${activeCategory === cat.value ? styles.categoryTabActive : ''}`}
-              onClick={() => setActiveCategory(cat.value)}
+              onClick={() => handleCategoryChange(cat.value)}
             >
               {cat.label}
               <span className={styles.categoryCount}>{cat.count}</span>
@@ -163,12 +309,13 @@ export default function ServiceCatalog() {
         </div>
 
         <div className={styles.resultsInfo}>
-          Showing <strong>{filteredServices.length}</strong> services
+          Showing <strong>{paginatedServices.length}</strong> of <strong>{filteredServices.length}</strong> services
           {searchQuery && <> matching &quot;<strong>{searchQuery}</strong>&quot;</>}
+          {totalPages > 1 && <> &nbsp;·&nbsp; Page {currentPage} of {totalPages}</>}
         </div>
 
         <div className={styles.servicesGrid}>
-          {filteredServices.map((service) => (
+          {paginatedServices.map((service) => (
             <div key={service.name} className={styles.serviceCard}>
               {service.popular && <span className={styles.popularTag}>Popular</span>}
               <h4 className={styles.serviceName}>{service.name}</h4>
@@ -177,9 +324,24 @@ export default function ServiceCatalog() {
                 <span className={styles.serviceDivider}>•</span>
                 <span className={styles.serviceDelivery}>⏱ {service.delivery}</span>
               </div>
-              <a href="#contact" className={styles.orderBtn}>
+              <button
+                type="button"
+                className={styles.orderBtn}
+                onClick={() => {
+                  // Dispatch event to pre-fill the contact form
+                  window.dispatchEvent(
+                    new CustomEvent('select-service', { detail: { service: service.name } })
+                  );
+                  // Scroll to contact form
+                  const contactEl = document.getElementById('contact');
+                  if (contactEl) {
+                    const top = contactEl.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                  }
+                }}
+              >
                 Order Now →
-              </a>
+              </button>
             </div>
           ))}
         </div>
@@ -191,9 +353,41 @@ export default function ServiceCatalog() {
             <p>Try a different search term or browse all categories.</p>
             <button
               className={styles.resetBtn}
-              onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}
+              onClick={() => { handleSearchChange(''); handleCategoryChange('all'); }}
             >
               Show All Services
+            </button>
+          </div>
+        )}
+
+        {totalPages > 1 && (
+          <div className={styles.pagination}>
+            <button
+              className={styles.pageBtn}
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              aria-label="Previous page"
+            >
+              ← Prev
+            </button>
+            <div className={styles.pageNumbers}>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  className={`${styles.pageNumber} ${currentPage === page ? styles.pageNumberActive : ''}`}
+                  onClick={() => setCurrentPage(page)}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+            <button
+              className={styles.pageBtn}
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+              aria-label="Next page"
+            >
+              Next →
             </button>
           </div>
         )}

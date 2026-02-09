@@ -7,7 +7,6 @@ import styles from './Footer.module.css';
 
 const quickLinks = [
   { label: 'Home', href: '#hero' },
-  { label: 'Services', href: '#services' },
   { label: 'Service Catalog', href: '#service-catalog' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'How It Works', href: '#process' },
@@ -17,12 +16,12 @@ const quickLinks = [
 ];
 
 const services = [
-  { label: 'Research Paper Writing', href: '#services' },
-  { label: 'Data Analysis & SPSS', href: '#services' },
-  { label: 'Machine Learning & AI', href: '#services' },
-  { label: 'Statistical Analysis', href: '#services' },
-  { label: 'Literature Review', href: '#services' },
-  { label: 'Thesis & Dissertation', href: '#services' },
+  { label: 'Research Paper Writing', href: '#service-catalog' },
+  { label: 'Data Analysis & SPSS', href: '#service-catalog' },
+  { label: 'Machine Learning & AI', href: '#service-catalog' },
+  { label: 'Statistical Analysis', href: '#service-catalog' },
+  { label: 'Literature Review', href: '#service-catalog' },
+  { label: 'Thesis & Dissertation', href: '#service-catalog' },
 ];
 
 function NewsletterForm() {

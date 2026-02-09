@@ -1,5 +1,6 @@
 .portfolio {
-  background: var(--background-alt);
+  background: transparent;
+  padding: 20px 0 40px;
 }
 
 .portfolioTabs {

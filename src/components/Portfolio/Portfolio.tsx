@@ -146,15 +146,8 @@ export default function Portfolio() {
       : portfolioItems.filter((item) => item.category === activeTab);
 
   return (
-    <section id="portfolio" className={`section ${styles.portfolio}`}>
+    <div className={`section ${styles.portfolio}`}>
       <div className="container">
-        <div className="section-header">
-          <h2>Sample Work</h2>
-          <p>
-            A curated selection of our data visualizations, architecture diagrams, and
-            research graphics from our published papers.          </p>
-        </div>
-
         <div className={styles.portfolioTabs}>
           {tabs.map((tab) => (
             <button
@@ -217,6 +210,6 @@ export default function Portfolio() {
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }

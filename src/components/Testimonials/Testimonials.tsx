@@ -4,46 +4,25 @@ import styles from './Testimonials.module.css';
 
 const testimonials = [
   {
-    name: 'Dr. Sarah Mitchell',
-    role: 'Postdoctoral Researcher, MIT',
-    text: 'DeepDivers formatted my entire manuscript to Frontiers guidelines in 48 hours. Their LaTeX typesetting and citation accuracy were flawless. Saved me weeks of work.',
+    name: 'Otuekong',
+    role: 'PhD Student, Germany',
+    text: 'Perfect, I love your work. It was difficult to do away with all the lengthy texts in the paper. And you\'ve done a great job at decluttering. I think it is perfect like this.',
     rating: 5,
-    service: 'Journal Formatting & LaTeX',
+    service: 'IEEE Conference Paper',
   },
   {
-    name: 'Ahmed Al-Rashid',
-    role: 'PhD Candidate, University of Jeddah',
-    text: 'They handled my systematic review screening — 2,000+ papers filtered down to 85 relevant studies with annotated bibliography. Incredibly thorough and professional.',
+    name: 'Dr. Samabia T.',
+    role: 'Head of AI Applied Technologies Research Center, Bahria University Pakistan',
+    text: 'Asad has been an outstanding researcher and developer under my supervision. He contributed significantly to multiple research projects, leading to four peer-reviewed publications with additional manuscripts currently under review. He demonstrated strong technical depth in designing, implementing, and evaluating AI, machine learning, and deep learning experiments that formed the core of our research work. I strongly recommend him for advanced research roles.',
     rating: 5,
-    service: 'Systematic Review Support',
+    service: 'Research Papers & AI/ML Experiments',
   },
   {
-    name: 'Prof. Maria Gonzalez',
-    role: 'Associate Professor, Universidad de Barcelona',
-    text: 'The data visualization and architecture diagrams they created for my AI paper were publication-quality. The reviewers specifically praised the visual clarity.',
+    name: 'Dominic',
+    role: 'PhD Researcher, Germany',
+    text: 'It is just perfect. Good.',
     rating: 5,
-    service: 'Data Visualization & Diagrams',
-  },
-  {
-    name: 'James Chen',
-    role: 'Startup Founder, Singapore',
-    text: 'They built our company website with Next.js and deployed it on AWS. Fast, clean code, and they handled everything from design to production. Highly recommend.',
-    rating: 5,
-    service: 'Full-Stack Development',
-  },
-  {
-    name: 'Dr. Fatima Noor',
-    role: 'Research Scientist, King Abdullah University',
-    text: 'I needed help with ML model training and parameter tuning for my cancer detection paper. DeepDivers delivered reproducible results with detailed documentation.',
-    rating: 5,
-    service: 'ML/AI Model Training',
-  },
-  {
-    name: 'Thomas Anderson',
-    role: 'Graduate Student, University of Melbourne',
-    text: 'Affordable, fast, and reliable. They proofread my 80-page thesis, fixed all citation formatting issues, and even caught factual inconsistencies. Worth every penny.',
-    rating: 5,
-    service: 'Thesis Proofreading',
+    service: 'Thesis Formatting & Template Conversion',
   },
 ];
 
@@ -58,17 +37,8 @@ const trustBadges = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className={styles.testimonials}>
+    <div className={styles.testimonials}>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <span className={styles.badge}>Testimonials</span>
-          <h2 className={styles.title}>What Our Clients Say</h2>
-          <p className={styles.subtitle}>
-            Trusted by researchers, students, and businesses worldwide.
-            Here is what they have to say about working with us.
-          </p>
-        </div>
-
         <div className={styles.grid}>
           {testimonials.map((item, index) => (
             <div key={index} className={styles.card}>
@@ -103,6 +73,6 @@ export default function Testimonials() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

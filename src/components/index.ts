@@ -1,6 +1,6 @@
 export { default as Header } from './Header/Header';
 export { default as Hero } from './Hero/Hero';
-export { default as Services } from './Services/Services';
+export { default as CollapsibleSection } from './CollapsibleSection/CollapsibleSection';
 export { default as WhyChooseUs } from './WhyChooseUs/WhyChooseUs';
 export { default as ServiceCatalog } from './ServiceCatalog/ServiceCatalog';
 export { default as Pricing } from './Pricing/Pricing';

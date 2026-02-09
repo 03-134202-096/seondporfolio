@@ -1,5 +1,6 @@
 .publications {
-  background: var(--background);
+  background: transparent;
+  padding: 20px 0 40px;
 }
 
 .publicationsGrid {

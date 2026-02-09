@@ -7,7 +7,6 @@ import styles from './Header.module.css';
 
 const navItems = [
   { label: 'Home', href: '#hero' },
-  { label: 'Services', href: '#services' },
   { label: 'Catalog', href: '#service-catalog' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'Process', href: '#process' },
@@ -56,20 +55,20 @@ export default function Header() {
     setIsMobileMenuOpen(false);
     
     const targetId = href.replace('#', '');
-    const targetElement = document.getElementById(targetId);
-    
-    if (targetElement) {
-      const headerHeight = 80; // Account for fixed header
-      const targetPosition = targetElement.offsetTop - headerHeight;
-      
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-      
-      // Update URL hash without triggering default scroll
-      window.history.pushState(null, '', href);
-    }
+
+    // Dispatch expand event for collapsible sections
+    window.dispatchEvent(new CustomEvent(`expand-${targetId}`));
+
+    // Small delay to allow section to expand before scrolling
+    setTimeout(() => {
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const headerHeight = 80;
+        const targetPosition = targetElement.offsetTop - headerHeight;
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        window.history.pushState(null, '', href);
+      }
+    }, 150);
   };
 
   const handleLogoClick = (e: MouseEvent<HTMLAnchorElement>) => {

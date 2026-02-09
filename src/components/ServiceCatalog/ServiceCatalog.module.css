@@ -219,11 +219,13 @@
   font-weight: 600;
   color: var(--primary);
   background: var(--primary-light);
+  border: none;
   border-radius: var(--radius-md);
-  text-decoration: none;
   text-align: center;
+  cursor: pointer;
   transition: var(--transition);
   margin-top: auto;
+  font-family: inherit;
 }
 
 .orderBtn:hover {
@@ -302,4 +304,90 @@
 .catalogCtaBtn:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2.5rem;
+}
+
+.pageBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.pageBtn:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.pageBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pageNumbers {
+  display: flex;
+  gap: 4px;
+}
+
+.pageNumber {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--foreground-muted);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.pageNumber:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.pageNumberActive {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.pageNumberActive:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .pagination {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pageNumbers {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, FormEvent, ChangeEvent } from 'react';
+import { useState, useRef, useEffect, FormEvent, ChangeEvent } from 'react';
 import styles from './Contact.module.css';
 
 const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4MB in bytes
@@ -13,8 +13,25 @@ export default function Contact() {
   const [copiedField, setCopiedField] = useState<'email' | 'phone' | null>(null);
   const [fileError, setFileError] = useState<string | null>(null);
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
+  const [selectedService, setSelectedService] = useState('');
+  const [serviceMode, setServiceMode] = useState<'none' | 'catalog' | 'custom'>('none');
+  const [customService, setCustomService] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Listen for service selection from the ServiceCatalog "Order Now" buttons
+  useEffect(() => {
+    const handleServiceSelect = (e: Event) => {
+      const customEvent = e as CustomEvent<{ service: string }>;
+      const serviceName = customEvent.detail.service;
+      setSelectedService(serviceName);
+      setServiceMode('catalog');
+      setCustomService('');
+    };
+
+    window.addEventListener('select-service', handleServiceSelect);
+    return () => window.removeEventListener('select-service', handleServiceSelect);
+  }, []);
 
   const handleCopy = async (text: string, field: 'email' | 'phone') => {
     try {
@@ -95,6 +112,9 @@ export default function Contact() {
         form.reset();
         setSelectedFileName(null);
         setFileError(null);
+        setSelectedService('');
+        setServiceMode('none');
+        setCustomService('');
         // Scroll to success message
         formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
@@ -273,99 +293,73 @@ export default function Contact() {
             </div>
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
-                <label htmlFor="service" className={styles.formLabel}>
+                <label className={styles.formLabel}>
                   Service Required <span className={styles.required}>*</span>
                 </label>
-                <select
-                  id="service"
+                {/* Hidden input to submit the actual service value */}
+                <input
+                  type="hidden"
                   name="service"
-                  className={styles.formSelect}
-                  required
-                  disabled={isSubmitting}
-                >
-                  <option value="">Select a specific service</option>
-                  <optgroup label="📚 Academic & Research Services">
-                    <option value="Research Paper Writing (Full)">Research Paper Writing (Full)</option>
-                    <option value="Thesis / Dissertation Support">Thesis / Dissertation Support</option>
-                    <option value="Literature Review & Survey">Literature Review & Survey</option>
-                    <option value="Systematic Review / Meta-Analysis">Systematic Review / Meta-Analysis</option>
-                    <option value="Research Proposal Writing">Research Proposal Writing</option>
-                    <option value="Research Gap Analysis">Research Gap Analysis</option>
-                    <option value="Journal Formatting & Submission">Journal Formatting & Submission</option>
-                    <option value="LaTeX Typesetting">LaTeX Typesetting</option>
-                    <option value="Citation & Reference Management">Citation & Reference Management</option>
-                    <option value="Plagiarism Check & Rewriting">Plagiarism Check & Rewriting</option>
-                    <option value="Proofreading & Academic Editing">Proofreading & Academic Editing</option>
-                    <option value="Abstract & Summary Writing">Abstract & Summary Writing</option>
-                    <option value="Annotated Bibliography">Annotated Bibliography</option>
-                    <option value="Conference Paper Preparation">Conference Paper Preparation</option>
-                    <option value="Peer Response / Reviewer Reply">Peer Response / Reviewer Reply</option>
-                    <option value="Grant Proposal Writing">Grant Proposal Writing</option>
-                    <option value="Academic Poster Design">Academic Poster Design</option>
-                    <option value="Research Presentation (PPT)">Research Presentation (PPT)</option>
-                    <option value="Capstone Project Support">Capstone Project Support</option>
-                    <option value="Research Methodology Design">Research Methodology Design</option>
-                    <option value="Questionnaire / Survey Design">Questionnaire / Survey Design</option>
-                    <option value="IRB / Ethics Application Help">IRB / Ethics Application Help</option>
-                    <option value="PRISMA Diagram Creation">PRISMA Diagram Creation</option>
-                    <option value="Research Figure & Diagram Design">Research Figure & Diagram Design</option>
-                    <option value="Paper Screening & Shortlisting">Paper Screening & Shortlisting</option>
-                    <option value="Research Consultation Session">Research Consultation Session</option>
-                  </optgroup>
-                  <optgroup label="🤖 Data, AI & Technical Services">
-                    <option value="Data Analysis (Excel / SPSS / R / Python)">Data Analysis (Excel / SPSS / R / Python)</option>
-                    <option value="Machine Learning Model Development">Machine Learning Model Development</option>
-                    <option value="Deep Learning / Neural Network">Deep Learning / Neural Network</option>
-                    <option value="NLP / Text Mining">NLP / Text Mining</option>
-                    <option value="Computer Vision">Computer Vision</option>
-                    <option value="Data Visualization (Power BI / Tableau)">Data Visualization (Power BI / Tableau)</option>
-                    <option value="Statistical Testing & Interpretation">Statistical Testing & Interpretation</option>
-                    <option value="Dataset Collection & Cleaning">Dataset Collection & Cleaning</option>
-                    <option value="Web Scraping & Automation">Web Scraping & Automation</option>
-                    <option value="API Development & Integration">API Development & Integration</option>
-                    <option value="Python Script / Tool Development">Python Script / Tool Development</option>
-                    <option value="Jupyter Notebook Preparation">Jupyter Notebook Preparation</option>
-                    <option value="Model Deployment (Flask / FastAPI / Streamlit)">Model Deployment (Flask / FastAPI / Streamlit)</option>
-                    <option value="Cloud Setup (AWS / GCP / Azure)">Cloud Setup (AWS / GCP / Azure)</option>
-                    <option value="Prompt Engineering / GPT Integration">Prompt Engineering / GPT Integration</option>
-                    <option value="Chatbot Development">Chatbot Development</option>
-                    <option value="Dashboard Development">Dashboard Development</option>
-                    <option value="Simulation / Agent-Based Modeling">Simulation / Agent-Based Modeling</option>
-                    <option value="Image Annotation / Data Labeling">Image Annotation / Data Labeling</option>
-                  </optgroup>
-                  <optgroup label="✍️ Writing & Content Services">
-                    <option value="Blog Writing / Article Writing">Blog Writing / Article Writing</option>
-                    <option value="SEO Content Writing">SEO Content Writing</option>
-                    <option value="Copywriting / Website Content">Copywriting / Website Content</option>
-                    <option value="Technical Writing & Documentation">Technical Writing & Documentation</option>
-                    <option value="Report Writing (Business/Academic)">Report Writing (Business/Academic)</option>
-                    <option value="Resume / CV Writing">Resume / CV Writing</option>
-                    <option value="Cover Letter Writing">Cover Letter Writing</option>
-                    <option value="SOP / Personal Statement">SOP / Personal Statement</option>
-                    <option value="Email Drafting & Copywriting">Email Drafting & Copywriting</option>
-                    <option value="Social Media Content">Social Media Content</option>
-                    <option value="Translation (English ↔ Urdu)">Translation (English ↔ Urdu)</option>
-                    <option value="Ghostwriting">Ghostwriting</option>
-                    <option value="eBook Writing / Formatting">eBook Writing / Formatting</option>
-                  </optgroup>
-                  <optgroup label="💻 Development Services">
-                    <option value="Full-Stack Web Development">Full-Stack Web Development</option>
-                    <option value="Frontend Development (React / Next.js)">Frontend Development (React / Next.js)</option>
-                    <option value="WordPress Website Development">WordPress Website Development</option>
-                    <option value="Landing Page Development">Landing Page Development</option>
-                    <option value="Portfolio / Business Website">Portfolio / Business Website</option>
-                  </optgroup>
-                  <optgroup label="🛠️ Tools & Productivity">
-                    <option value="Excel / Google Sheets Automation">Excel / Google Sheets Automation</option>
-                    <option value="Notion / Trello Setup">Notion / Trello Setup</option>
-                    <option value="Data Entry & Formatting">Data Entry & Formatting</option>
-                    <option value="PDF Conversion & Editing">PDF Conversion & Editing</option>
-                    <option value="Virtual Assistance">Virtual Assistance</option>
-                  </optgroup>
-                  <optgroup label="📦 Other">
-                    <option value="Custom Project (Describe Below)">Custom Project (Describe Below)</option>
-                  </optgroup>
-                </select>
+                  value={serviceMode === 'catalog' ? selectedService : serviceMode === 'custom' ? customService : ''}
+                />
+
+                {serviceMode === 'catalog' && selectedService ? (
+                  <div className={styles.selectedServiceDisplay}>
+                    <span className={styles.selectedServiceIcon}>✓</span>
+                    <span className={styles.selectedServiceName}>{selectedService}</span>
+                    <button
+                      type="button"
+                      className={styles.changeServiceBtn}
+                      onClick={() => { setServiceMode('none'); setSelectedService(''); }}
+                    >
+                      Change
+                    </button>
+                  </div>
+                ) : serviceMode === 'custom' ? (
+                  <div className={styles.customServiceWrapper}>
+                    <input
+                      type="text"
+                      className={styles.formInput}
+                      placeholder="Describe the service you need..."
+                      value={customService}
+                      onChange={(e) => setCustomService(e.target.value)}
+                      required
+                      disabled={isSubmitting}
+                    />
+                    <button
+                      type="button"
+                      className={styles.changeServiceBtn}
+                      onClick={() => { setServiceMode('none'); setCustomService(''); }}
+                    >
+                      Back
+                    </button>
+                  </div>
+                ) : (
+                  <div className={styles.serviceChoices}>
+                    <button
+                      type="button"
+                      className={styles.serviceChoiceBtn}
+                      onClick={() => {
+                        const catalogEl = document.getElementById('service-catalog');
+                        if (catalogEl) {
+                          const top = catalogEl.getBoundingClientRect().top + window.scrollY - 80;
+                          window.scrollTo({ top, behavior: 'smooth' });
+                        }
+                      }}
+                    >
+                      <span className={styles.serviceChoiceIcon}>📋</span>
+                      <span>Browse Full Catalog</span>
+                    </button>
+                    <button
+                      type="button"
+                      className={styles.serviceChoiceBtn}
+                      onClick={() => setServiceMode('custom')}
+                    >
+                      <span className={styles.serviceChoiceIcon}>✏️</span>
+                      <span>Custom Project</span>
+                    </button>
+                  </div>
+                )}
               </div>
               <div className={styles.formGroup}>
                 <label htmlFor="budget" className={styles.formLabel}>
@@ -384,6 +378,41 @@ export default function Contact() {
                   <option value="$200 - $500">$200 - $500</option>
                   <option value="$500+">$500+</option>
                   <option value="Custom / Negotiable">Custom / Negotiable</option>
+                </select>
+              </div>
+            </div>
+            <div className={styles.formRow}>
+              <div className={styles.formGroup}>
+                <label htmlFor="paymentStructure" className={styles.formLabel}>
+                  Payment Structure
+                </label>
+                <select
+                  id="paymentStructure"
+                  name="paymentStructure"
+                  className={styles.formSelect}
+                  disabled={isSubmitting}
+                >
+                  <option value="">Select preferred structure</option>
+                  <option value="Project-Based (Fixed Price)">📋 Project-Based — Fixed price for entire project</option>
+                  <option value="Milestone-Based (Pay per Phase)">🏁 Milestone-Based — Pay in stages as work progresses</option>
+                  <option value="Custom / Let's Discuss">💬 Custom — Let&apos;s discuss the best approach</option>
+                </select>
+              </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="timeline" className={styles.formLabel}>
+                  Preferred Timeline
+                </label>
+                <select
+                  id="timeline"
+                  name="timeline"
+                  className={styles.formSelect}
+                  disabled={isSubmitting}
+                >
+                  <option value="">Select timeline</option>
+                  <option value="Urgent (1-3 days)">⚡ Urgent (1–3 days)</option>
+                  <option value="Standard (3-7 days)">📅 Standard (3–7 days)</option>
+                  <option value="Relaxed (1-2 weeks)">🕐 Relaxed (1–2 weeks)</option>
+                  <option value="Flexible">🤝 Flexible / No rush</option>
                 </select>
               </div>
             </div>

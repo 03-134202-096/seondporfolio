@@ -30,20 +30,19 @@ const publications = [
     doi: 'https://www.frontiersin.org/journals/medicine/articles/10.3389/fmed.2025.1731922/abstract',
     category: 'Medical AI',
   },
+  {
+    title: 'Arabic Sign Language Recognition for Differently-Abled Individuals Using Vision Transformers and Temporal Analysis',
+    journal: 'IEEE Access',
+    year: '2025',
+    doi: 'https://doi.org/10.1109/ACCESS.2025.3627144',
+    category: 'Deep Learning',
+  },
 ];
 
 export default function Publications() {
   return (
-    <section id="publications" className={`section ${styles.publications}`}>
+    <div className={`section ${styles.publications}`}>
       <div className="container">
-        <div className="section-header">
-          <h2>Our Publications</h2>
-          <p>
-            Peer-reviewed research demonstrating our expertise in AI, deep learning, and
-            medical informatics. Each paper reflects our commitment to advancing scientific
-            knowledge.
-          </p>
-        </div>
         <div className={styles.publicationsGrid}>
           {publications.map((pub) => (
             <article key={pub.doi} className={styles.publicationCard}>
@@ -74,6 +73,6 @@ export default function Publications() {
           <p>📚 Additional publications currently in progress and under peer review.</p>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

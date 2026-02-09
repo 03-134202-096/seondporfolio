@@ -1,7 +1,7 @@
 import {
   Header,
   Hero,
-  Services,
+  CollapsibleSection,
   WhyChooseUs,
   ServiceCatalog,
   Pricing,
@@ -22,16 +22,56 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Services />
-        <WhyChooseUs />
         <ServiceCatalog />
         <Pricing />
         <Process />
-        <Testimonials />
-        <Publications />
-        <Portfolio />
+
+        <CollapsibleSection
+          sectionId="why-us"
+          title="Why Clients Choose Us"
+          subtitle="Academic excellence meets professional service"
+          badge="6 Reasons"
+        >
+          <WhyChooseUs />
+        </CollapsibleSection>
+
+        <CollapsibleSection
+          sectionId="testimonials"
+          title="What Our Clients Say"
+          subtitle="Trusted by researchers, students, and businesses worldwide"
+          badge="3 Reviews"
+        >
+          <Testimonials />
+        </CollapsibleSection>
+
+        <CollapsibleSection
+          sectionId="portfolio"
+          title="Sample Work"
+          subtitle="Data visualizations, architecture diagrams, and research graphics"
+          badge="16 Samples"
+        >
+          <Portfolio />
+        </CollapsibleSection>
+
+        <CollapsibleSection
+          sectionId="publications"
+          title="Our Publications"
+          subtitle="Peer-reviewed research in AI, deep learning, and medical informatics"
+          badge="5 Papers"
+        >
+          <Publications />
+        </CollapsibleSection>
+
+        <CollapsibleSection
+          sectionId="faq"
+          title="Frequently Asked Questions"
+          subtitle="Quick answers to common queries"
+          badge="14 FAQs"
+        >
+          <FAQ />
+        </CollapsibleSection>
+
         <About />
-        <FAQ />
         <Contact />
       </main>
       <Footer />
