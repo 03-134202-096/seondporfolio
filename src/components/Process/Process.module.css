@@ -143,7 +143,15 @@
 @media (max-width: 480px) {
   .guarantees {
     grid-template-columns: 1fr;
-    padding: 24px;
+    padding: 20px 16px;
+  }
+
+  .process {
+    padding: 60px 0;
+  }
+
+  .timelineItem {
+    padding: 24px 20px;
   }
 }
 

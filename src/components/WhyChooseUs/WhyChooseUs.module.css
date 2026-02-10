@@ -143,6 +143,13 @@
   margin-bottom: 60px;
 }
 
+@media (max-width: 992px) {
+  .statsBar {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 32px 40px;
+  }
+}
+
 @media (max-width: 768px) {
   .statsBar {
     grid-template-columns: repeat(2, 1fr);

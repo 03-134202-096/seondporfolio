@@ -92,6 +92,10 @@
   border: none;
   cursor: pointer;
   padding: 0.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobileMenuBtn span {
@@ -105,7 +109,7 @@
 
 @media (max-width: 768px) {
   .mobileMenuBtn {
-    display: block;
+    display: flex;
   }
 
   .nav {

@@ -361,6 +361,18 @@
   .paymentGrid {
     grid-template-columns: 1fr;
   }
+
+  .planCard {
+    padding: 28px 20px;
+  }
+
+  .paymentSection {
+    padding: 24px 16px;
+  }
+
+  .customQuote {
+    padding: 24px 16px;
+  }
 }
 
 .paymentMethod {
@@ -491,4 +503,22 @@
 .customQuoteCta:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+}
+
+@media (max-width: 480px) {
+  .planCard {
+    padding: 28px 20px;
+  }
+
+  .paymentSection {
+    padding: 24px 16px;
+  }
+
+  .customQuote {
+    padding: 24px 16px;
+  }
+
+  .pricing {
+    padding: 60px 0;
+  }
 }

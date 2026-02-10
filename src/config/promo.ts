@@ -18,7 +18,7 @@ export const PROMO_CONFIG = {
   PROMO_ENABLED: true,
 
   /** The exact date & time the promo starts (ISO format, UTC) */
-  PROMO_START_DATE: '2025-07-15T00:00:00Z',
+  PROMO_START_DATE: '2026-02-10T00:00:00Z',
 
   /** Duration in days from the start date */
   PROMO_DURATION_DAYS: 15,

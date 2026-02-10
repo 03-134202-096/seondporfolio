@@ -206,3 +206,29 @@
     text-align: center;
   }
 }
+
+@media (max-width: 480px) {
+  .heroImageWrapper {
+    width: 240px;
+    height: 240px;
+  }
+
+  .statNumber {
+    font-size: 2rem;
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroImageWrapper {
+    width: 240px;
+    height: 240px;
+  }
+
+  .statNumber {
+    font-size: 2rem;
+  }
+}
