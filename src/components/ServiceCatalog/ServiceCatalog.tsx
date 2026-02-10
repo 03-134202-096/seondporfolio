@@ -234,11 +234,37 @@ function smartMatch(serviceName: string, query: string): boolean {
   return false;
 }
 
+/** Google-style pagination: 1, 2 … 7, 8 */
+function getPageNumbers(current: number, total: number): (number | 'ellipsis')[] {
+  if (total <= 5) return Array.from({ length: total }, (_, i) => i + 1);
+  const pages: (number | 'ellipsis')[] = [1];
+  if (current > 3) pages.push('ellipsis');
+  const start = Math.max(2, current - 1);
+  const end = Math.min(total - 1, current + 1);
+  for (let i = start; i <= end; i++) pages.push(i);
+  if (current < total - 2) pages.push('ellipsis');
+  pages.push(total);
+  return pages;
+}
+
 export default function ServiceCatalog() {
   const [activeCategory, setActiveCategory] = useState<ServiceCategory>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const ITEMS_PER_PAGE = 9;
+  const [itemsPerPage, setItemsPerPage] = useState(9);
+
+  // Responsive items per page — show fewer on mobile
+  useEffect(() => {
+    const update = () => setItemsPerPage(window.innerWidth <= 768 ? 3 : 9);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  // Reset to page 1 when items per page changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [itemsPerPage]);
 
   // Listen for category filter events from Footer
   useEffect(() => {
@@ -263,10 +289,10 @@ export default function ServiceCatalog() {
     return searchQuery.trim() ? matchesSearchQuery : (matchesCategory && matchesSearchQuery);
   });
 
-  const totalPages = Math.ceil(filteredServices.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(filteredServices.length / itemsPerPage);
   const paginatedServices = filteredServices.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
   );
 
   // Reset page when filters change
@@ -398,15 +424,19 @@ export default function ServiceCatalog() {
               ← Prev
             </button>
             <div className={styles.pageNumbers}>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  className={`${styles.pageNumber} ${currentPage === page ? styles.pageNumberActive : ''}`}
-                  onClick={() => setCurrentPage(page)}
-                >
-                  {page}
-                </button>
-              ))}
+              {getPageNumbers(currentPage, totalPages).map((page, idx) =>
+                page === 'ellipsis' ? (
+                  <span key={`ellipsis-${idx}`} className={styles.pageEllipsis}>…</span>
+                ) : (
+                  <button
+                    key={page}
+                    className={`${styles.pageNumber} ${currentPage === page ? styles.pageNumberActive : ''}`}
+                    onClick={() => setCurrentPage(page)}
+                  >
+                    {page}
+                  </button>
+                )
+              )}
             </div>
             <button
               className={styles.pageBtn}

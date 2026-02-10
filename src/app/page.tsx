@@ -15,6 +15,7 @@ import {
   Footer,
   FloatingCTA,
   PromoBanner,
+  DiscountBalloon,
 } from '@/components';
 
 export default function Home() {
@@ -78,6 +79,7 @@ export default function Home() {
       </main>
       <Footer />
       <FloatingCTA />
+      <DiscountBalloon />
     </>
   );
 }

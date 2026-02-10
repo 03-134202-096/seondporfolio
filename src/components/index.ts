@@ -14,3 +14,4 @@ export { default as Contact } from './Contact/Contact';
 export { default as Footer } from './Footer/Footer';
 export { default as FloatingCTA } from './FloatingCTA/FloatingCTA';
 export { default as PromoBanner } from './PromoBanner/PromoBanner';
+export { default as DiscountBalloon } from './DiscountBalloon/DiscountBalloon';

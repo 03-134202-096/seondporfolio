@@ -195,6 +195,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .heroVisual {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   .heroStats {
     flex-direction: column;

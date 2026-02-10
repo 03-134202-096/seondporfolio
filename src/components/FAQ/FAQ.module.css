@@ -113,11 +113,27 @@
 .faqAnswer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  transition: max-height 0.4s ease, padding 0.4s ease;
 }
 
 .faqAnswer.open {
-  max-height: 300px;
+  max-height: 250px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.3) transparent;
+}
+
+.faqAnswer.open::-webkit-scrollbar {
+  width: 4px;
+}
+
+.faqAnswer.open::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.faqAnswer.open::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 2px;
 }
 
 .faqAnswer p {
