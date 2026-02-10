@@ -139,16 +139,16 @@ export default function Contact() {
         <div className="section-header">
           <h2>Get in Touch</h2>
           <p>
-            Ready to elevate your research or project? Reach out and let&apos;s discuss how
-            we can help you achieve your goals.
+            Ready to hand over your project? Tell us what you need and our team 
+            will provide a free quote within hours.
           </p>
         </div>
         <div className={styles.contactGrid}>
           <div className={styles.contactInfo}>
             <h3>Let&apos;s Work Together</h3>
             <p>
-              Whether you have a specific project in mind or need guidance on the best
-              approach, we&apos;re here to help. Our team is available 24/7 and responds promptly.
+              Hand over your project to our team of dedicated experts. 
+              We&apos;re available 24/7 with unlimited revisions and a full refund guarantee.
             </p>
             <div className={styles.contactMethods}>
               <div className={styles.contactMethod}>

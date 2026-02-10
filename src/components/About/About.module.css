@@ -131,6 +131,30 @@
   color: var(--primary);
 }
 
+.aboutCta {
+  margin-top: 2rem;
+}
+
+.aboutCtaLink {
+  display: inline-block;
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.aboutCtaLink:hover {
+  background: var(--primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 102, 255, 0.25);
+}
+
 @media (max-width: 1024px) {
   .aboutGrid {
     grid-template-columns: 1fr;

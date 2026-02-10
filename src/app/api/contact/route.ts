@@ -11,6 +11,8 @@ export async function POST(request: NextRequest) {
     const email = formData.get('email') as string;
     const service = formData.get('service') as string;
     const budget = formData.get('budget') as string;
+    const paymentStructure = formData.get('paymentStructure') as string;
+    const timeline = formData.get('timeline') as string;
     const message = formData.get('message') as string;
     const file = formData.get('attachment') as File | null;
 
@@ -101,7 +103,23 @@ export async function POST(request: NextRequest) {
             </tr>
             <tr>
               <td style="padding: 12px; background: #f3f4f6; border: 1px solid #e5e7eb; font-weight: bold;">
-                📎 Attachment
+                � Payment Structure
+              </td>
+              <td style="padding: 12px; border: 1px solid #e5e7eb;">
+                ${paymentStructure || 'Not specified'}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; background: #f3f4f6; border: 1px solid #e5e7eb; font-weight: bold;">
+                ⏱️ Timeline
+              </td>
+              <td style="padding: 12px; border: 1px solid #e5e7eb;">
+                ${timeline || 'Not specified'}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; background: #f3f4f6; border: 1px solid #e5e7eb; font-weight: bold;">
+                �📎 Attachment
               </td>
               <td style="padding: 12px; border: 1px solid #e5e7eb;">
                 ${file && file.size > 0 ? `${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)` : 'No attachment'}

@@ -1,26 +1,27 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './About.module.css';
 
 const features = [
   {
-    icon: '🎯',
-    title: 'Precision Focused',
-    description: 'Every deliverable meets rigorous quality standards.',
+    icon: '🔄',
+    title: 'Unlimited Revisions',
+    description: 'We revise until you are 100% satisfied — no extra cost.',
   },
   {
-    icon: '⚡',
-    title: 'Fast Turnaround',
-    description: 'Efficient workflows without compromising quality.',
+    icon: '💰',
+    title: 'Refund Guarantee',
+    description: 'Full or partial refund if we miss deadlines or fail to deliver.',
   },
   {
     icon: '🔒',
-    title: 'Confidential',
+    title: '100% Confidential',
     description: 'Your data and research remain strictly private.',
   },
   {
-    icon: '💬',
-    title: 'Clear Communication',
-    description: 'Regular updates and responsive support throughout.',
+    icon: '⚡',
+    title: 'Dedicated Experts',
+    description: 'Domain-matched professionals assigned to every project.',
   },
 ];
 
@@ -50,20 +51,20 @@ export default function About() {
             </div>
             <div className={styles.aboutText}>
               <p>
-                We are <strong>DeepDivers</strong> — a specialized team of researchers, data
-                scientists, and content professionals based in Pakistan, serving clients
-                worldwide through platforms like Fiverr, Upwork, and Freelancer.
+                We are <strong>DeepDivers</strong> — a professional task-handoff platform
+                where you delegate your research, data science, and development projects
+                to dedicated experts. Based in Pakistan, serving clients worldwide.
               </p>
               <p>
-                With a strong foundation in computer science and hands-on experience in
-                academic publishing, we bridge the gap between raw ideas and polished,
-                publication-ready outputs. Our work spans peer-reviewed journals, conference
-                presentations, and industry-grade data solutions.
+                Simply hand over your project — whether it&apos;s a manuscript for a 
+                top-tier journal, a machine learning experiment, a statistical analysis, 
+                or a full-stack web application — and our team delivers polished, 
+                professional results on time.
               </p>
               <p>
-                Whether you need a manuscript formatted for a top-tier journal, a machine
-                learning experiment executed, or compelling content for your digital presence
-                — we deliver with precision and professionalism.
+                With unlimited revisions, refund guarantees, and 24/7 support, 
+                your satisfaction is our top priority. We don&apos;t just provide 
+                services — we become your trusted project partners.
               </p>
             </div>
             <div className={styles.aboutFeatures}>
@@ -96,6 +97,11 @@ export default function About() {
                   <span className={styles.credentialIcon}>📝</span> LaTeX Expert
                 </span>
               </div>
+            </div>
+            <div className={styles.aboutCta}>
+              <Link href="/about" className={styles.aboutCtaLink}>
+                Learn More About Us →
+              </Link>
             </div>
           </div>
         </div>

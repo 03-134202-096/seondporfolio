@@ -133,6 +133,33 @@
   margin-top: 4px;
 }
 
+.priceOriginal {
+  display: block;
+  font-size: 1.25rem;
+  color: #888888;
+  text-decoration: line-through;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.promoBadge {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+  animation: promoPulse 2s ease-in-out infinite;
+}
+
+@keyframes promoPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(124, 58, 237, 0); }
+}
+
 .planDescription {
   font-size: 0.938rem;
   color: #888888;

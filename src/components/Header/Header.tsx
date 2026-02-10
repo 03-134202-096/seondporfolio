@@ -11,6 +11,7 @@ const navItems = [
   { label: 'Pricing', href: '#pricing' },
   { label: 'Process', href: '#process' },
   { label: 'Portfolio', href: '#portfolio' },
+  { label: 'About', href: '/about', external: true },
   { label: 'FAQ', href: '#faq' },
 ];
 
@@ -117,13 +118,23 @@ export default function Header() {
           <ul className={styles.navList}>
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={styles.navLink}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                >
-                  {item.label}
-                </Link>
+                {'external' in item && item.external ? (
+                  <Link
+                    href={item.href}
+                    className={styles.navLink}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className={styles.navLink}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

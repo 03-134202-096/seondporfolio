@@ -16,12 +16,11 @@ const quickLinks = [
 ];
 
 const services = [
-  { label: 'Research Paper Writing', href: '#service-catalog' },
-  { label: 'Data Analysis & SPSS', href: '#service-catalog' },
-  { label: 'Machine Learning & AI', href: '#service-catalog' },
-  { label: 'Statistical Analysis', href: '#service-catalog' },
-  { label: 'Literature Review', href: '#service-catalog' },
-  { label: 'Thesis & Dissertation', href: '#service-catalog' },
+  { label: 'Academic & Research', category: 'academic' },
+  { label: 'Data, AI & ML', category: 'data-ai' },
+  { label: 'Writing & Content', category: 'writing' },
+  { label: 'Development', category: 'development' },
+  { label: 'Document Tools', category: 'tools' },
 ];
 
 function NewsletterForm() {
@@ -97,9 +96,9 @@ export default function Footer() {
               DeepDivers
             </h3>
             <p>
-              Empowering researchers and businesses worldwide with expert academic support,
-              data science solutions, and professional content services. Your success is our
-              mission.
+              Your professional task-handoff platform. Delegate your research, data science, 
+              AI, and development projects to dedicated experts. Unlimited revisions, refund 
+              guarantees, and 24/7 support.
             </p>
             <div className={styles.footerSocials}>
               <a
@@ -144,7 +143,22 @@ export default function Footer() {
             <ul className={styles.footerLinks}>
               {services.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href}>{link.label}</Link>
+                  <button
+                    type="button"
+                    className={styles.footerServiceBtn}
+                    onClick={() => {
+                      window.dispatchEvent(
+                        new CustomEvent('filter-catalog', { detail: { category: link.category } })
+                      );
+                      const catalogEl = document.getElementById('service-catalog');
+                      if (catalogEl) {
+                        const top = catalogEl.getBoundingClientRect().top + window.scrollY - 80;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    {link.label}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -160,6 +174,10 @@ export default function Footer() {
             © {currentYear} DeepDivers. All rights reserved. | Professional Research & Data Science Services
           </p>
           <div className={styles.footerLegal}>
+            <Link href="/about">About Us</Link>
+            <span className={styles.footerLegalSep}>•</span>
+            <Link href="/terms">Terms & Conditions</Link>
+            <span className={styles.footerLegalSep}>•</span>
             <span>Secure Payments via Payoneer • Visa • Mastercard • Bank Transfer</span>
           </div>
         </div>

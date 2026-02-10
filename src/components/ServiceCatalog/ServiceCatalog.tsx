@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './ServiceCatalog.module.css';
+import { isPromoActive, getDiscountedPrice, PROMO_CONFIG } from '@/config/promo';
 
 type ServiceCategory =
   | 'all'
@@ -239,6 +240,22 @@ export default function ServiceCatalog() {
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 9;
 
+  // Listen for category filter events from Footer
+  useEffect(() => {
+    const handleFilterCatalog = (e: Event) => {
+      const customEvent = e as CustomEvent<{ category: string }>;
+      const category = customEvent.detail.category as ServiceCategory;
+      setActiveCategory(category);
+      setSearchQuery('');
+      setCurrentPage(1);
+    };
+
+    window.addEventListener('filter-catalog', handleFilterCatalog);
+    return () => window.removeEventListener('filter-catalog', handleFilterCatalog);
+  }, []);
+
+  const promoActive = isPromoActive();
+
   const filteredServices = services.filter((service) => {
     const matchesCategory = activeCategory === 'all' || service.category === activeCategory;
     const matchesSearchQuery = smartMatch(service.name, searchQuery);
@@ -315,35 +332,45 @@ export default function ServiceCatalog() {
         </div>
 
         <div className={styles.servicesGrid}>
-          {paginatedServices.map((service) => (
-            <div key={service.name} className={styles.serviceCard}>
-              {service.popular && <span className={styles.popularTag}>Popular</span>}
-              <h4 className={styles.serviceName}>{service.name}</h4>
-              <div className={styles.serviceMeta}>
-                <span className={styles.servicePrice}>{service.price}</span>
-                <span className={styles.serviceDivider}>•</span>
-                <span className={styles.serviceDelivery}>⏱ {service.delivery}</span>
+          {paginatedServices.map((service) => {
+            const discount = promoActive ? getDiscountedPrice(service.price) : null;
+
+            return (
+              <div key={service.name} className={styles.serviceCard}>
+                {service.popular && <span className={styles.popularTag}>Popular</span>}
+                {promoActive && <span className={styles.discountTag}>-{PROMO_CONFIG.DISCOUNT_PERCENT}%</span>}
+                <h4 className={styles.serviceName}>{service.name}</h4>
+                <div className={styles.serviceMeta}>
+                  {discount ? (
+                    <span className={styles.servicePrice}>
+                      <span className={styles.priceOriginal}>{service.price}</span>
+                      <span className={styles.priceDiscounted}>From {discount.discounted}</span>
+                    </span>
+                  ) : (
+                    <span className={styles.servicePrice}>{service.price}</span>
+                  )}
+                  <span className={styles.serviceDivider}>•</span>
+                  <span className={styles.serviceDelivery}>⏱ {service.delivery}</span>
+                </div>
+                <button
+                  type="button"
+                  className={styles.orderBtn}
+                  onClick={() => {
+                    window.dispatchEvent(
+                      new CustomEvent('select-service', { detail: { service: service.name } })
+                    );
+                    const contactEl = document.getElementById('contact');
+                    if (contactEl) {
+                      const top = contactEl.getBoundingClientRect().top + window.scrollY - 80;
+                      window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  Order Now →
+                </button>
               </div>
-              <button
-                type="button"
-                className={styles.orderBtn}
-                onClick={() => {
-                  // Dispatch event to pre-fill the contact form
-                  window.dispatchEvent(
-                    new CustomEvent('select-service', { detail: { service: service.name } })
-                  );
-                  // Scroll to contact form
-                  const contactEl = document.getElementById('contact');
-                  if (contactEl) {
-                    const top = contactEl.getBoundingClientRect().top + window.scrollY - 80;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                  }
-                }}
-              >
-                Order Now →
-              </button>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {filteredServices.length === 0 && (

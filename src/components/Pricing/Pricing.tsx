@@ -1,4 +1,5 @@
 import styles from './Pricing.module.css';
+import { isPromoActive, PROMO_CONFIG, getDiscountedPrice } from '@/config/promo';
 
 const pricingPlans = [
   {
@@ -97,6 +98,8 @@ const paymentMethods = [
 ];
 
 export default function Pricing() {
+  const promoActive = isPromoActive();
+
   return (
     <section id="pricing" className={styles.pricing}>
       <div className={styles.container}>
@@ -107,39 +110,55 @@ export default function Pricing() {
             No hidden fees. Choose a package that fits your needs — or request a custom quote
             for your specific project.
           </p>
+          {promoActive && (
+            <div className={styles.promoBadge}>
+              {PROMO_CONFIG.PROMO_LABEL} — {PROMO_CONFIG.DISCOUNT_PERCENT}% OFF All Plans
+            </div>
+          )}
         </div>
 
         <div className={styles.plansGrid}>
-          {pricingPlans.map((plan) => (
-            <div
-              key={plan.name}
-              className={`${styles.planCard} ${plan.highlighted ? styles.planHighlighted : ''}`}
-            >
-              {plan.badge && <span className={styles.planBadge}>{plan.badge}</span>}
-              <h3 className={styles.planName}>{plan.name}</h3>
-              <div className={styles.planPrice}>
-                <span className={styles.priceAmount}>{plan.price}</span>
-                <span className={styles.pricePeriod}>{plan.period}</span>
-              </div>
-              <p className={styles.planDescription}>{plan.description}</p>
-              <a
-                href={plan.href}
-                className={`${styles.planCta} ${plan.highlighted ? styles.planCtaHighlighted : ''}`}
+          {pricingPlans.map((plan) => {
+            const discount = promoActive ? getDiscountedPrice(plan.price) : null;
+
+            return (
+              <div
+                key={plan.name}
+                className={`${styles.planCard} ${plan.highlighted ? styles.planHighlighted : ''}`}
               >
-                {plan.cta}
-              </a>
-              <ul className={styles.featureList}>
-                {plan.features.map((feature) => (
-                  <li key={feature} className={styles.featureItem}>
-                    <span className={styles.featureCheck}>
-                      {feature.startsWith('Everything') ? '🔥' : '✓'}
-                    </span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                {plan.badge && <span className={styles.planBadge}>{plan.badge}</span>}
+                <h3 className={styles.planName}>{plan.name}</h3>
+                <div className={styles.planPrice}>
+                  {discount ? (
+                    <>
+                      <span className={styles.priceOriginal}>{discount.original}</span>
+                      <span className={styles.priceAmount}>{discount.discounted}</span>
+                    </>
+                  ) : (
+                    <span className={styles.priceAmount}>{plan.price}</span>
+                  )}
+                  <span className={styles.pricePeriod}>{plan.period}</span>
+                </div>
+                <p className={styles.planDescription}>{plan.description}</p>
+                <a
+                  href={plan.href}
+                  className={`${styles.planCta} ${plan.highlighted ? styles.planCtaHighlighted : ''}`}
+                >
+                  {plan.cta}
+                </a>
+                <ul className={styles.featureList}>
+                  {plan.features.map((feature) => (
+                    <li key={feature} className={styles.featureItem}>
+                      <span className={styles.featureCheck}>
+                        {feature.startsWith('Everything') ? '🔥' : '✓'}
+                      </span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
 
         <div className={styles.paymentSection}>

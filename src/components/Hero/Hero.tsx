@@ -13,24 +13,24 @@ const scrollTo = (id: string) => {
 
 export default function Hero() {
   return (
-    <section id="hero" className={styles.hero} aria-label="DeepDivers - Professional Research and Data Science Services">
+    <section id="hero" className={styles.hero} aria-label="DeepDivers - Hand Over Your Projects to Expert Professionals">
       <div className={styles.heroInner}>
         <div className={styles.heroContent}>
           <span className={`badge ${styles.heroBadge}`}>
-            🚀 60+ Services • Trusted by Researchers Worldwide
+            🚀 60+ Services • Hand Over Any Task • We Deliver
           </span>
           <h1 className={styles.heroTitle}>
-            Order <span className={styles.heroHighlight}>Research</span>,{' '}
-            <span className={styles.heroHighlight}>Data Science</span> & AI Services Online
+            Hand Over Your <span className={styles.heroHighlight}>Projects</span>.{' '}
+            We Handle <span className={styles.heroHighlight}>Everything</span>.
           </h1>
           <p className={styles.heroDescription}>
-            Browse 60+ professional services — from research paper writing and data analysis to 
-            machine learning, web development, and academic support. Select your service, get an 
-            instant quote, and pay securely via Payoneer. Delivered by experts, on time, every time.
+            Stop doing it all yourself. Submit your research, data science, AI, or development 
+            project — and let our dedicated experts deliver professional results. You focus on 
+            what matters. We take care of the rest.
           </p>
           <div className={styles.heroButtons}>
             <button onClick={() => scrollTo('service-catalog')} className="btn btn-primary" aria-label="Browse and order services">
-              Order Now →
+              Browse Services →
             </button>
             <button onClick={() => scrollTo('pricing')} className="btn btn-secondary" aria-label="View pricing packages">
               View Pricing
@@ -39,7 +39,7 @@ export default function Hero() {
           <div className={styles.heroStats}>
             <div className={styles.statItem}>
               <div className={styles.statNumber}>60+</div>
-              <div className={styles.statLabel}>Services Available</div>
+              <div className={styles.statLabel}>Expert Services</div>
             </div>
             <div className={styles.statItem}>
               <div className={styles.statNumber}>190+</div>
@@ -47,7 +47,7 @@ export default function Hero() {
             </div>
             <div className={styles.statItem}>
               <div className={styles.statNumber}>100%</div>
-              <div className={styles.statLabel}>Satisfaction Rate</div>
+              <div className={styles.statLabel}>Satisfaction Guarantee</div>
             </div>
           </div>
         </div>

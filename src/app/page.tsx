@@ -14,11 +14,13 @@ import {
   Contact,
   Footer,
   FloatingCTA,
+  PromoBanner,
 } from '@/components';
 
 export default function Home() {
   return (
     <>
+      <PromoBanner />
       <Header />
       <main>
         <Hero />
