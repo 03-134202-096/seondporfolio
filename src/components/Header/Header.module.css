@@ -88,6 +88,7 @@
 
 .mobileMenuBtn {
   display: none;
+  flex-direction: column;
   background: none;
   border: none;
   cursor: pointer;
