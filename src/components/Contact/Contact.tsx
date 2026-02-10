@@ -348,7 +348,7 @@ export default function Contact() {
                       }}
                     >
                       <span className={styles.serviceChoiceIcon}>📋</span>
-                      <span>Browse Full Catalog</span>
+                      <span>Browse Catalog</span>
                     </button>
                     <button
                       type="button"
