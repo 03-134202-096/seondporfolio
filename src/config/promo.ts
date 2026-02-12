@@ -15,7 +15,7 @@
 
 export const PROMO_CONFIG = {
   /** Master switch — set to false to instantly disable all promo features */
-  PROMO_ENABLED: true,
+  PROMO_ENABLED: false,
 
   /** The exact date & time the promo starts (ISO format, UTC) */
   PROMO_START_DATE: '2026-02-10T00:00:00Z',
