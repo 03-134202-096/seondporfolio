@@ -11,12 +11,13 @@ const services = [
       'Copyediting, proofreading & language editing',
       'Citation formatting (APA, MLA, Chicago, Vancouver)',
       'Systematic review & literature search support',
+      'End-to-end Q1 paper publication support',
       'Research gap analysis & annotated bibliography',
       'Grant proposal writing & reviewer response drafting',
       'CV/SOP editing & student application assistance',
       'Academic poster & presentation design',
     ],
-    count: '25+ specialized services',
+    count: '27+ specialized services',
   },
   {
     icon: '🤖',
@@ -42,6 +43,7 @@ const services = [
       'Professional content creation and administrative support tailored for academics, businesses, and digital platforms seeking quality communication.',
     items: [
       'Blog writing & SEO content optimization',
+      'General & medical article writing',
       'Paraphrasing, rewriting & humanizing text',
       'Abstract writing & keyword selection',
       'Social media & website content updates',
