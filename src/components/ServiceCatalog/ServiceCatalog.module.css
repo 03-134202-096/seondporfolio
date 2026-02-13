@@ -276,14 +276,17 @@
   height: 36px;
   flex-shrink: 0;
   border-radius: var(--radius-md);
-  background: #25d366;
-  color: #ffffff;
+  background: transparent;
+  color: var(--foreground-muted);
+  border: 1.5px solid var(--border);
   text-decoration: none;
   transition: var(--transition);
 }
 
 .whatsappBtn:hover {
-  background: #1ebe57;
+  background: #25d366;
+  color: #ffffff;
+  border-color: #25d366;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
 }
