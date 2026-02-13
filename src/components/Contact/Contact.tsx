@@ -201,7 +201,7 @@ export default function Contact() {
                 <div className={styles.contactMethodIcon}>🌍</div>
                 <div className={styles.contactMethodText}>
                   <h4>Location</h4>
-                  <p>Pakistan • Available Worldwide</p>
+                  <p>Islamabad, Pakistan • Available Worldwide</p>
                 </div>
               </div>
             </div>

@@ -239,8 +239,17 @@
   color: var(--foreground-muted);
 }
 
+/* Card Actions Row */
+.cardActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
 .orderBtn {
   display: inline-block;
+  flex: 1;
   padding: 0.5rem 1rem;
   font-size: 0.8125rem;
   font-weight: 600;
@@ -251,13 +260,32 @@
   text-align: center;
   cursor: pointer;
   transition: var(--transition);
-  margin-top: auto;
   font-family: inherit;
 }
 
 .orderBtn:hover {
   background: var(--primary);
   color: #ffffff;
+}
+
+.whatsappBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background: #25d366;
+  color: #ffffff;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.whatsappBtn:hover {
+  background: #1ebe57;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
 }
 
 /* No Results */
