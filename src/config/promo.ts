@@ -15,13 +15,13 @@
 
 export const PROMO_CONFIG = {
   /** Master switch — set to false to instantly disable all promo features */
-  PROMO_ENABLED: false,
+  PROMO_ENABLED: true,
 
   /** The exact date & time the promo starts (ISO format, UTC) */
   PROMO_START_DATE: '2026-02-10T00:00:00Z',
 
   /** Duration in days from the start date */
-  PROMO_DURATION_DAYS: 15,
+  PROMO_DURATION_DAYS: 12,
 
   /** Discount percentage (e.g., 30 means 30% off) */
   DISCOUNT_PERCENT: 30,
