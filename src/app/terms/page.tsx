@@ -5,7 +5,7 @@ import styles from './terms.module.css';
 export const metadata: Metadata = {
   title: 'Terms & Conditions',
   description:
-    'DeepDivers Terms & Conditions — Refund policy, delivery guarantees, unlimited revisions, confidentiality, and secure Payoneer payment terms for all research and data science services.',
+    'DeepDivers Terms & Conditions — Refund policy, delivery guarantees, unlimited revisions, confidentiality, and payment terms.',
   alternates: {
     canonical: 'https://deepdivers.services/terms',
   },

@@ -12,6 +12,7 @@ const navItems = [
   { label: 'Process', href: '#process' },
   { label: 'Portfolio', href: '#portfolio' },
   { label: 'About', href: '/about', external: true },
+  { label: 'Blog', href: '/blog', external: true },
   { label: 'FAQ', href: '#faq' },
 ];
 

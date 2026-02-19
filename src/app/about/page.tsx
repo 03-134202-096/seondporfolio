@@ -6,7 +6,7 @@ import styles from './about.module.css';
 export const metadata: Metadata = {
   title: 'About Us — Expert Research, Data Science & AI Team',
   description:
-    'Meet the DeepDivers team — published researchers, data scientists, and developers offering 60+ professional services worldwide. Unlimited revisions, refund guarantee, 24/7 support. Based in Pakistan, serving 190+ countries.',
+    'Meet DeepDivers — published researchers & data scientists offering 60+ services worldwide. Unlimited revisions, 24/7 support. From $25.',
   keywords: [
     'about DeepDivers',
     'freelance research team',
