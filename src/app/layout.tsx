@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | DeepDivers",
   },
   description:
-    "Professional freelance team offering research paper writing, data analysis, machine learning, AI solutions, statistical analysis, and content services. 100% satisfaction guarantee. Available 24/7 on Fiverr, Upwork & Freelancer.",
+    "Expert research paper writing, data analysis, ML/AI solutions & academic services. 60+ services, unlimited revisions, 24/7 support. From $25.",
   keywords: [
     "research paper writing services",
     "academic writing help",
