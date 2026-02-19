@@ -25,7 +25,7 @@ export default function Hero() {
           </h1>
           <p className={styles.heroDescription}>
             Stop doing it all yourself. Submit your research, data science, AI, or development 
-            project — and let our dedicated experts deliver professional results. You focus on 
+            project and let our dedicated experts deliver professional results. You focus on 
             what matters. We take care of the rest.
           </p>
           <div className={styles.heroButtons}>
