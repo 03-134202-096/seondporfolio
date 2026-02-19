@@ -4,10 +4,89 @@ import Link from 'next/link';
 import styles from './about.module.css';
 
 export const metadata: Metadata = {
-  title: 'About Us',
+  title: 'About Us — Expert Research, Data Science & AI Team',
   description:
-    'Learn about DeepDivers — a professional task-handoff platform where you delegate your research, data science, and development projects to dedicated experts. Unlimited revisions, refund guarantees, and 24/7 support.',
+    'Meet the DeepDivers team — published researchers, data scientists, and developers offering 60+ professional services worldwide. Unlimited revisions, refund guarantee, 24/7 support. Based in Pakistan, serving 190+ countries.',
+  keywords: [
+    'about DeepDivers',
+    'freelance research team',
+    'hire data scientist',
+    'academic writing experts',
+    'machine learning freelancer',
+    'AI development team',
+    'professional research services',
+    'Asad Farooq researcher',
+  ],
+  alternates: {
+    canonical: 'https://deepdivers.services/about',
+  },
+  openGraph: {
+    title: 'About DeepDivers — Expert Research & Data Science Team',
+    description:
+      'Published researchers and experienced professionals offering 60+ services worldwide. Unlimited revisions, refund guarantee.',
+    url: 'https://deepdivers.services/about',
+    type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+  },
 };
+
+/**
+ * Structured data for the About page — AboutPage, BreadcrumbList, and Person schema.
+ */
+function AboutPageJsonLd() {
+  const siteUrl = 'https://deepdivers.services';
+
+  const schemas = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'AboutPage',
+        '@id': `${siteUrl}/about#webpage`,
+        url: `${siteUrl}/about`,
+        name: 'About DeepDivers — Expert Research, Data Science & AI Team',
+        description:
+          'Meet the DeepDivers team — published researchers, data scientists, and developers offering 60+ professional services worldwide.',
+        isPartOf: { '@id': `${siteUrl}/#website` },
+        dateModified: '2026-02-19',
+        inLanguage: 'en-US',
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+          { '@type': 'ListItem', position: 2, name: 'About Us', item: `${siteUrl}/about` },
+        ],
+      },
+      {
+        '@type': 'Person',
+        name: 'Asad Farooq',
+        jobTitle: 'Founder & Team Lead',
+        worksFor: { '@id': `${siteUrl}/#organization` },
+        description:
+          'Computer science graduate with a strong foundation in academic publishing, machine learning, and full-stack development.',
+        knowsAbout: [
+          'Machine Learning',
+          'Deep Learning',
+          'Python',
+          'Data Science',
+          'Next.js',
+          'Academic Research',
+          'LaTeX',
+          'AWS',
+        ],
+        image: `${siteUrl}/ProfilePicture.webp`,
+        url: siteUrl,
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+    />
+  );
+}
 
 const guarantees = [
   {
@@ -73,6 +152,7 @@ const stats = [
 export default function AboutPage() {
   return (
     <main className={styles.aboutPage}>
+      <AboutPageJsonLd />
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.container}>

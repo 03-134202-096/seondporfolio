@@ -50,6 +50,24 @@ export const metadata: Metadata = {
     "academic freelancer",
     "Upwork data scientist",
     "Fiverr research writer",
+    "hire someone to write research paper",
+    "professional data analysis help",
+    "ML model training service",
+    "web scraping service Python",
+    "LaTeX typesetting IEEE Springer",
+    "Next.js developer for hire",
+    "AWS deployment service",
+    "academic poster design",
+    "grant proposal writing service",
+    "Q1 journal paper writing",
+    "plagiarism check and removal",
+    "citation formatting APA MLA Chicago",
+    "YOLO object detection training",
+    "NLP model development",
+    "research paper editing service",
+    "freelance AI developer",
+    "data cleaning preprocessing service",
+    "presentation slides design academic",
   ],
   authors: [{ name: "DeepDivers Team", url: siteUrl }],
   creator: "DeepDivers",
@@ -109,9 +127,10 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   category: "technology",
-  verification: {
-    google: "your-google-verification-code",
-  },
+  // IMPORTANT: Add your real Google Search Console verification code here after setup.
+  // verification: {
+  //   google: "your-actual-google-verification-code",
+  // },
 };
 
 export default function RootLayout({

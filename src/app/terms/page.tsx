@@ -5,7 +5,17 @@ import styles from './terms.module.css';
 export const metadata: Metadata = {
   title: 'Terms & Conditions',
   description:
-    'DeepDivers Terms & Conditions — Refund policy, delivery guarantees, revision policy, confidentiality, and payment terms.',
+    'DeepDivers Terms & Conditions — Refund policy, delivery guarantees, unlimited revisions, confidentiality, and secure Payoneer payment terms for all research and data science services.',
+  alternates: {
+    canonical: 'https://deepdivers.services/terms',
+  },
+  openGraph: {
+    title: 'Terms & Conditions | DeepDivers',
+    description:
+      'Clear, fair, and transparent policies governing DeepDivers services. Refund policy, delivery guarantees, and confidentiality.',
+    url: 'https://deepdivers.services/terms',
+    type: 'website',
+  },
 };
 
 const sections = [
