@@ -136,6 +136,22 @@ function HomePageJsonLd() {
               text: 'Yes, all payments are processed through Payoneer\'s secure payment infrastructure, which uses bank-level encryption and is regulated by financial authorities worldwide.',
             },
           },
+          {
+            '@type': 'Question',
+            name: 'Do you guarantee journal publication?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'We provide professional research support including manuscript writing, data analysis, formatting, and submission assistance. Publication decisions are made solely by independent journal editors and peer reviewers. We do not guarantee journal acceptance. Our deliverable is a high-quality, publication-ready manuscript that you own regardless of the journal decision.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'How does milestone-based payment work for large projects?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'For multi-phase projects like end-to-end research papers, we use milestone-based payments. The project is divided into clear stages — each with a defined deliverable and payment. You pay upon completion of each milestone, and you receive tangible work at every stage. You can stop at any milestone and keep all delivered work.',
+            },
+          },
         ],
       },
 
@@ -461,7 +477,7 @@ export default function Home() {
           sectionId="faq"
           title="Frequently Asked Questions"
           subtitle="Quick answers to common queries"
-          badge="14 FAQs"
+          badge="16 FAQs"
         >
           <FAQ />
         </CollapsibleSection>

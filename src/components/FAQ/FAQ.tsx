@@ -60,6 +60,14 @@ const faqs = [
     question: 'Is my payment secure?',
     answer: 'Yes, all payments are processed through Payoneer\'s secure payment infrastructure, which uses bank-level encryption and is regulated by financial authorities worldwide. Your payment information is never shared with us directly.'
   },
+  {
+    question: 'Do you guarantee journal publication?',
+    answer: 'We provide professional research support including manuscript writing, data analysis, formatting, and submission assistance. However, publication decisions are made solely by independent journal editors and peer reviewers. We do not guarantee journal acceptance. Our deliverable is a high-quality, publication-ready manuscript that you own regardless of the journal\'s decision. Our track record includes papers published in IEEE Access, Frontiers, and Wiley journals.'
+  },
+  {
+    question: 'How does milestone-based payment work for large projects?',
+    answer: 'For multi-phase projects like end-to-end research papers, we use milestone-based payments. The project is divided into clear stages (e.g., literature review, methodology, writing, submission support) — each with a defined deliverable and payment. You pay upon completion of each milestone, and you receive tangible work at every stage. You can stop at any milestone and keep all delivered work.'
+  },
 ];
 
 export default function FAQ() {

@@ -126,8 +126,29 @@ const sections = [
     ],
   },
   {
+    id: 'publication-disclaimer',
+    title: '10. Publication Disclaimer',
+    content: [
+      'DeepDivers provides professional research support services including manuscript preparation, data analysis, statistical consulting, formatting, and submission assistance.',
+      'Publication decisions are made solely by independent journal editors and peer reviewers. We do not guarantee journal acceptance, publication, or any specific academic outcome.',
+      'Our End-to-End Publication Support service includes research, writing, formatting, and submission assistance. The deliverable is a publication-ready manuscript — not a published paper. The Client receives full value through the completed manuscript, data, and code regardless of the journal\'s editorial decision.',
+      'For milestone-based projects, each milestone represents a tangible deliverable (e.g., literature review report, methodology document, complete manuscript). Completed milestones are non-refundable as the work product has been delivered to the Client.',
+    ],
+  },
+  {
+    id: 'milestone-payments',
+    title: '11. Milestone-Based Payment Structure',
+    content: [
+      'For large or multi-phase projects (e.g., end-to-end research paper development), we use a milestone-based payment structure to ensure transparency and shared commitment.',
+      'Each milestone has a clearly defined deliverable, timeline, and payment amount agreed upon before work begins.',
+      'Payment for each milestone is due upon its completion and delivery. Completed milestone payments are non-refundable as the corresponding work product has been delivered.',
+      'The Client may choose to discontinue the project at any milestone. In such cases, all work completed up to that point is delivered to the Client, and no further charges apply.',
+      'Milestone structures are customized per project and confirmed in writing before work begins.',
+    ],
+  },
+  {
     id: 'liability',
-    title: '10. Limitation of Liability',
+    title: '12. Limitation of Liability',
     content: [
       'DeepDivers provides services on a best-effort basis and does not guarantee specific academic outcomes such as journal acceptance, grades, or funding decisions.',
       'Our liability is limited to the amount paid for the specific service in question.',
@@ -136,7 +157,7 @@ const sections = [
   },
   {
     id: 'changes',
-    title: '11. Changes to Terms',
+    title: '13. Changes to Terms',
     content: [
       'We reserve the right to update these Terms at any time. Changes will be posted on this page with an updated effective date.',
       'Continued use of our services after changes constitutes acceptance of the updated Terms.',
@@ -153,7 +174,7 @@ export default function TermsPage() {
           <h1 className={styles.heroTitle}>Terms & Conditions</h1>
           <p className={styles.heroDescription}>
             Clear, fair, and transparent policies governing our services. 
-            Last updated: July 2025.
+            Last updated: March 2026.
           </p>
         </div>
       </section>
