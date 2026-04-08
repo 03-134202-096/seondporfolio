@@ -60,7 +60,7 @@ export default function Header() {
     
     const targetId = href.replace('#', '');
 
-    // Dispatchh expand event for collapsible sections
+    // Dispatch expand event for collapsible sections
     window.dispatchEvent(new CustomEvent(`expand-${targetId}`));
 
     // Small delay to allow section to expand before scrolling
