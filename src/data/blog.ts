@@ -37,8 +37,8 @@ export const blogPosts: BlogPost[] = [
     title: 'AI in Healthcare 2026: How Artificial Intelligence Is Transforming Medical Research',
     excerpt:
       'Explore how AI is revolutionizing healthcare — from drug discovery and diagnostics to personalized medicine — and what it means for academic researchers.',
-    coverImage: '/ConfusionMatrix.webp',
-    coverImageAlt: 'AI in healthcare model performance confusion matrix showing diagnostic accuracy',
+    coverImage: '/blogsThumnails/AI in Healthcare 2026.webp',
+    coverImageAlt: 'AI in healthcare 2026 — how artificial intelligence is transforming medical research',
     author: 'Asad Farooq',
     publishedAt: '2026-02-28',
     readingTime: '10 min read',
@@ -136,7 +136,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Large Language Models in Education: Research Opportunities and Ethical Challenges in 2026',
     excerpt:
       'LLMs like GPT-5 and Gemini are reshaping education. Discover the hottest research topics, ethical debates, and publication opportunities in this booming field.',
-    coverImage: '/t-SNE-visualization.webp',
+    coverImage: '/blogsThumnails/Large Language Models.webp',
     coverImageAlt: 't-SNE visualization of language model embeddings in educational context',
     author: 'Asad Farooq',
     publishedAt: '2026-02-25',
@@ -208,7 +208,7 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Computers & Education</strong> (Q1, IF ~12) — The premier journal for technology in education</li>
         <li><strong>British Journal of Educational Technology</strong> (Q1) — Strong focus on digital learning</li>
         <li><strong>Education and Information Technologies</strong> (Q1) — Broad scope, good acceptance rates</li>
-        <li><strong>International Journal of AI in Education</strong> (Q1) — Specialized in AI-education intersection</li>
+        <li><strong>International Journal of Artificial Intelligence in Education</strong> (Q1) — Specialized in AI-education intersection</li>
         <li><strong>IEEE Transactions on Learning Technologies</strong> (Q1) — Technical focus</li>
         <li><strong>The Internet and Higher Education</strong> (Q1) — Focused on post-secondary education</li>
       </ul>
@@ -225,7 +225,7 @@ export const blogPosts: BlogPost[] = [
     title: 'How to Identify and Avoid Predatory Journals — Complete Guide for Researchers (2026)',
     excerpt:
       'Predatory journals can destroy your academic reputation. Learn how to spot them, verify legitimate journals, and protect your research from exploitation.',
-    coverImage: '/SelectionCateria.webp',
+    coverImage: '/blogsThumnails/How to Identify and.webp',
     coverImageAlt: 'Selection criteria flowchart for identifying legitimate vs predatory journals',
     author: 'Asad Farooq',
     publishedAt: '2026-02-22',
@@ -336,7 +336,7 @@ export const blogPosts: BlogPost[] = [
     title: 'SPSS vs Python vs R: Which Is the Best Tool for Your Data Analysis in 2026?',
     excerpt:
       'A detailed comparison of SPSS, Python, and R for academic research data analysis. Learn which tool fits your research needs, skill level, and journal expectations.',
-    coverImage: '/DataVisualization.webp',
+    coverImage: '/blogsThumnails/SPSS vs Python vs R.webp',
     coverImageAlt: 'Data visualization comparison showing charts created with different analysis tools',
     author: 'Asad Farooq',
     publishedAt: '2026-02-20',
@@ -380,7 +380,7 @@ export const blogPosts: BlogPost[] = [
           </tr>
           <tr>
             <td><strong>Cost</strong></td>
-            <td>$99+/year (paid)</td>
+            <td>$99+/month (paid)</td>
             <td>Free & open source</td>
             <td>Free & open source</td>
           </tr>
@@ -411,7 +411,7 @@ export const blogPosts: BlogPost[] = [
           <tr>
             <td><strong>Community/Packages</strong></td>
             <td>Limited extensions</td>
-            <td>400,000+ packages on PyPI</td>
+            <td>550,000+ packages on PyPI</td>
             <td>20,000+ packages on CRAN</td>
           </tr>
         </tbody>
@@ -502,7 +502,7 @@ export const blogPosts: BlogPost[] = [
     title: 'How to Write a Systematic Review Using PRISMA 2020 — Step-by-Step Guide',
     excerpt:
       'Master the systematic review process with PRISMA 2020 guidelines. From protocol registration to meta-analysis, learn every step for a successful publication.',
-    coverImage: '/publicationTrends.webp',
+    coverImage: '/blogsThumnails/How to Write a Systematic.webp',
     coverImageAlt: 'Publication trends chart showing growth in systematic review publications',
     author: 'Asad Farooq',
     publishedAt: '2026-02-18',
@@ -673,7 +673,7 @@ export const blogPosts: BlogPost[] = [
     title: 'How to Respond to Peer Review Comments — Strategies That Get Your Paper Accepted',
     excerpt:
       'Learn the art of responding to reviewer feedback. Proven strategies, templates, and real examples to turn a "Major Revision" into an acceptance.',
-    coverImage: '/LearningCurves.webp',
+    coverImage: '/blogsThumnails/How to Respond to Peer Review Comment.webp',
     coverImageAlt: 'Learning curves chart showing improvement through iterative revision process',
     author: 'Asad Farooq',
     publishedAt: '2026-02-15',
@@ -777,7 +777,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Research Ethics and AI-Generated Content: What Every Academic Must Know in 2026',
     excerpt:
       'AI tools in research raise critical ethical questions. Understand journal policies on AI use, disclosure requirements, and how to stay compliant.',
-    coverImage: '/heatmapdata.webp',
+    coverImage: '/blogsThumnails/Research Ethics and AI-Generated.webp',
     coverImageAlt: 'Heatmap visualization showing AI tool usage patterns across academic disciplines',
     author: 'Asad Farooq',
     publishedAt: '2026-02-12',
@@ -896,7 +896,7 @@ export const blogPosts: BlogPost[] = [
     title: 'How to Write and Publish a Research Paper in a Q1 Journal — Complete Guide (2026)',
     excerpt:
       'A step-by-step guide covering topic selection, literature review, methodology, writing, formatting, journal selection, and submission for Q1 publication.',
-    coverImage: '/PaperFlowDiagram.webp',
+    coverImage: '/blogsThumnails/How to Write and Publish.webp',
     coverImageAlt: 'Research paper publication workflow diagram showing steps from idea to Q1 journal acceptance',
     author: 'Asad Farooq',
     publishedAt: '2026-02-19',
@@ -1013,7 +1013,7 @@ export const blogPosts: BlogPost[] = [
 
       <ul>
         <li><strong>IEEE journals</strong> — Double-column, 10pt Times New Roman, IEEE citation style</li>
-        <li><strong>Springer journals</strong> — Single-column, LNCS or svjour3 templates</li>
+        <li><strong>Springer journals</strong> — Single-column, svjour3 or sn-jnl templates</li>
         <li><strong>Elsevier journals</strong> — elsarticle class with numbered references</li>
         <li><strong>Frontiers journals</strong> — Single-column, built-in web editor or LaTeX</li>
       </ul>

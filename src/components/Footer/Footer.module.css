@@ -156,6 +156,11 @@
   font-size: 0.875rem;
 }
 
+.footerAddress {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8125rem;
+}
+
 .footerLegal {
   display: flex;
   gap: 0.75rem;

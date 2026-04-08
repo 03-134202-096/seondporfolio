@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     question: 'How does payment work with Payoneer?',
-    answer: 'After your quote is approved, we send you a Payoneer payment link. You can pay using credit card (Visa, Mastercard, Amex), debit card, bank transfer, or Payoneer balance. You do NOT need a Payoneer account to pay — simply use your preferred payment method. Payoneer supports 190+ countries and 150+ currencies with fast, secure processing.'
+    answer: 'After your quote is approved, we send you a Payoneer payment link. You can pay using credit card (Visa, Mastercard, Amex), debit card, bank transfer, or Payoneer balance. You do NOT need a Payoneer account to pay — simply use your preferred payment method. Payoneer is available worldwide with support for 150+ currencies and fast, secure processing.'
   },
   {
     question: 'What other payment methods do you accept?',
@@ -50,7 +50,7 @@ const faqs = [
   },
   {
     question: 'Can you work on projects in different time zones?',
-    answer: 'Absolutely! We work with clients from 190+ countries and are flexible with communication times. We ensure timely responses regardless of your location and can schedule calls at convenient times for you.'
+    answer: 'Absolutely! We collaborate with clients across the globe and are flexible with communication times. We ensure timely responses regardless of your location and can schedule calls at convenient times for you.'
   },
   {
     question: 'What file formats do you deliver?',

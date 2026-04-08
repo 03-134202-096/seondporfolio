@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { blogPosts } from '@/data/blog';
+import Header from '@/components/Header/Header';
 import styles from './blog.module.css';
 
 export const metadata: Metadata = {
@@ -54,6 +55,7 @@ export default function BlogPage() {
   return (
     <main className={styles.blogPage}>
       <BlogListJsonLd />
+      <Header />
 
       {/* Hero */}
       <section className={styles.hero}>

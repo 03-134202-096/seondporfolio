@@ -24,7 +24,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -97,6 +97,22 @@
   position: relative;
   width: 400px;
   height: 400px;
+}
+
+@media (min-width: 1440px) {
+  .heroImageWrapper {
+    width: 460px;
+    height: 460px;
+  }
+
+  .heroDescription {
+    max-width: 620px;
+    font-size: 1.375rem;
+  }
+
+  .heroStats {
+    gap: 4rem;
+  }
 }
 
 .heroImageBg {

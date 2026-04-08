@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import Header from '@/components/Header/Header';
 import styles from './about.module.css';
 
 export const metadata: Metadata = {
   title: 'About Us — Expert Research, Data Science & AI Team',
   description:
-    'Meet DeepDivers — published researchers & data scientists offering 60+ services worldwide. Unlimited revisions, 24/7 support. From $25.',
+    'Meet DeepDivers — published researchers & data scientists offering 90+ services worldwide. Unlimited revisions, 24/7 support. From $25.',
   keywords: [
     'about DeepDivers',
     'freelance research team',
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About DeepDivers — Expert Research & Data Science Team',
     description:
-      'Published researchers and experienced professionals offering 60+ services worldwide. Unlimited revisions, refund guarantee.',
+      'Published researchers and experienced professionals offering 90+ services worldwide. Unlimited revisions, refund guarantee.',
     url: 'https://deepdivers.services/about',
     type: 'website',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -45,7 +46,7 @@ function AboutPageJsonLd() {
         url: `${siteUrl}/about`,
         name: 'About DeepDivers — Expert Research, Data Science & AI Team',
         description:
-          'Meet the DeepDivers team — published researchers, data scientists, and developers offering 60+ professional services worldwide.',
+          'Meet the DeepDivers team — published researchers, data scientists, and developers offering 90+ professional services worldwide.',
         isPartOf: { '@id': `${siteUrl}/#website` },
         dateModified: '2026-02-19',
         inLanguage: 'en-US',
@@ -63,7 +64,7 @@ function AboutPageJsonLd() {
         jobTitle: 'Founder & Team Lead',
         worksFor: { '@id': `${siteUrl}/#organization` },
         description:
-          'Computer science graduate with a strong foundation in academic publishing, machine learning, and full-stack development.',
+          'Computer science graduate with a strong background in AI, machine learning, academic publishing, and full-stack development.',
         knowsAbout: [
           'Machine Learning',
           'Deep Learning',
@@ -143,8 +144,8 @@ const howItWorks = [
 ];
 
 const stats = [
-  { value: '60+', label: 'Professional Services' },
-  { value: '190+', label: 'Countries Served' },
+  { value: '90+', label: 'Professional Services' },
+  { value: '190+', label: 'Clients Worldwide' },
   { value: '100%', label: 'Satisfaction Guarantee' },
   { value: '24/7', label: 'Support Available' },
 ];
@@ -153,6 +154,8 @@ export default function AboutPage() {
   return (
     <main className={styles.aboutPage}>
       <AboutPageJsonLd />
+      <Header />
+
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.container}>
@@ -265,7 +268,7 @@ export default function AboutPage() {
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Meet the Team</h2>
           <p className={styles.sectionSubtitle}>
-            A specialized team based in Pakistan, serving clients across 190+ countries.
+            A specialized team of AI and computer science professionals with 3+ years of academic services experience, collaborating with researchers worldwide.
           </p>
           <div className={styles.teamContent}>
             <div className={styles.teamCard}>
@@ -281,9 +284,9 @@ export default function AboutPage() {
               <h3>Asad Farooq</h3>
               <span className={styles.teamRole}>Founder & Team Lead</span>
               <p className={styles.teamBio}>
-                Computer science graduate with a strong foundation in academic publishing, 
-                machine learning, and full-stack development. Leading DeepDivers with a 
-                mission to deliver world-class research and technology solutions.
+                Computer science graduate with a strong background in AI, machine learning, and
+                academic publishing. Leading DeepDivers with a mission to deliver world-class
+                research and technology solutions to clients globally.
               </p>
               <div className={styles.teamCredentials}>
                 <span>📊 Python & Data Science</span>
@@ -296,9 +299,11 @@ export default function AboutPage() {
             <div className={styles.teamInfo}>
               <h3>Dedicated Experts at Your Service</h3>
               <p>
-                Beyond our team lead, DeepDivers operates with a network of dedicated 
-                researchers, data analysts, content writers, and developers — each assigned 
-                to projects that match their specialized expertise.
+                Beyond our team lead, DeepDivers operates with a dedicated network of
+                researchers, data analysts, content writers, and developers — each with
+                backgrounds in AI and computer science and 3+ years of hands-on experience
+                in academic services. Every team member is assigned to projects that match
+                their specialized expertise.
               </p>
               <ul className={styles.teamHighlights}>
                 <li>✅ Domain-matched experts for every project</li>
@@ -323,7 +328,7 @@ export default function AboutPage() {
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>Ready to Hand Over Your Project?</h2>
           <p className={styles.ctaDescription}>
-            Browse our catalog of 60+ services, get a free quote, and let our experts 
+            Browse our catalog of 90+ services, get a free quote, and let our experts 
             handle the rest. No commitment required.
           </p>
           <div className={styles.ctaButtons}>

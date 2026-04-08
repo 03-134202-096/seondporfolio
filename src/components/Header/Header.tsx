@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, MouseEvent, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.css';
@@ -8,7 +9,6 @@ import styles from './Header.module.css';
 const navItems = [
   { label: 'Home', href: '#hero' },
   { label: 'Catalog', href: '#service-catalog' },
-  { label: 'Pricing', href: '#pricing' },
   { label: 'Process', href: '#process' },
   { label: 'Portfolio', href: '#portfolio' },
   { label: 'About', href: '/about', external: true },
@@ -20,6 +20,8 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,9 +76,11 @@ export default function Header() {
   };
 
   const handleLogoClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
     setIsMobileMenuOpen(false);
     
+    if (!isHome) return; // Let Link handle navigation to "/"
+
+    e.preventDefault();
     const heroElement = document.getElementById('hero');
     if (heroElement) {
       const headerHeight = 80;
@@ -94,7 +98,7 @@ export default function Header() {
   return (
     <header className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''}`}>
       <div className={styles.headerInner}>
-        <Link href="#hero" className={styles.logo} onClick={handleLogoClick}>
+        <Link href={isHome ? '#hero' : '/'} className={styles.logo} onClick={handleLogoClick}>
           <Image
             src="/logo.png"
             alt="DeepDivers Logo"
@@ -117,32 +121,52 @@ export default function Header() {
 
         <nav ref={navRef} className={`${styles.nav} ${isMobileMenuOpen ? styles.navOpen : ''}`}>
           <ul className={styles.navList}>
-            {navItems.map((item) => (
-              <li key={item.href}>
-                {'external' in item && item.external ? (
-                  <Link
-                    href={item.href}
-                    className={styles.navLink}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className={styles.navLink}
-                    onClick={(e) => handleNavClick(e, item.href)}
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const isHashLink = item.href.startsWith('#');
+              const isExternal = 'external' in item && item.external;
+
+              // On non-home pages, hash links should navigate to homepage first
+              if (!isHome && isHashLink) {
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={`/${item.href}`}
+                      className={styles.navLink}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              }
+
+              return (
+                <li key={item.href}>
+                  {isExternal ? (
+                    <Link
+                      href={item.href}
+                      className={styles.navLink}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className={styles.navLink}
+                      onClick={(e) => handleNavClick(e, item.href)}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
           <Link 
-            href="#contact" 
+            href={isHome ? '#contact' : '/#contact'} 
             className={`btn btn-primary ${styles.ctaButton}`} 
-            onClick={(e) => handleNavClick(e, '#contact')}
+            onClick={isHome ? (e) => handleNavClick(e, '#contact') : () => setIsMobileMenuOpen(false)}
           >
             Order Now
           </Link>

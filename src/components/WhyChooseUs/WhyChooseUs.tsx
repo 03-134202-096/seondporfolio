@@ -6,7 +6,7 @@ const reasons = [
   {
     icon: '🎓',
     title: 'Expert Team',
-    description: 'Published researchers and experienced professionals with expertise across 60+ service areas.',
+    description: 'Published researchers and experienced professionals with expertise across 90+ service areas.',
     highlight: '5+ Papers Published'
   },
   {
@@ -43,7 +43,7 @@ const reasons = [
 
 const stats = [
   { value: '100%', label: 'Client Satisfaction' },
-  { value: '60+', label: 'Services Offered' },
+  { value: '90+', label: 'Services Offered' },
   { value: '5+', label: 'Published Papers' },
   { value: '24/7', label: 'Support Available' }
 ];

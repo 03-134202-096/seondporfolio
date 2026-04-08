@@ -62,37 +62,38 @@ const sections = [
     id: 'revisions',
     title: '5. Revision Policy',
     content: [
-      'All projects include revisions to ensure Client satisfaction.',
-      'Starter plan projects include 1 round of revisions. Professional and Enterprise plan projects include unlimited revisions.',
-      'Revision requests must be submitted within 14 days of delivery.',
-      'Revisions must fall within the original project scope. Requests for additional features, expanded scope, or entirely new deliverables are treated as new projects and priced accordingly.',
-      'We commit to completing revisions within 1–3 business days of receiving the revision request, depending on complexity.',
+      'All projects include unlimited revisions at no additional cost. There are no hidden charges for revision requests — what you agree to pay is what you pay.',
+      'Once you receive your deliverables, you may request as many revisions as needed until you are fully satisfied with the work.',
+      'Revision requests must fall within the original project scope. Requests for entirely new features or expanded deliverables beyond the agreed scope are treated as a new project and quoted separately.',
+      'We commit to completing revision rounds within 1–3 business days, depending on complexity.',
+      'For milestone-based projects, revisions are handled at each milestone before proceeding to the next phase. You review and approve each milestone before payment is due for the next one.',
     ],
   },
   {
     id: 'refund',
     title: '6. Refund Policy',
     content: [
-      'We offer refunds under the following conditions:',
+      'We believe in fair and transparent refund practices. Refund eligibility depends on the stage of work and the circumstances:',
     ],
     list: [
       {
         title: 'Full Refund',
         description:
-          'If we fail to deliver the project entirely, or if the deliverable is fundamentally different from what was agreed upon and cannot be corrected through revisions.',
+          'Issued if we miss an agreed deadline due to reasons within our control and the delay renders the work unusable, or if the deliverable is fundamentally different from what was agreed upon and cannot be corrected through revisions. If a mistake on our end makes the completed work unsuitable for its intended purpose, a full refund is provided without dispute.',
       },
       {
         title: 'Partial Refund',
         description:
-          'If we miss the agreed deadline by more than 5 business days (without prior agreement for extension), or if the deliverable requires significant rework beyond the agreed scope.',
+          'Issued when work has been partially completed and resources have been utilized. The refund amount is determined based on how much of the project has been completed and the resources invested. For example, if 60% of the work is done, a refund for the remaining 40% may be issued. Partial refunds also apply when deliverables require rework beyond the originally agreed scope.',
       },
       {
         title: 'No Refund',
         description:
-          'If the Client changes their requirements after work has begun without mutual agreement, if the Client fails to respond to communications for more than 7 days during the project, or if the deliverable meets the originally agreed specifications.',
+          'Applies if the Client changes requirements after work has begun without mutual agreement, if the Client is unresponsive for more than 7 days during the project, or if the deliverable meets the originally agreed specifications and has been approved at a milestone.',
       },
     ],
     footer: [
+      'For milestone-based payments, each milestone is reviewed and approved before proceeding. Payments are made only after you verify and accept the deliverable at each stage — ensuring you always receive value before paying.',
       'Refund requests must be submitted within 14 days of delivery via email at support@deepdivers.services.',
       'Refunds are processed within 5–10 business days through the original payment method.',
     ],

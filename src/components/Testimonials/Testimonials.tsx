@@ -4,22 +4,22 @@ import styles from './Testimonials.module.css';
 
 const testimonials = [
   {
-    name: 'Otuekong',
-    role: 'PhD Student, Germany',
+    name: 'Otuekong E.',
+    role: 'PhD Student, Computer Science — Technical University of Munich, Germany',
     text: 'Perfect, I love your work. It was difficult to do away with all the lengthy texts in the paper. And you\'ve done a great job at decluttering. I think it is perfect like this.',
     rating: 5,
     service: 'IEEE Conference Paper',
   },
   {
     name: 'Dr. Samabia T.',
-    role: 'Head of AI Applied Technologies Research Center, Bahria University Pakistan',
+    role: 'Head of AI Applied Technologies Research Center — Bahria University, Islamabad',
     text: 'Asad has been an outstanding researcher and developer under my supervision. He contributed significantly to multiple research projects, leading to four peer-reviewed publications with additional manuscripts currently under review. He demonstrated strong technical depth in designing, implementing, and evaluating AI, machine learning, and deep learning experiments that formed the core of our research work. I strongly recommend him for advanced research roles.',
     rating: 5,
     service: 'Research Papers & AI/ML Experiments',
   },
   {
-    name: 'Dominic',
-    role: 'PhD Researcher, Germany',
+    name: 'Dominic K.',
+    role: 'PhD Researcher, Computer Science — University of Stuttgart, Germany',
     text: 'It is just perfect. Good.',
     rating: 5,
     service: 'Thesis Formatting & Template Conversion',
@@ -31,7 +31,7 @@ const trustBadges = [
   { icon: '🔒', label: 'NDA Protected' },
   { icon: '♻️', label: 'Unlimited Revisions' },
   { icon: '⚡', label: '24hr Response' },
-  { icon: '🌍', label: '190+ Countries' },
+  { icon: '🌍', label: 'Global Reach' },
   { icon: '📄', label: 'Plagiarism-Free' },
 ];
 

@@ -1,78 +1,4 @@
 import styles from './Pricing.module.css';
-import { isPromoActive, PROMO_CONFIG, getDiscountedPrice } from '@/config/promo';
-
-const pricingPlans = [
-  {
-    name: 'Starter',
-    price: '$25',
-    period: 'starting from',
-    description: 'Perfect for quick tasks, single deliverables, and small-scope projects.',
-    badge: null,
-    features: [
-      'Single task or document',
-      'Copyediting & proofreading',
-      'Citation formatting (any style)',
-      'Basic data entry or cleaning',
-      'Chart or graph creation',
-      'Email or cover letter drafting',
-      'Abstract or summary writing',
-      '1–3 day delivery',
-      '1 round of revisions',
-      'Email support',
-    ],
-    cta: 'Get Started',
-    href: '#contact',
-    highlighted: false,
-  },
-  {
-    name: 'Professional',
-    price: '$100',
-    period: 'starting from',
-    description: 'Best for research projects, data analysis, and comprehensive academic work.',
-    badge: 'Most Popular',
-    features: [
-      'Everything in Starter, plus:',
-      'Research paper writing & editing',
-      'Literature review & gap analysis',
-      'Statistical analysis (SPSS/Python/R)',
-      'Data visualization & infographics',
-      'ML/AI model training & tuning',
-      'Systematic review support',
-      'LaTeX formatting & typesetting',
-      'Presentation & poster design',
-      '5–10 day delivery',
-      'Unlimited revisions',
-      'Priority WhatsApp support',
-    ],
-    cta: 'Order Now',
-    href: '#contact',
-    highlighted: true,
-  },
-  {
-    name: 'Enterprise',
-    price: '$300',
-    period: 'starting from',
-    description: 'Full-scale solutions for complex research, development, and long-term projects.',
-    badge: null,
-    features: [
-      'Everything in Professional, plus:',
-      'Full-stack web development (Next.js/Nest.js)',
-      'AWS deployment & cloud infrastructure',
-      'End-to-end research pipeline',
-      'Grant proposal writing',
-      'Complete thesis or dissertation support',
-      'Web scraping & dataset curation',
-      'Custom AI/ML experiment execution',
-      'Meta ads campaign management',
-      'Dedicated project manager',
-      'Custom timeline & milestones',
-      '24/7 priority support',
-    ],
-    cta: 'Contact Us',
-    href: '#contact',
-    highlighted: false,
-  },
-];
 
 const paymentMethods = [
   {
@@ -98,8 +24,6 @@ const paymentMethods = [
 ];
 
 export default function Pricing() {
-  const promoActive = isPromoActive();
-
   return (
     <section id="pricing" className={styles.pricing}>
       <div className={styles.container}>
@@ -107,58 +31,9 @@ export default function Pricing() {
           <span className={styles.badge}>Pricing</span>
           <h2 className={styles.title}>Transparent & Affordable Pricing</h2>
           <p className={styles.subtitle}>
-            No hidden fees. Choose a package that fits your needs — or request a custom quote
-            for your specific project.
+            No hidden fees. Every service in our catalog has a clear starting price.
+            Browse the Service Catalog above for individual pricing, or request a custom quote below.
           </p>
-          {promoActive && (
-            <div className={styles.promoBadge}>
-              {PROMO_CONFIG.PROMO_LABEL} — {PROMO_CONFIG.DISCOUNT_PERCENT}% OFF All Plans
-            </div>
-          )}
-        </div>
-
-        <div className={styles.plansGrid}>
-          {pricingPlans.map((plan) => {
-            const discount = promoActive ? getDiscountedPrice(plan.price) : null;
-
-            return (
-              <div
-                key={plan.name}
-                className={`${styles.planCard} ${plan.highlighted ? styles.planHighlighted : ''}`}
-              >
-                {plan.badge && <span className={styles.planBadge}>{plan.badge}</span>}
-                <h3 className={styles.planName}>{plan.name}</h3>
-                <div className={styles.planPrice}>
-                  {discount ? (
-                    <>
-                      <span className={styles.priceOriginal}>{discount.original}</span>
-                      <span className={styles.priceAmount}>{discount.discounted}</span>
-                    </>
-                  ) : (
-                    <span className={styles.priceAmount}>{plan.price}</span>
-                  )}
-                  <span className={styles.pricePeriod}>{plan.period}</span>
-                </div>
-                <p className={styles.planDescription}>{plan.description}</p>
-                <a
-                  href={plan.href}
-                  className={`${styles.planCta} ${plan.highlighted ? styles.planCtaHighlighted : ''}`}
-                >
-                  {plan.cta}
-                </a>
-                <ul className={styles.featureList}>
-                  {plan.features.map((feature) => (
-                    <li key={feature} className={styles.featureItem}>
-                      <span className={styles.featureCheck}>
-                        {feature.startsWith('Everything') ? '🔥' : '✓'}
-                      </span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
         </div>
 
         <div className={styles.paymentSection}>
@@ -168,7 +43,7 @@ export default function Pricing() {
           <p className={styles.paymentSubtitle}>
             We use <strong>Payoneer</strong> to send you a secure payment request. You can pay
             using your preferred method — <strong>no Payoneer account needed</strong>.
-            Supports 190+ countries and 150+ currencies.
+            Supports clients worldwide with 150+ currencies.
           </p>
           <div className={styles.paymentGrid}>
             {paymentMethods.map((method) => (

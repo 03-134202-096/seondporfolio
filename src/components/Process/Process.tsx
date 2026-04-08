@@ -6,7 +6,7 @@ const processSteps = [
   {
     step: '01',
     title: 'Browse & Select Service',
-    description: 'Explore our catalog of 60+ services. Pick the one you need, or describe a custom project. Attach files and requirements via our order form.',
+    description: 'Explore our catalog of 90+ services. Pick the one you need, or describe a custom project. Attach files and requirements via our order form.',
     icon: '🔍'
   },
   {
@@ -18,7 +18,7 @@ const processSteps = [
   {
     step: '03',
     title: 'Pay Securely via Payoneer',
-    description: 'Once you approve the quote, we send you a Payoneer payment link. Pay with credit/debit card, bank transfer, or Payoneer balance — no Payoneer account needed. Supports 190+ countries.',
+    description: 'Once you approve the quote, we send you a Payoneer payment link. Pay with credit/debit card, bank transfer, or Payoneer balance — no Payoneer account needed. Available worldwide.',
     icon: '🔒'
   },
   {

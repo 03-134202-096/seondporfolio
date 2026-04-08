@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { blogPosts, getBlogPostBySlug, getAllBlogSlugs } from '@/data/blog';
+import Header from '@/components/Header/Header';
 import styles from './post.module.css';
 
 interface BlogPostPageProps {
@@ -123,6 +124,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <main className={styles.postPage}>
       <BlogPostJsonLd slug={slug} />
+      <Header />
 
       {/* Breadcrumb */}
       <nav className={styles.breadcrumb} aria-label="Breadcrumb">

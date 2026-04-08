@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | DeepDivers",
   },
   description:
-    "Expert research paper writing, data analysis, ML/AI solutions & academic services. 60+ services, unlimited revisions, 24/7 support. From $25.",
+    "Expert research paper writing, data analysis, ML/AI solutions & academic services. 90+ services, unlimited revisions, 24/7 support. From $25.",
   keywords: [
     "research paper writing services",
     "academic writing help",

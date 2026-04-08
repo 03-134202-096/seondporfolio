@@ -12,6 +12,85 @@
   padding: 0 24px;
 }
 
+/* Top Navigation */
+.topNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0 24px;
+}
+
+.topNavContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.topNavInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.topNavBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.topNavLinks {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.topNavLinks a {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.topNavLinks a:hover {
+  color: #ffffff;
+}
+
+.topNavCta {
+  padding: 8px 20px !important;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+  color: #ffffff !important;
+  border-radius: 8px;
+  font-weight: 600 !important;
+}
+
+.topNavCta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+@media (max-width: 640px) {
+  .topNavLinks {
+    gap: 14px;
+  }
+  .topNavLinks a {
+    font-size: 0.8125rem;
+  }
+  .topNavCta {
+    padding: 6px 14px !important;
+    font-size: 0.8125rem !important;
+  }
+}
+
 /* ─── Breadcrumb ─── */
 
 .breadcrumb {

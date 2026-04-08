@@ -53,7 +53,7 @@ function HomePageJsonLd() {
             name: 'How does payment work with Payoneer?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'After your quote is approved, we send you a Payoneer payment link. You can pay using credit card (Visa, Mastercard, Amex), debit card, bank transfer, or Payoneer balance. You do NOT need a Payoneer account to pay. Payoneer supports 190+ countries and 150+ currencies.',
+              text: 'After your quote is approved, we send you a Payoneer payment link. You can pay using credit card (Visa, Mastercard, Amex), debit card, bank transfer, or Payoneer balance. You do NOT need a Payoneer account to pay. Payoneer is available worldwide and supports 150+ currencies.',
             },
           },
           {
@@ -117,7 +117,7 @@ function HomePageJsonLd() {
             name: 'Can you work on projects in different time zones?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Absolutely! We work with clients from 190+ countries and are flexible with communication times. We ensure timely responses regardless of your location.',
+              text: 'Absolutely! We collaborate with researchers and clients across the globe and are flexible with communication times. We ensure timely responses regardless of your location.',
             },
           },
           {
@@ -172,7 +172,7 @@ function HomePageJsonLd() {
             '@type': 'HowToStep',
             position: 1,
             name: 'Browse & Select Service',
-            text: 'Explore our catalog of 60+ services. Pick the one you need, or describe a custom project. Attach files and requirements via our order form.',
+            text: 'Explore our catalog of 90+ services. Pick the one you need, or describe a custom project. Attach files and requirements via our order form.',
             url: `${siteUrl}/#service-catalog`,
           },
           {
@@ -466,8 +466,8 @@ export default function Home() {
 
         <CollapsibleSection
           sectionId="publications"
-          title="Our Publications"
-          subtitle="Peer-reviewed research in AI, deep learning, and medical informatics"
+          title="Sample Published Papers"
+          subtitle="A selection of our peer-reviewed research published in indexed journals"
           badge="5 Papers"
         >
           <Publications />

@@ -2,11 +2,28 @@
   background: var(--background);
 }
 
+/* Controls Row: Search Bar on top, Info + Sort below */
+.controlsRow {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Info + Sort row */
+.controlsMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
 /* Search Bar */
 .searchBar {
   position: relative;
+  width: 100%;
   max-width: 600px;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
 }
 
 .searchIcon {
@@ -69,8 +86,46 @@
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  margin-bottom: 2rem;
   flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.sortControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.sortLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--foreground-muted);
+  white-space: nowrap;
+}
+
+.sortSelect {
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  appearance: auto;
+}
+
+.sortSelect:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.sortSelect:hover {
+  border-color: var(--primary);
 }
 
 .categoryTab {
@@ -124,10 +179,10 @@
 
 /* Results Info */
 .resultsInfo {
-  text-align: center;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--foreground-muted);
-  margin-bottom: 2rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .resultsInfo strong {
@@ -141,9 +196,35 @@
   gap: 1rem;
 }
 
+@media (min-width: 1440px) {
+  .servicesGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
   .servicesGrid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Horizontal scrollable tabs on tablet and below */
+  .categoryTabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: flex-start;
+    padding-bottom: 0.25rem;
+  }
+
+  .categoryTabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .categoryTab {
+    flex-shrink: 0;
   }
 }
 
@@ -362,6 +443,158 @@
 .catalogCtaBtn:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+}
+
+/* Custom Service Card */
+.serviceCardCustom {
+  border: 2px dashed var(--primary);
+  background: linear-gradient(145deg, rgba(59, 130, 246, 0.05), var(--card-bg));
+}
+
+.serviceCardCustom:hover {
+  border-color: var(--primary);
+  background: linear-gradient(145deg, rgba(59, 130, 246, 0.1), var(--card-bg));
+}
+
+.customTag {
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  padding: 3px 10px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #ffffff;
+  font-size: 0.625rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.customDescription {
+  font-size: 0.8125rem;
+  color: var(--foreground-muted);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.customWhatsappBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  padding: 0.625rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: #25d366;
+  border: none;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.customWhatsappBtn:hover {
+  background: #1da851;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+}
+
+@media (max-width: 640px) {
+  .controlsRow {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .searchBar {
+    max-width: 100%;
+  }
+
+  .resultsInfo {
+    white-space: normal;
+    font-size: 0.75rem;
+    text-align: left;
+  }
+
+  .sortControl {
+    justify-content: flex-end;
+  }
+
+  /* Compact info + sort on one row */
+  .controlsMeta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  /* Horizontal scrollable category tabs */
+  .categoryTabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .categoryTabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .categoryTab {
+    flex-shrink: 0;
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .categoryCount {
+    min-width: 20px;
+    height: 18px;
+    font-size: 0.625rem;
+  }
+
+  .serviceCard {
+    padding: 1rem 1.25rem;
+  }
+
+  .serviceName {
+    font-size: 0.875rem;
+  }
+
+  .serviceMeta {
+    font-size: 0.75rem;
+  }
+
+  .searchInput {
+    padding: 0.75rem 2.5rem 0.75rem 2.5rem;
+    font-size: 0.875rem;
+  }
+
+  .searchIcon {
+    left: 12px;
+    font-size: 1rem;
+  }
+
+  .clearSearch {
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+  }
+
+  .sortSelect {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .sortLabel {
+    font-size: 0.75rem;
+  }
 }
 
 /* Pagination */

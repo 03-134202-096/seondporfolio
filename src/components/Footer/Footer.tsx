@@ -8,7 +8,6 @@ import styles from './Footer.module.css';
 const quickLinks = [
   { label: 'Home', href: '#hero' },
   { label: 'Service Catalog', href: '#service-catalog' },
-  { label: 'Pricing', href: '#pricing' },
   { label: 'How It Works', href: '#process' },
   { label: 'Testimonials', href: '#testimonials' },
   { label: 'Blog', href: '/blog' },
@@ -174,10 +173,15 @@ export default function Footer() {
           <p className={styles.footerCopyright}>
             © {currentYear} DeepDivers. All rights reserved. | Professional Research & Data Science Services
           </p>
+          <div className={styles.footerAddress}>
+            <span>📍 Street 30, House 40B, F-8, Islamabad, Pakistan</span>
+          </div>
           <div className={styles.footerLegal}>
             <Link href="/about">About Us</Link>
             <span className={styles.footerLegalSep}>•</span>
             <Link href="/terms">Terms & Conditions</Link>
+            <span className={styles.footerLegalSep}>•</span>
+            <Link href="/terms#refund">Refund & Revision Policy</Link>
             <span className={styles.footerLegalSep}>•</span>
             <span>Secure Payments via Payoneer • Visa • Mastercard • Bank Transfer</span>
           </div>

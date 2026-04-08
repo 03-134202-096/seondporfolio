@@ -17,7 +17,7 @@ export default function Hero() {
       <div className={styles.heroInner}>
         <div className={styles.heroContent}>
           <span className={`badge ${styles.heroBadge}`}>
-            🚀 60+ Services • Hand Over Any Task • We Deliver
+            🚀 90+ Services • Hand Over Any Task • We Deliver
           </span>
           <h1 className={styles.heroTitle}>
             Hand Over Your <span className={styles.heroHighlight}>Projects</span>.{' '}
@@ -32,18 +32,18 @@ export default function Hero() {
             <button onClick={() => scrollTo('service-catalog')} className="btn btn-primary" aria-label="Browse and order services">
               Browse Services →
             </button>
-            <button onClick={() => scrollTo('pricing')} className="btn btn-secondary" aria-label="View pricing packages">
-              View Pricing
+            <button onClick={() => scrollTo('contact')} className="btn btn-secondary" aria-label="Get a free quote">
+              Get a Free Quote
             </button>
           </div>
           <div className={styles.heroStats}>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>60+</div>
+              <div className={styles.statNumber}>90+</div>
               <div className={styles.statLabel}>Expert Services</div>
             </div>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>190+</div>
-              <div className={styles.statLabel}>Countries Served</div>
+              <div className={styles.statNumber}>Global</div>
+              <div className={styles.statLabel}>Client Reach</div>
             </div>
             <div className={styles.statItem}>
               <div className={styles.statNumber}>100%</div>
@@ -55,7 +55,7 @@ export default function Hero() {
           <div className={styles.heroImageWrapper}>
             <div className={styles.heroImageBg} />
             <Image
-              src="/ProfilePicture.webp"
+              src="/landingIntro.webp"
               alt="DeepDivers Team - Professional Research and Data Science Experts"
               width={400}
               height={400}

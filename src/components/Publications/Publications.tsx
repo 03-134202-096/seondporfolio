@@ -70,7 +70,7 @@ export default function Publications() {
           ))}
         </div>
         <div className={styles.publicationsNote}>
-          <p>📚 Additional publications currently in progress and under peer review.</p>
+          <p>📚 These are selected samples from our team’s published portfolio. Additional publications are in progress and under peer review.</p>
         </div>
       </div>
     </div>
