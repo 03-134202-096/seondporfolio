@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import styles from './ServiceCatalog.module.css';
 import { isPromoActive, getDiscountedPrice, PROMO_CONFIG } from '@/config/promo';
 
@@ -55,7 +55,7 @@ const services: ServiceItem[] = [
   { name: 'End-to-End Experimental Paper Publication Support (GPU)', category: 'academic', price: '$450–$700', delivery: '1–2 months', popular: true },
   { name: 'Thesis & Dissertation Writing Support', category: 'academic', price: 'From $250', delivery: '14–30 days' },
   { name: 'Research Proposal Writing', category: 'academic', price: 'From $120', delivery: '5–10 days' },
-  { name: 'Conference Paper Writing', category: 'academic', price: 'From $200', delivery: '7–14 days' },
+  { name: 'Conference Paper Writing', category: 'academic', price: '$350–$700', delivery: '15–45 days' },
   { name: 'Manuscript Revision & Resubmission', category: 'academic', price: 'From $80', delivery: '3–7 days' },
   { name: 'Ethics Application Drafting (IRB/ERB)', category: 'academic', price: 'From $80', delivery: '3–5 days' },
 
@@ -367,6 +367,29 @@ export default function ServiceCatalog() {
   const [itemsPerPage, setItemsPerPage] = useState(9);
   const [sortBy, setSortBy] = useState<SortOption>('default');
   const [isMobile, setIsMobile] = useState(false);
+  const [tabsCanScrollLeft, setTabsCanScrollLeft] = useState(false);
+  const [tabsCanScrollRight, setTabsCanScrollRight] = useState(false);
+  const tabsRef = useRef<HTMLDivElement>(null);
+
+  const updateTabsScroll = useCallback(() => {
+    const el = tabsRef.current;
+    if (!el) return;
+    setTabsCanScrollLeft(el.scrollLeft > 4);
+    setTabsCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+  }, []);
+
+  useEffect(() => {
+    const el = tabsRef.current;
+    if (!el) return;
+    updateTabsScroll();
+    el.addEventListener('scroll', updateTabsScroll, { passive: true });
+    const ro = new ResizeObserver(updateTabsScroll);
+    ro.observe(el);
+    return () => {
+      el.removeEventListener('scroll', updateTabsScroll);
+      ro.disconnect();
+    };
+  }, [updateTabsScroll]);
 
   // Responsive items per page — show fewer on mobile
   useEffect(() => {
@@ -493,9 +516,12 @@ export default function ServiceCatalog() {
 
           <div className={styles.controlsMeta}>
             <div className={styles.resultsInfo}>
-              Showing <strong>{paginatedServices.length}</strong> of <strong>{filteredServices.length}</strong> services
-              {searchQuery && <> matching &quot;<strong>{searchQuery}</strong>&quot;</>}
-              {totalPages > 1 && <> &nbsp;·&nbsp; Page {currentPage} of {totalPages}</>}
+              Showing <strong>{paginatedServices.length}</strong> of <strong>{filteredServices.length}</strong>
+              <span className={styles.resultsInfoDetail}>
+                {' '}services
+                {searchQuery && <> matching &quot;<strong>{searchQuery}</strong>&quot;</>}
+                {totalPages > 1 && <> &nbsp;·&nbsp; Page {currentPage} of {totalPages}</>}
+              </span>
             </div>
 
             <div className={styles.sortControl}>
@@ -517,17 +543,23 @@ export default function ServiceCatalog() {
         </div>
 
         {/* Category Tabs */}
-        <div className={styles.categoryTabs}>
-          {categories.map((cat) => (
-            <button
-              key={cat.value}
-              className={`${styles.categoryTab} ${activeCategory === cat.value ? styles.categoryTabActive : ''}`}
-              onClick={() => handleCategoryChange(cat.value)}
-            >
-              {cat.label}
-              <span className={styles.categoryCount}>{cat.count}</span>
-            </button>
-          ))}
+        <div
+          className={styles.categoryTabsWrapper}
+          data-scroll-left={tabsCanScrollLeft}
+          data-scroll-right={tabsCanScrollRight}
+        >
+          <div className={styles.categoryTabs} ref={tabsRef}>
+            {categories.map((cat) => (
+              <button
+                key={cat.value}
+                className={`${styles.categoryTab} ${activeCategory === cat.value ? styles.categoryTabActive : ''}`}
+                onClick={() => handleCategoryChange(cat.value)}
+              >
+                {cat.label}
+                <span className={styles.categoryCount}>{cat.count}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className={styles.servicesGrid}>

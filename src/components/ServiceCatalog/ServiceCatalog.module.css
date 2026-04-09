@@ -81,13 +81,58 @@
   color: #ffffff;
 }
 
+/* Category Tabs Wrapper — holds fade overlays */
+.categoryTabsWrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+/* Right fade: shown when there is more to scroll right */
+.categoryTabsWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  pointer-events: none;
+  transition: width 0.2s ease, opacity 0.2s ease;
+  opacity: 0;
+  background: linear-gradient(to left, var(--background) 0%, transparent 100%);
+  z-index: 2;
+}
+
+/* Left fade: shown when scrolled past start */
+.categoryTabsWrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  pointer-events: none;
+  transition: width 0.2s ease, opacity 0.2s ease;
+  opacity: 0;
+  background: linear-gradient(to right, var(--background) 0%, transparent 100%);
+  z-index: 2;
+}
+
+.categoryTabsWrapper[data-scroll-right='true']::after {
+  width: 80px;
+  opacity: 1;
+}
+
+.categoryTabsWrapper[data-scroll-left='true']::before {
+  width: 40px;
+  opacity: 1;
+}
+
 /* Category Tabs */
 .categoryTabs {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
 }
 
 .sortControl {
@@ -183,10 +228,21 @@
   color: var(--foreground-muted);
   white-space: nowrap;
   flex-shrink: 0;
+  min-width: 0;
 }
 
 .resultsInfo strong {
   color: var(--foreground);
+}
+
+.resultsInfoDetail {
+  display: inline;
+}
+
+@media (max-width: 480px) {
+  .resultsInfoDetail {
+    display: none;
+  }
 }
 
 /* Services Grid */
@@ -210,6 +266,10 @@
 
 @media (max-width: 768px) {
   /* Horizontal scrollable tabs on tablet and below */
+  .categoryTabsWrapper {
+    margin-bottom: 1.5rem;
+  }
+
   .categoryTabs {
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -531,6 +591,10 @@
   }
 
   /* Horizontal scrollable category tabs */
+  .categoryTabsWrapper {
+    margin-bottom: 1.25rem;
+  }
+
   .categoryTabs {
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -539,7 +603,7 @@
     justify-content: flex-start;
     gap: 0.5rem;
     padding-bottom: 0.25rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0;
   }
 
   .categoryTabs::-webkit-scrollbar {
