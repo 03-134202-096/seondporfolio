@@ -24,7 +24,7 @@ interface ServiceItem {
 }
 
 const services: ServiceItem[] = [
-  // Academic & Research Services
+  // Academic Services
   { name: 'Journal-Style Formatting', category: 'academic', price: 'From $25', delivery: '1–2 days' },
   { name: 'Copyediting', category: 'academic', price: 'From $30', delivery: '1–3 days' },
   { name: 'Proofreading', category: 'academic', price: 'From $25', delivery: '1–2 days' },
