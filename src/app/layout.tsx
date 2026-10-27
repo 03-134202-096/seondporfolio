@@ -474,10 +474,6 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {/* Accessible skip-link improves keyboard navigation + Lighthouse score */}
-        <a href="#hero" className="skip-link">
-          Skip to main content
-        </a>
         {children}
       </body>
       {gaId && <GoogleAnalytics gaId={gaId} />}

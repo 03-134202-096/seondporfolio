@@ -157,38 +157,148 @@
   }
 }
 
-.heroImageBg {
-  position: absolute;
-  inset: -24px;
-  background: conic-gradient(
-    from 0deg,
-    var(--gradient-start),
-    var(--gradient-end),
-    #7c3aed,
-    var(--gradient-start)
-  );
-  border-radius: 50%;
-  opacity: 0.18;
-  filter: blur(2px);
-  animation: spin 18s linear infinite, pulse 4s ease-in-out infinite;
-}
+/* ─── Portrait Orbit System ────────────────────────────────────────────
+   Four layered elements create a premium rotating light effect:
+     .heroImageHalo    → outermost soft breathing aurora glow
+     .heroImageBg      → thick rotating conic ring (the main stirred light)
+     .heroImageOrbit   → thin bright comet-arc sweeping around
+     .heroImageSpark   → tiny luminous dot that follows the orbit
+   All are decorative (aria-hidden) and respect prefers-reduced-motion.
+*/
 
 @keyframes spin {
   from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  to   { transform: rotate(360deg); }
 }
 
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+@keyframes haloBreathe {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 0.85; transform: scale(1.04); }
+}
+
+/* The spark orbits by rotating a parent that has it offset from center */
+@keyframes sparkOrbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* 1 — Outer soft aurora halo: slow breathe, big blur */
+.heroImageHalo {
+  position: absolute;
+  inset: -56px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(0, 102, 255, 0.55), transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(0, 212, 170, 0.45), transparent 55%),
+    radial-gradient(circle at 70% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
+  filter: blur(28px);
+  opacity: 0.65;
+  animation: haloBreathe 5s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 2 — Rotating conic ring: the "stirred light" the user asked for.
+   The mask carves a ring out of a solid conic gradient so the colors
+   look like a rotating neon ring instead of a filled disc. */
+.heroImageBg {
+  position: absolute;
+  inset: -22px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 102, 255, 0.0) 0deg,
+    rgba(0, 102, 255, 0.95) 60deg,
+    rgba(0, 212, 170, 1) 140deg,
+    rgba(124, 58, 237, 0.9) 220deg,
+    rgba(236, 72, 153, 0.75) 290deg,
+    rgba(0, 102, 255, 0.0) 360deg
+  );
+  /* Ring mask (keeps 10px band, hides the rest) */
+  -webkit-mask: radial-gradient(circle, transparent 58%, #000 60%, #000 68%, transparent 70%);
+          mask: radial-gradient(circle, transparent 58%, #000 60%, #000 68%, transparent 70%);
+  filter: blur(0.6px) drop-shadow(0 0 10px rgba(0, 180, 255, 0.55));
+  animation: spin 8s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 3 — Thin comet arc: a brighter, faster-spinning accent that reads as
+   a sweep of light racing around the portrait. */
+.heroImageOrbit {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 300deg,
+    rgba(255, 255, 255, 0.0) 300deg,
+    rgba(0, 212, 255, 0.95) 335deg,
+    rgba(255, 255, 255, 1) 358deg,
+    transparent 360deg
+  );
+  -webkit-mask: radial-gradient(circle, transparent 63%, #000 64.5%, #000 66.5%, transparent 68%);
+          mask: radial-gradient(circle, transparent 63%, #000 64.5%, #000 66.5%, transparent 68%);
+  filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.9))
+          drop-shadow(0 0 24px rgba(0, 102, 255, 0.6));
+  animation: spin 3.6s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* 4 — Spark dot: a tiny bright point that chases the comet head */
+.heroImageSpark {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: sparkOrbit 3.6s linear infinite;
+  z-index: 3;
+  pointer-events: none;
+}
+.heroImageSpark::before {
+  content: '';
+  position: absolute;
+  top: -17px;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #38bdf8 40%, transparent 70%);
+  box-shadow:
+    0 0 16px 4px rgba(56, 189, 248, 0.9),
+    0 0 32px 10px rgba(0, 102, 255, 0.55);
+}
+
+/* Portrait — raised above the orbit, with a crisp white rim + brand shadow */
 .heroImage {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid var(--background);
-  box-shadow: var(--shadow-xl),
-              0 0 0 1px rgba(0, 102, 255, 0.15),
-              0 30px 60px -20px rgba(0, 102, 255, 0.35);
+  box-shadow:
+    var(--shadow-xl),
+    0 0 0 1px rgba(0, 102, 255, 0.15),
+    0 30px 60px -20px rgba(0, 102, 255, 0.4);
   position: relative;
-  z-index: 1;
+  z-index: 4;
+}
+
+/* Honour the user's reduced-motion preference — slow everything right down */
+@media (prefers-reduced-motion: reduce) {
+  .heroImageBg,
+  .heroImageOrbit,
+  .heroImageSpark,
+  .heroImageHalo {
+    animation: none;
+  }
+  .heroImageHalo { opacity: 0.6; }
 }
 
 .floatingCard {
@@ -200,7 +310,7 @@
   padding: 1rem 1.25rem;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border);
-  z-index: 2;
+  z-index: 5;
 }
 
 .floatingCard1 {

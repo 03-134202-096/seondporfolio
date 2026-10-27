@@ -52,8 +52,16 @@ export default function Hero() {
           </div>
         </div>
         <div className={styles.heroVisual}>
-          <div className={styles.heroImageWrapper}>
-            <div className={styles.heroImageBg} />
+          <div className={styles.heroImageWrapper} aria-hidden="false">
+            {/* Decorative aurora halo — soft, pulsing (outermost layer) */}
+            <div className={styles.heroImageHalo} aria-hidden="true" />
+            {/* Rotating conic-gradient ring — the main "stirred light" */}
+            <div className={styles.heroImageBg} aria-hidden="true" />
+            {/* Fast comet-trail orbit — a bright arc sweeping around */}
+            <div className={styles.heroImageOrbit} aria-hidden="true" />
+            {/* Tiny luminous dot that follows the orbit */}
+            <div className={styles.heroImageSpark} aria-hidden="true" />
+
             <Image
               src="/landingIntro.webp"
               alt="DeepDivers Team - Professional Research and Data Science Experts"

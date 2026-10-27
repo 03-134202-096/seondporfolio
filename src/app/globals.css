@@ -173,25 +173,6 @@ img {
   color: var(--foreground);
 }
 
-/* ─── Skip link (keyboard & screen-reader accessibility) ───────────────── */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 1rem;
-  z-index: 9999;
-  padding: 0.625rem 1rem;
-  background: var(--primary);
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
-  transition: top 0.2s var(--ease-out-expo);
-}
-
-.skip-link:focus {
-  top: 0.75rem;
-  outline: none;
-}
 
 /* Container */
 .container {
