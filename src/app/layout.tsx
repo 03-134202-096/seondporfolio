@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
@@ -17,58 +17,111 @@ const geistMono = Geist_Mono({
 
 const siteUrl = "https://deepdivers.services";
 
+// Viewport & theme-color — split from metadata per Next.js 15+ convention.
+// This ensures correct mobile scaling, dark-mode theme color, and PWA presentation.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0066ff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "DeepDivers | Academic Research, Data Science & AI Services",
+    default:
+      "DeepDivers | Research Paper Writing, Data Analysis, ML/AI & Development Services",
     template: "%s | DeepDivers",
   },
   description:
-    "Expert research paper writing, data analysis, ML/AI solutions & academic services. 90+ services, unlimited revisions, 24/7 support. From $25.",
+    "Hire published researchers & data scientists for research papers, data analysis, ML/AI model training, web scraping, LaTeX formatting, Next.js development & more. 90+ services, unlimited revisions, 24/7 support — from $25.",
+  applicationName: "DeepDivers",
   keywords: [
+    // Core research & academic
     "research paper writing services",
     "academic writing help",
-    "data analysis services",
-    "machine learning freelancer",
-    "AI development services",
-    "statistical analysis expert",
+    "hire someone to write research paper",
+    "Q1 journal paper writing",
+    "research paper editing service",
     "manuscript formatting",
     "thesis writing help",
     "dissertation assistance",
-    "copyediting services",
-    "proofreading services",
-    "LaTeX formatting",
-    "Python data analysis",
-    "deep learning services",
-    "systematic review",
+    "systematic review services",
     "meta-analysis services",
     "literature review writing",
-    "research methodology",
-    "SPSS analysis",
-    "R programming services",
-    "data visualization",
-    "freelance researcher",
-    "academic freelancer",
-    "Upwork data scientist",
-    "Fiverr research writer",
-    "hire someone to write research paper",
-    "professional data analysis help",
-    "ML model training service",
-    "web scraping service Python",
-    "LaTeX typesetting IEEE Springer",
-    "Next.js developer for hire",
-    "AWS deployment service",
-    "academic poster design",
+    "research methodology help",
+    "PRISMA systematic review",
+    "end to end paper publication support",
+    "research proposal writing",
     "grant proposal writing service",
-    "Q1 journal paper writing",
+    "IRB ERB ethics application",
+    "annotated bibliography writing",
+    "research gap analysis",
+    // Editing & formatting
+    "copyediting services",
+    "proofreading services",
+    "English language editing academic",
+    "paraphrasing and rewriting service",
+    "humanizing AI generated text",
     "plagiarism check and removal",
     "citation formatting APA MLA Chicago",
+    "reviewer response letter writing",
+    "LaTeX formatting IEEE Springer Elsevier",
+    "LaTeX typesetting service",
+    "Overleaf setup collaboration",
+    // Data, AI & ML
+    "data analysis services",
+    "statistical analysis expert",
+    "SPSS analysis service",
+    "R programming services",
+    "Python data analysis freelancer",
+    "machine learning freelancer",
+    "deep learning services",
+    "AI development services",
+    "ML model training service",
+    "hyperparameter tuning service",
     "YOLO object detection training",
     "NLP model development",
-    "research paper editing service",
-    "freelance AI developer",
+    "computer vision solutions",
+    "vision transformer ViT development",
+    "graph attention network GAT",
+    "medical AI cancer detection",
+    "radiomics research service",
     "data cleaning preprocessing service",
+    "data annotation for machine learning",
+    "data visualization Python",
+    "GPU experiment execution service",
+    // Scraping & dev
+    "web scraping service Python",
+    "Scrapy BeautifulSoup Selenium",
+    "e-commerce scraping service",
+    "Next.js developer for hire",
+    "Nest.js backend developer",
+    "AWS deployment service",
+    "AWS ECS S3 ElastiCache",
+    "portfolio website development",
+    "API development integration",
+    "database design optimization",
+    // Writing & content
+    "academic poster design",
     "presentation slides design academic",
+    "white paper writing service",
+    "case study writing",
+    "medical healthcare article writing",
+    "blog writing SEO content",
+    // Platform-targeted
+    "freelance researcher Pakistan",
+    "freelance AI developer",
+    "Upwork data scientist",
+    "Fiverr research writer",
+    "freelance academic writer",
+    "DeepDivers services",
+    "Asad Farooq researcher",
   ],
   authors: [{ name: "DeepDivers Team", url: siteUrl }],
   creator: "DeepDivers",
@@ -80,32 +133,39 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: siteUrl,
+    types: {
+      "application/rss+xml": [
+        { url: "/blog/rss.xml", title: "DeepDivers Blog RSS Feed" },
+      ],
+    },
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    title: "DeepDivers | Academic Research, Data Science & AI Services",
+    title:
+      "DeepDivers | Research Paper Writing, Data Analysis, ML/AI & Development Services",
     description:
-      "Professional freelance team offering research papers, data analysis, ML/AI solutions, and content services. 100% satisfaction guarantee. Available 24/7.",
+      "Published researchers & data scientists offering research papers, data analysis, ML/AI, web scraping, LaTeX, and development services. Unlimited revisions. Refund guarantee. Available 24/7 worldwide.",
     siteName: "DeepDivers",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "DeepDivers - Professional Research & Data Science Services",
+        alt: "DeepDivers — Professional Research, Data Science & AI Services",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DeepDivers | Research & Data Science Services",
+    title: "DeepDivers | Research, Data Science & AI Services",
     description:
-      "Professional research papers, AI/ML solutions, data analysis & content services. 100% satisfaction guarantee.",
+      "Research papers, AI/ML, data analysis, LaTeX & dev services from published researchers. 100% satisfaction. From $25.",
     images: ["/og-image.png"],
     creator: "@deepdivers",
+    site: "@deepdivers",
   },
   robots: {
     index: true,
@@ -123,15 +183,37 @@ export const metadata: Metadata = {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
       { url: "/icon.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    shortcut: ["/favicon.ico"],
   },
   manifest: "/manifest.json",
   category: "technology",
-  // IMPORTANT: Add your real Google Search Console verification code here after setup.
-  // verification: {
-  //   google: "your-actual-google-verification-code",
-  // },
+  // Replace the placeholder strings below after verifying each property in the
+  // respective webmaster tool (Google Search Console, Bing Webmaster Tools, Yandex Webmaster).
+  // Google Search Console: https://search.google.com/search-console
+  // Bing Webmaster Tools: https://www.bing.com/webmasters
+  // Yandex Webmaster: https://webmaster.yandex.com
+  verification: {
+    // google: "REPLACE_WITH_GOOGLE_VERIFICATION_CODE",
+    // other: {
+    //   "msvalidate.01": "REPLACE_WITH_BING_VERIFICATION_CODE",
+    //   "yandex-verification": "REPLACE_WITH_YANDEX_VERIFICATION_CODE",
+    //   "facebook-domain-verification": "REPLACE_WITH_FACEBOOK_VERIFICATION_CODE",
+    // },
+  },
+  other: {
+    // Help Pinterest / LinkedIn / X parsers get the right description.
+    "og:locale:alternate": ["en_GB", "en_IN", "en_CA", "en_AU"],
+    "msapplication-TileColor": "#0066ff",
+    "msapplication-TileImage": "/icon-192.png",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
+    "apple-mobile-web-app-title": "DeepDivers",
+    "mobile-web-app-capable": "yes",
+  },
 };
 
 export default function RootLayout({
@@ -365,14 +447,37 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
   return (
-    <html lang="en">
+    <html lang="en" dir="ltr">
       <head>
+        {/* Preconnect to critical third-party origins for Core Web Vitals (LCP) */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        {/* Preload the LCP hero image so it starts fetching before CSS resolves it */}
+        <link
+          rel="preload"
+          as="image"
+          href="/landingIntro.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {/* Accessible skip-link improves keyboard navigation + Lighthouse score */}
+        <a href="#hero" className="skip-link">
+          Skip to main content
+        </a>
         {children}
       </body>
       {gaId && <GoogleAnalytics gaId={gaId} />}

@@ -1,7 +1,20 @@
 .footer {
-  background: var(--secondary);
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 0%, rgba(0, 102, 255, 0.14), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 0%, rgba(0, 212, 170, 0.08), transparent 60%),
+    var(--secondary);
   color: #ffffff;
   padding: 4rem 0 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.4), rgba(0, 212, 170, 0.4), transparent);
 }
 
 .footerTop {
@@ -41,16 +54,25 @@
   width: 40px;
   height: 40px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.125rem;
-  transition: var(--transition);
+  color: rgba(255, 255, 255, 0.8);
+  transition: transform 0.25s var(--ease-out-expo, ease),
+              background 0.25s ease,
+              color 0.25s ease,
+              box-shadow 0.25s ease;
 }
 
 .footerSocialLink:hover {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, #0a86ff 100%);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -8px rgba(0, 102, 255, 0.5);
+  border-color: transparent;
 }
 
 .footerColumn h4 {

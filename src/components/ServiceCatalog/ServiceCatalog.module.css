@@ -39,18 +39,23 @@
   width: 100%;
   padding: 1rem 3rem 1rem 3rem;
   font-size: 1rem;
-  border: 2px solid var(--border);
+  border: 1.5px solid var(--border);
   border-radius: var(--radius-full);
   background: var(--card-bg);
   color: var(--foreground);
   transition: var(--transition);
   font-family: inherit;
+  box-shadow: var(--shadow-xs);
+}
+
+.searchInput:hover {
+  border-color: var(--border-strong, var(--border));
 }
 
 .searchInput:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 4px var(--primary-light);
+  box-shadow: var(--shadow-ring, 0 0 0 4px var(--primary-light)), var(--shadow-sm);
 }
 
 .searchInput::placeholder {
@@ -187,21 +192,28 @@
   transition: var(--transition);
   color: var(--foreground-muted);
   font-family: inherit;
+  box-shadow: var(--shadow-xs);
+  letter-spacing: -0.005em;
 }
 
 .categoryTab:hover {
   border-color: var(--primary);
   color: var(--primary);
+  background: var(--primary-light);
+  transform: translateY(-1px);
 }
 
 .categoryTabActive {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, #0a86ff 100%);
+  border-color: transparent;
   color: #ffffff;
+  box-shadow: var(--shadow-brand, var(--shadow-md));
 }
 
 .categoryTabActive:hover {
   color: #ffffff;
+  background: linear-gradient(135deg, var(--primary) 0%, #0a86ff 100%);
+  transform: translateY(-1px);
 }
 
 .categoryCount {
@@ -299,31 +311,72 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 1.25rem 1.5rem;
-  transition: var(--transition);
+  transition: transform 0.28s var(--ease-out-expo, ease),
+              box-shadow 0.28s ease,
+              border-color 0.28s ease;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  box-shadow: var(--shadow-xs);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Elite gradient top-edge accent — revealed on hover */
+.serviceCard::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent, #00d4aa));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* Subtle radial glow on hover */
+.serviceCard::after {
+  content: '';
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 102, 255, 0.10), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .serviceCard:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--primary) 55%, var(--border));
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
 }
+
+.serviceCard:hover::before { opacity: 1; }
+.serviceCard:hover::after { opacity: 1; }
 
 .popularTag {
   position: absolute;
-  top: -8px;
+  top: -1px;
   right: 12px;
-  padding: 3px 10px;
+  padding: 4px 11px;
   background: linear-gradient(135deg, #f59e0b, #d97706);
   color: #ffffff;
   font-size: 0.625rem;
   font-weight: 700;
-  border-radius: 8px;
+  border-radius: 0 0 8px 8px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
+  box-shadow: 0 4px 10px -2px rgba(245, 158, 11, 0.4);
+  z-index: 2;
+}
+
+.popularTag::before {
+  content: '⭐';
+  margin-right: 3px;
+  font-size: 0.6875rem;
 }
 
 .serviceName {
@@ -331,6 +384,7 @@
   font-weight: 600;
   color: var(--foreground);
   line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
 .serviceMeta {
@@ -396,17 +450,20 @@
   font-weight: 600;
   color: var(--primary);
   background: var(--primary-light);
-  border: none;
+  border: 1px solid transparent;
   border-radius: var(--radius-md);
   text-align: center;
   cursor: pointer;
   transition: var(--transition);
   font-family: inherit;
+  letter-spacing: -0.005em;
 }
 
 .orderBtn:hover {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, #0a86ff 100%);
   color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-brand, var(--shadow-sm));
 }
 
 .whatsappBtn {
@@ -477,9 +534,13 @@
 .catalogCta {
   text-align: center;
   margin-top: 3rem;
-  padding: 2rem;
-  background: var(--primary-light);
-  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
+  background:
+    radial-gradient(ellipse 100% 100% at 50% 0%, rgba(0, 102, 255, 0.08), transparent 70%),
+    var(--primary-light);
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, var(--border));
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xs);
 }
 
 .catalogCta p {
@@ -490,19 +551,20 @@
 
 .catalogCtaBtn {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.75rem;
   font-size: 0.875rem;
   font-weight: 600;
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, #0a86ff 100%);
   color: #ffffff;
   border-radius: var(--radius-md);
   text-decoration: none;
   transition: var(--transition);
+  box-shadow: var(--shadow-brand, var(--shadow-md));
 }
 
 .catalogCtaBtn:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 24px 48px -18px rgba(0, 102, 255, 0.55);
 }
 
 /* Custom Service Card */
