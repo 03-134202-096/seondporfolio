@@ -38,6 +38,20 @@ export default function robots(): MetadataRoute.Robots {
         allow: ['/'],
         disallow: ['/api/'],
       },
+      // Google AdSense crawlers — explicit allow so Auto ads can serve
+      // and the AdSense policy crawler can verify page content.
+      {
+        userAgent: 'Mediapartners-Google',
+        allow: ['/'],
+      },
+      {
+        userAgent: 'AdsBot-Google',
+        allow: ['/'],
+      },
+      {
+        userAgent: 'AdsBot-Google-Mobile',
+        allow: ['/'],
+      },
       // AI/training crawlers — block to protect proprietary catalog content.
       // Comment any out if the user wants to allow it.
       { userAgent: 'GPTBot', disallow: ['/'] },

@@ -1,7 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 import "./globals.css";
+
+// Google AdSense publisher ID — Auto ads are enabled from the AdSense dashboard,
+// so only this single loader script is required site-wide. Do not add duplicate
+// loader tags or hard-coded ad units elsewhere.
+const ADSENSE_CLIENT_ID = "ca-pub-6022663985859466";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -458,6 +464,7 @@ export default function RootLayout({
         />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
 
         {/* Preload the LCP hero image so it starts fetching before CSS resolves it */}
         <link
@@ -471,6 +478,16 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
+        {/* Google AdSense loader — Auto ads are enabled from the AdSense dashboard.
+            Loads once site-wide; do not duplicate this tag or add manual ad units. */}
+        <Script
+          id="google-adsense"
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>

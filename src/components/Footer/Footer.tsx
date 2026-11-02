@@ -181,6 +181,8 @@ export default function Footer() {
             <span className={styles.footerLegalSep}>•</span>
             <Link href="/terms">Terms & Conditions</Link>
             <span className={styles.footerLegalSep}>•</span>
+            <Link href="/privacy">Privacy Policy</Link>
+            <span className={styles.footerLegalSep}>•</span>
             <Link href="/terms#refund">Refund & Revision Policy</Link>
             <span className={styles.footerLegalSep}>•</span>
             <span>Secure Payments via Payoneer • Visa • Mastercard • Bank Transfer</span>
