@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect, FormEvent, ChangeEvent } from 'react';
 import { sendGAEvent } from '@next/third-parties/google';
 import { SITE, whatsappLink } from '@/config/site';
+import { SOCIAL_PROFILES } from '@/config/social';
+import SocialIcon from '@/components/SocialIcon/SocialIcon';
 import styles from './Contact.module.css';
 
 const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4MB in bytes
@@ -215,22 +217,17 @@ export default function Contact({ defaultService = '' }: ContactProps) {
             <div className={styles.platforms}>
               <h4>Find Us On</h4>
               <div className={styles.platformsList}>
-                <a
-                  href={SITE.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.platformBadge}
-                >
-                  🔵 LinkedIn
-                </a>
-                <a
-                  href={SITE.social.youtube}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.platformBadge}
-                >
-                  🔴 YouTube
-                </a>
+                {SOCIAL_PROFILES.map((profile) => (
+                  <a
+                    key={profile.network}
+                    href={profile.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.platformBadge}
+                  >
+                    <SocialIcon network={profile.network} size={14} /> {profile.label}
+                  </a>
+                ))}
                 <a
                   href="https://github.com/03-134202-096"
                   target="_blank"

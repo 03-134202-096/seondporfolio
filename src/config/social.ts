@@ -1,0 +1,19 @@
+/**
+ * Public DeepDivers profiles, in display order.
+ * Add a profile here when it goes live: the footer icons, the contact section
+ * and the Organization sameAs structured data all read this list.
+ */
+
+export type SocialNetwork = 'linkedin' | 'youtube' | 'tiktok' | 'facebook' | 'instagram' | 'x';
+
+export interface SocialProfile {
+  network: SocialNetwork;
+  label: string;
+  url: string;
+}
+
+export const SOCIAL_PROFILES: SocialProfile[] = [
+  { network: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/company/deepdivers-services/' },
+  { network: 'youtube', label: 'YouTube', url: 'https://www.youtube.com/@teamdeepdivers' },
+  { network: 'tiktok', label: 'TikTok', url: 'https://www.tiktok.com/@teamdeepdivers' },
+];
