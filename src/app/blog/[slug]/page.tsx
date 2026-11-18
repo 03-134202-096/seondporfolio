@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const shareImage = shareImageFor(post.slug, post.coverImage);
 
   return {
-    title: post.title,
+    title: post.seoTitle ?? post.title,
     description: post.metaDescription,
     authors: [{ name: post.author, url: SITE.founder.url }],
     alternates: {

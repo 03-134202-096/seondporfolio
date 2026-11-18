@@ -7,8 +7,10 @@
 export interface BlogPost {
   /** URL-safe slug — used as /blog/[slug] */
   slug: string;
-  /** Post title (also used as the <title> tag) */
+  /** Post title (shown as the H1) */
   title: string;
+  /** Shorter <title> for search results, under 47 characters (" | DeepDivers" is added) */
+  seoTitle?: string;
   /** Short excerpt shown on the listing page (max ~160 chars for SEO) */
   excerpt: string;
   /** Full post content in HTML (rendered inside article body) */
@@ -35,8 +37,114 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'how-to-report-pls-sem-results-smartpls',
+    title: 'How to Report PLS-SEM Results from SmartPLS: A Step-by-Step Checklist',
+    seoTitle: 'How to Report PLS-SEM (SmartPLS) Results',
+    excerpt:
+      'A practical checklist for reporting PLS-SEM results in a thesis or journal paper: measurement model, discriminant validity, structural model and predictive power, with the thresholds reviewers expect.',
+    coverImage: '/blogsThumnails/pls-sem-reporting.webp',
+    coverImageAlt: 'Checklist for reporting PLS-SEM results from SmartPLS',
+    author: 'Asad Farooq',
+    publishedAt: '2026-11-18',
+    readingTime: '9 min read',
+    category: 'Data Science',
+    metaDescription:
+      'How to report PLS-SEM results from SmartPLS step by step: loadings, reliability, AVE, HTMT, VIF, path coefficients, R², f² and PLSpredict, with sources.',
+    keywords: [
+      'how to report PLS-SEM results',
+      'SmartPLS results reporting',
+      'PLS-SEM reporting guidelines',
+      'HTMT discriminant validity',
+      'composite reliability AVE threshold',
+      'PLS-SEM measurement model assessment',
+      'PLS-SEM structural model assessment',
+      'PLSpredict',
+    ],
+    content: `
+      <p>Partial least squares structural equation modeling (PLS-SEM) is widely used in management, marketing, information systems, education and health research, and SmartPLS is the tool most students and researchers use to run it. Running the model is the easy part. Reporting it so that examiners and reviewers can check every claim is where many theses and manuscripts lose marks or get a major revision.</p>
+      <p>This checklist follows the reporting guidelines of <strong>Hair, Risher, Sarstedt and Ringle (2019)</strong>, the most widely cited paper on how to report PLS-SEM, plus a few later recommendations. Work through it in order: first show that your measurement model is sound, then interpret the structural model.</p>
+
+      <h2 id="before-you-start">Before you start: report your setup</h2>
+      <p>Reviewers need to know how the results were produced. In your methods section, state:</p>
+      <ul>
+        <li>The software and version (for example, SmartPLS 4) and your sample size after data cleaning.</li>
+        <li>Why PLS-SEM suits your study (for example, prediction-oriented aims, a complex model, or formative constructs). Hair et al. (2019) list the situations where PLS-SEM is the appropriate choice.</li>
+        <li>How missing values were handled and whether any cases were removed.</li>
+        <li>The algorithm settings (weighting scheme, maximum iterations, stop criterion) and the number of bootstrap subsamples used for significance testing.</li>
+        <li>Whether each construct is measured <strong>reflectively</strong> or <strong>formatively</strong>, because they are assessed differently.</li>
+      </ul>
+
+      <h2 id="step-1-reflective-measurement-model">Step 1: Assess the reflective measurement model</h2>
+      <p>For reflectively measured constructs, report four things. The thresholds below are the ones given by Hair et al. (2019).</p>
+      <table>
+        <thead>
+          <tr><th>What to report</th><th>Metric</th><th>Guideline</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Indicator reliability</td><td>Outer loadings</td><td>0.708 or higher (the construct explains at least half of the indicator's variance)</td></tr>
+          <tr><td>Internal consistency reliability</td><td>Composite reliability (ρ<sub>c</sub>), ρ<sub>A</sub>, Cronbach's alpha</td><td>0.70 to 0.90 is satisfactory to good; 0.60 to 0.70 is acceptable in exploratory research; above 0.95 suggests redundant items</td></tr>
+          <tr><td>Convergent validity</td><td>Average variance extracted (AVE)</td><td>0.50 or higher</td></tr>
+          <tr><td>Discriminant validity</td><td>Heterotrait-monotrait ratio (HTMT)</td><td>Below 0.90 for conceptually similar constructs, below 0.85 for conceptually distinct ones</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Weak loadings.</strong> An indicator below 0.708 is not automatically deleted. Keep it if reliability and AVE are already acceptable and the item matters for the meaning of the construct. If you remove items, say which ones and why.</p>
+      <p><strong>Discriminant validity.</strong> Report the HTMT matrix rather than relying only on the older Fornell-Larcker criterion, which Henseler, Ringle and Sarstedt (2015) showed often fails to detect discriminant validity problems. You can also report bootstrap confidence intervals to show that each HTMT value is significantly below the threshold.</p>
+
+      <h2 id="step-2-formative-measurement-model">Step 2: Assess formative constructs (if you have any)</h2>
+      <p>Formative indicators are not expected to correlate, so loadings, alpha and AVE do not apply. Instead, report:</p>
+      <ul>
+        <li><strong>Convergent validity</strong> through a redundancy analysis, correlating the formative construct with a global single-item or reflective measure of the same concept.</li>
+        <li><strong>Collinearity</strong> between indicators using the variance inflation factor (VIF). Values close to 3 or lower are unproblematic.</li>
+        <li><strong>Significance and relevance of the indicator weights</strong>, tested with bootstrapping.</li>
+      </ul>
+
+      <h2 id="step-3-structural-model">Step 3: Assess the structural model</h2>
+      <p>Once the measurement model is established, report the structural model in this order.</p>
+      <h3>Collinearity</h3>
+      <p>Report the inner-model VIF values. Values close to 3 and lower are ideal; higher values can bias the path coefficients.</p>
+      <h3>Path coefficients and hypotheses</h3>
+      <p>For each hypothesis, report the standardised path coefficient (β), the bootstrapped t-value and p-value, and preferably the 95% confidence interval. A confidence interval that does not include zero supports the hypothesis and tells readers more than a p-value alone.</p>
+      <h3>Explanatory power</h3>
+      <p>Report R² for every endogenous construct. As a rough guide, 0.75, 0.50 and 0.25 are often described as substantial, moderate and weak, but what counts as high depends on your discipline. Report f² effect sizes too: 0.02, 0.15 and 0.35 indicate small, medium and large effects.</p>
+      <h3>Predictive power</h3>
+      <p>Hair et al. (2019) recommend assessing out-of-sample prediction with <strong>PLSpredict</strong> (Shmueli et al., 2019). Report Q²<sub>predict</sub> for the key target construct's indicators (values above zero are a minimum) and compare the PLS-SEM prediction errors with a simple linear model benchmark.</p>
+
+      <h2 id="results-tables">Results tables reviewers expect</h2>
+      <p>Most theses and papers need three tables:</p>
+      <ol>
+        <li><strong>Measurement model:</strong> construct, item, loading, Cronbach's alpha, ρ<sub>A</sub>, composite reliability and AVE.</li>
+        <li><strong>Discriminant validity:</strong> the HTMT matrix, with confidence intervals if you report them.</li>
+        <li><strong>Structural model:</strong> hypothesis, path, β, t-value, p-value, 95% confidence interval, f² and the decision (supported or not supported), plus R² and Q²<sub>predict</sub> values.</li>
+      </ol>
+      <p>A results sentence can then follow a simple pattern: <em>"Perceived usefulness had a significant positive effect on intention to use (β = [value], t = [value], p = [value], 95% CI [lower, upper]), supporting H1."</em> Fill in your own values from the bootstrapping output.</p>
+
+      <h2 id="common-mistakes">Common mistakes to avoid</h2>
+      <ul>
+        <li><strong>Reporting the GoF index as model fit.</strong> The goodness-of-fit index proposed for PLS path modeling cannot separate valid from invalid models (Henseler &amp; Sarstedt, 2013), so don't rely on it.</li>
+        <li><strong>Treating SRMR as proof of a good model.</strong> Hair et al. (2019) advise caution with model fit measures in PLS-SEM; report them if your field expects it, but base your conclusions on the criteria above.</li>
+        <li><strong>Using only Fornell-Larcker</strong> for discriminant validity instead of HTMT.</li>
+        <li><strong>Leaving out the bootstrapping settings</strong>, which makes your p-values impossible to check.</li>
+        <li><strong>Reporting significance without effect sizes.</strong> With a large sample, small effects can still be significant.</li>
+        <li><strong>Deleting items just to reach thresholds</strong> without considering what the construct is supposed to measure.</li>
+      </ul>
+
+      <h2 id="get-help">Need a second pair of eyes?</h2>
+      <p>If you have run your model and want it checked, or you need help setting it up in SmartPLS, our <a href="/services/statistical-analysis">statistical analysis service</a> can run or review the analysis, produce the tables above and explain every number, so you can write and defend the chapter yourself. For choosing between tools, see our guide to <a href="/blog/spss-vs-python-vs-r-best-tool-data-analysis-2026">SPSS vs Python vs R</a>.</p>
+
+      <h2 id="references">References</h2>
+      <ul>
+        <li>Hair, J. F., Risher, J. J., Sarstedt, M., &amp; Ringle, C. M. (2019). When to use and how to report the results of PLS-SEM. <em>European Business Review, 31</em>(1), 2–24. <a href="https://doi.org/10.1108/EBR-11-2018-0203" rel="noopener" target="_blank">https://doi.org/10.1108/EBR-11-2018-0203</a></li>
+        <li>Henseler, J., Ringle, C. M., &amp; Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. <em>Journal of the Academy of Marketing Science, 43</em>(1), 115–135. <a href="https://doi.org/10.1007/s11747-014-0403-8" rel="noopener" target="_blank">https://doi.org/10.1007/s11747-014-0403-8</a></li>
+        <li>Henseler, J., &amp; Sarstedt, M. (2013). Goodness-of-fit indices for partial least squares path modeling. <em>Computational Statistics, 28</em>(2), 565–580. <a href="https://doi.org/10.1007/s00180-012-0317-1" rel="noopener" target="_blank">https://doi.org/10.1007/s00180-012-0317-1</a></li>
+        <li>Shmueli, G., Sarstedt, M., Hair, J. F., Cheah, J.-H., Ting, H., Vaithilingam, S., &amp; Ringle, C. M. (2019). Predictive model assessment in PLS-SEM: Guidelines for using PLSpredict. <em>European Journal of Marketing, 53</em>(11), 2322–2347. <a href="https://doi.org/10.1108/EJM-02-2019-0189" rel="noopener" target="_blank">https://doi.org/10.1108/EJM-02-2019-0189</a></li>
+        <li>SmartPLS. Discriminant validity assessment (documentation). <a href="https://smartpls.com/documentation/algorithms-and-techniques/discriminant-validity-assessment" rel="noopener" target="_blank">smartpls.com</a></li>
+      </ul>
+    `,
+  },
+  {
     slug: 'ai-in-healthcare-2026-transforming-medical-research',
     title: 'AI in Healthcare 2026: How Artificial Intelligence Is Transforming Medical Research',
+    seoTitle: 'AI in Healthcare 2026: Research Trends',
     excerpt:
       'Explore how AI is revolutionizing healthcare — from drug discovery and diagnostics to personalized medicine — and what it means for academic researchers.',
     coverImage: '/blogsThumnails/AI in Healthcare 2026.webp',
@@ -136,6 +244,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'large-language-models-education-research-opportunities-2026',
     title: 'Large Language Models in Education: Research Opportunities and Ethical Challenges in 2026',
+    seoTitle: 'LLMs in Education: Research Gaps and Ethics',
     excerpt:
       'LLMs like GPT-5 and Gemini are reshaping education. Discover the hottest research topics, ethical debates, and publication opportunities in this booming field.',
     coverImage: '/blogsThumnails/Large Language Models.webp',
@@ -225,6 +334,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'how-to-avoid-predatory-journals-2026-complete-guide',
     title: 'How to Identify and Avoid Predatory Journals — Complete Guide for Researchers (2026)',
+    seoTitle: 'How to Identify and Avoid Predatory Journals',
     excerpt:
       'Predatory journals can destroy your academic reputation. Learn how to spot them, verify legitimate journals, and protect your research from exploitation.',
     coverImage: '/blogsThumnails/How to Identify and.webp',
@@ -336,6 +446,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'spss-vs-python-vs-r-best-tool-data-analysis-2026',
     title: 'SPSS vs Python vs R: Which Is the Best Tool for Your Data Analysis in 2026?',
+    seoTitle: 'SPSS vs Python vs R for Data Analysis (2026)',
     excerpt:
       'A detailed comparison of SPSS, Python, and R for academic research data analysis. Learn which tool fits your research needs, skill level, and journal expectations.',
     coverImage: '/blogsThumnails/SPSS vs Python vs R.webp',
@@ -502,6 +613,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'how-to-write-systematic-review-prisma-2026',
     title: 'How to Write a Systematic Review Using PRISMA 2020 — Step-by-Step Guide',
+    seoTitle: 'How to Write a Systematic Review (PRISMA 2020)',
     excerpt:
       'Master the systematic review process with PRISMA 2020 guidelines. From protocol registration to meta-analysis, learn every step for a successful publication.',
     coverImage: '/blogsThumnails/How to Write a Systematic.webp',
@@ -673,6 +785,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'how-to-respond-peer-review-comments-effectively',
     title: 'How to Respond to Peer Review Comments — Strategies That Get Your Paper Accepted',
+    seoTitle: 'How to Respond to Peer Review Comments',
     excerpt:
       'Learn the art of responding to reviewer feedback. Proven strategies, templates, and real examples to turn a "Major Revision" into an acceptance.',
     coverImage: '/blogsThumnails/How to Respond to Peer Review Comment.webp',
@@ -777,6 +890,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'research-ethics-ai-generated-content-academic-publishing-2026',
     title: 'Research Ethics and AI-Generated Content: What Every Academic Must Know in 2026',
+    seoTitle: 'AI-Generated Content and Research Ethics',
     excerpt:
       'AI tools in research raise critical ethical questions. Understand journal policies on AI use, disclosure requirements, and how to stay compliant.',
     coverImage: '/blogsThumnails/Research Ethics and AI-Generated.webp',
@@ -896,6 +1010,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'how-to-publish-research-paper-q1-journal-2026-guide',
     title: 'How to Write and Publish a Research Paper in a Q1 Journal — Complete Guide (2026)',
+    seoTitle: 'How to Publish a Paper in a Q1 Journal (2026)',
     excerpt:
       'A step-by-step guide covering topic selection, literature review, methodology, writing, formatting, journal selection, and submission for Q1 publication.',
     coverImage: '/blogsThumnails/How to Write and Publish.webp',

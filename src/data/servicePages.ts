@@ -120,7 +120,7 @@ export const servicePages: ServicePage[] = [
         answer: 'Yes. Data is used only for your project, never shared, and deleted on request. Please remove names or other direct identifiers before sending; we can sign an NDA if required.',
       },
     ],
-    relatedGuides: ['spss-vs-python-vs-r-best-tool-data-analysis-2026'],
+    relatedGuides: ['how-to-report-pls-sem-results-smartpls', 'spss-vs-python-vs-r-best-tool-data-analysis-2026'],
   },
   {
     slug: 'academic-editing-proofreading',

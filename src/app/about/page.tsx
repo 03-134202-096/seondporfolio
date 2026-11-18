@@ -3,12 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+import { founderPerson } from '@/config/site';
 import styles from './about.module.css';
 
 export const metadata: Metadata = {
-  title: 'About Us — Expert Research, Data Science & AI Team',
+  title: 'About DeepDivers: Published Research Team',
   description:
-    'Meet DeepDivers — published researchers & data scientists offering 90+ services worldwide. Unlimited revisions, 24/7 support. From $25.',
+    'Meet DeepDivers: a research support team led by published AI researcher Asad Farooq, helping students and researchers worldwide. You stay the author.',
   keywords: [
     'about DeepDivers',
     'freelance research team',
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About DeepDivers — Expert Research & Data Science Team',
     description:
-      'Published researchers and experienced professionals offering 90+ services worldwide. Unlimited revisions, refund guarantee.',
+      'A research support team led by published AI researcher Asad Farooq: statistics, editing, formatting, systematic reviews and ML research.',
     url: 'https://deepdivers.services/about',
     type: 'website',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -60,10 +61,8 @@ function AboutPageJsonLd() {
         ],
       },
       {
-        '@type': 'Person',
-        name: 'Asad Farooq',
+        ...founderPerson,
         jobTitle: 'Founder & Team Lead',
-        worksFor: { '@id': `${siteUrl}/#organization` },
         description:
           'Computer science graduate with a strong background in AI, machine learning, academic publishing, and full-stack development.',
         knowsAbout: [
@@ -77,7 +76,6 @@ function AboutPageJsonLd() {
           'AWS',
         ],
         image: `${siteUrl}/ProfilePicture.webp`,
-        url: siteUrl,
       },
     ],
   };
@@ -101,11 +99,11 @@ const guarantees = [
     icon: '💰',
     title: 'Refund Guarantee',
     description:
-      'If we fail to deliver what was promised or miss the agreed deadline, you receive a full or partial refund. No questions asked.',
+      'If we fail to deliver what was agreed or miss the deadline for reasons within our control, you receive a full or partial refund under our Refund Policy.',
   },
   {
     icon: '🔒',
-    title: '100% Confidential',
+    title: 'Confidential',
     description:
       'Your data, research, and project details are strictly private. We never share, publish, or reuse client work.',
   },
@@ -113,16 +111,16 @@ const guarantees = [
     icon: '⏱️',
     title: 'On-Time Delivery',
     description:
-      'Every project comes with a clear timeline. We commit to deadlines and deliver — or your money back.',
+      'Every project comes with a clear timeline agreed before work starts, and we keep you updated if anything changes.',
   },
 ];
 
 const howItWorks = [
   {
     step: '01',
-    title: 'Hand Over Your Project',
+    title: 'Share Your Brief',
     description:
-      'Submit your requirements through our platform. Describe the task, attach files, set your budget and timeline.',
+      'Send your requirements, files, budget and deadline through the quote form, email or WhatsApp. An NDA is available on request.',
   },
   {
     step: '02',
@@ -147,7 +145,7 @@ const howItWorks = [
 const stats = [
   { value: '90+', label: 'Professional Services' },
   { value: '190+', label: 'Clients Worldwide' },
-  { value: '100%', label: 'Satisfaction Guarantee' },
+  { value: '5', label: 'Peer-Reviewed Papers' },
   { value: '24/7', label: 'Support Available' },
 ];
 
@@ -164,15 +162,16 @@ export default function AboutPage() {
             <div className={styles.heroContent}>
               <span className={styles.badge}>About DeepDivers</span>
               <h1 className={styles.heroTitle}>
-                Your Tasks. <span className={styles.highlight}>Our Experts.</span> Done Right.
+                Published researchers. <span className={styles.highlight}>Practical research support.</span>
               </h1>
               <p className={styles.heroDescription}>
-                DeepDivers is a professional task-handoff platform. You delegate your research, 
-                data science, AI, and development projects to us — and we assign dedicated experts 
-                who deliver with precision, on time, every time.
+                DeepDivers is a research support team led by Asad Farooq, an AI researcher with
+                five peer-reviewed papers. We help students, researchers and organisations worldwide
+                with statistics, editing, formatting, systematic reviews and machine learning
+                experiments, and you stay the author of your work.
               </p>
               <div className={styles.heroButtons}>
-                <Link href="/#service-catalog" className={styles.btnPrimary}>
+                <Link href="/services" className={styles.btnPrimary}>
                   Browse Services →
                 </Link>
                 <Link href="/#contact" className={styles.btnSecondary}>
@@ -205,15 +204,16 @@ export default function AboutPage() {
             <div className={styles.missionContent}>
               <h2 className={styles.sectionTitle}>Our Mission</h2>
               <p className={styles.missionText}>
-                We believe that brilliant ideas should never be held back by the complexity 
-                of execution. Whether you&apos;re a researcher needing a manuscript formatted for 
-                a top-tier journal, a student working on a thesis, or a business requiring 
-                AI-driven data solutions — <strong>you shouldn&apos;t have to do it all yourself</strong>.
+                We believe good research deserves clear analysis, clean writing and correct
+                formatting. Whether you&apos;re preparing a manuscript for a top-tier journal,
+                analysing thesis data, running a systematic review or building an AI model, we
+                support you at the steps that slow you down, while <strong>the ideas, the writing
+                and the credit stay yours</strong>.
               </p>
               <p className={styles.missionText}>
-                DeepDivers exists to bridge the gap between your vision and professional-grade 
-                execution. Hand over your project, and let our dedicated team of researchers, 
-                data scientists, and developers bring it to life.
+                We work with clients across time zones, quote in US dollars, keep every file
+                confidential, and explain our work so you can present and defend it with
+                confidence.
               </p>
             </div>
             <div className={styles.statsGrid}>
@@ -328,13 +328,13 @@ export default function AboutPage() {
         {/* CTA */}
         <section className={styles.cta}>
           <div className={styles.container}>
-            <h2 className={styles.ctaTitle}>Ready to Hand Over Your Project?</h2>
+            <h2 className={styles.ctaTitle}>Ready to Get Started?</h2>
             <p className={styles.ctaDescription}>
-              Browse our catalog of 90+ services, get a free quote, and let our experts 
-              handle the rest. No commitment required.
+              Browse our services, get a free quote within 24 hours, and work with published
+              researchers. No commitment required.
             </p>
             <div className={styles.ctaButtons}>
-              <Link href="/#service-catalog" className={styles.btnPrimary}>
+              <Link href="/services" className={styles.btnPrimary}>
                 Browse Services →
               </Link>
               <Link href="/#contact" className={styles.btnSecondary}>
