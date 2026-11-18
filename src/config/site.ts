@@ -33,7 +33,11 @@ export const SITE = {
   ogImage: '/og-image.png',
 
   /** Verified public profiles. Add each social profile here as it goes live. */
-  sameAs: [] as string[],
+  sameAs: ['https://www.youtube.com/@teamdeepdivers'] as string[],
+
+  social: {
+    youtube: 'https://www.youtube.com/@teamdeepdivers',
+  },
 
   founder: {
     name: 'Asad Farooq',
