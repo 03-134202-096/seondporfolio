@@ -7,21 +7,21 @@ import styles from './privacy.module.css';
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
-    'DeepDivers Privacy Policy — how we collect, use, and protect your personal information, and the third-party services (including Google AdSense, Google Analytics, Payoneer, Resend) that power this site.',
+    'DeepDivers Privacy Policy — how we collect, use, and protect your personal information, and the third-party services (including Google Analytics, Payoneer and Resend) that power this site.',
   alternates: {
     canonical: 'https://deepdivers.services/privacy',
   },
   openGraph: {
     title: 'Privacy Policy | DeepDivers',
     description:
-      'How DeepDivers collects, uses, and protects your personal data. Includes disclosures for Google AdSense, Google Analytics, Payoneer, and other third-party services.',
+      'How DeepDivers collects, uses, and protects your personal data. Includes disclosures for Google Analytics, Payoneer, and other third-party services.',
     url: 'https://deepdivers.services/privacy',
     type: 'website',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
 };
 
-const EFFECTIVE_DATE = 'November 2, 2026';
+const EFFECTIVE_DATE = 'November 18, 2026';
 
 type ListItem = { title: string; description: string };
 
@@ -81,12 +81,12 @@ const sections: Section[] = [
       {
         title: 'Automatically collected technical information',
         description:
-          'When you visit the Site, we and our third-party service providers automatically receive certain information from your browser and device: IP address, approximate geographic location (country/region), browser type and version, operating system, pages viewed, referring URL, device identifiers set by cookies, and timestamps. This information is used for analytics, security, and advertising as described below.',
+          'When you visit the Site, we and our third-party service providers automatically receive certain information from your browser and device: IP address, approximate geographic location (country/region), browser type and version, operating system, pages viewed, referring URL, device identifiers set by cookies, and timestamps. This information is used for analytics and security as described below.',
       },
       {
         title: 'Cookies and similar technologies',
         description:
-          'The Site uses cookies, pixels, local storage, and similar technologies to run the Site, measure traffic, and serve advertising. See Section 5 for details and your choices.',
+          'The Site uses cookies, local storage, and similar technologies to run the Site and measure traffic. See Section 5 for details and your choices.',
       },
     ],
     footer: [
@@ -121,11 +121,6 @@ const sections: Section[] = [
           'Including analytics on which pages are most useful, detecting fraud and abuse, debugging errors, and improving page performance.',
       },
       {
-        title: 'To serve relevant advertising',
-        description:
-          'The Site participates in the Google AdSense program. Google and its partners use cookies and device identifiers to serve ads based on your prior visits to this Site and other websites, as described in Section 6.',
-      },
-      {
         title: 'To comply with legal obligations',
         description:
           'Including responding to lawful requests from authorities, enforcing our Terms & Conditions, and keeping accounting records as required by applicable law.',
@@ -149,28 +144,16 @@ const sections: Section[] = [
         description:
           'Set by Google Analytics 4 (GA4) via the Google tag. These cookies help us understand which pages, services, and blog posts are most useful to visitors. Google Analytics is integrated through the official @next/third-parties/google component and only loads when a measurement ID is configured.',
       },
-      {
-        title: 'Advertising',
-        description:
-          'Set by Google AdSense and its advertising partners to serve ads that may be relevant to you, measure ad performance, and prevent the same ad from being shown too often. See Section 6 for the full list of controls and opt-outs.',
-      },
     ],
     footer: [
-      'Most browsers let you refuse or delete cookies through their settings. Blocking all cookies will not prevent you from reading content on the Site, but some features (such as remembering that you dismissed a banner) may not work as intended, and some ads may be less relevant to you.',
+      'Most browsers let you refuse or delete cookies through their settings. Blocking all cookies will not prevent you from reading content on the Site, but some features (such as remembering that you dismissed a banner) may not work as intended.',
     ],
   },
   {
     id: 'google-advertising',
-    title: '6. Google AdSense & Advertising',
+    title: '6. Advertising',
     content: [
-      'The Site displays advertisements served by Google AdSense (publisher ID pub-6022663985859466) with Auto ads enabled. This section is the formal disclosure Google requires publishers to make.',
-      'Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this Site and other websites.',
-      'Google\'s use of advertising cookies enables Google and its partners to serve ads to you based on your visit to this Site and/or other sites on the internet.',
-      'You may opt out of personalised advertising by Google by visiting Google Ads Settings at https://adssettings.google.com, and you may opt out of a third-party vendor\'s use of cookies for personalised advertising by visiting https://optout.aboutads.info and https://optout.networkadvertising.org.',
-      'For visitors in the European Economic Area, the United Kingdom, or Switzerland, we use a Google-certified Consent Management Platform (Google Funding Choices) to request your consent for personalised advertising, in line with the IAB Transparency and Consent Framework and the Google EU user consent policy. You can change your consent choices at any time via the Site\'s consent-management link, which the CMP displays after your first visit.',
-      'For visitors in California, Virginia, Colorado, Connecticut, Utah, and other U.S. states granting a right to opt out of the "sale" or "sharing" of personal information for targeted advertising, you may exercise that right by configuring your browser to send a Global Privacy Control (GPC) signal, by using Google Ads Settings, or by emailing teamdeepdivers@gmail.com with the subject "Do Not Sell or Share My Personal Information."',
-      'A list of the third-party vendors that may participate in Google ad auctions on this Site, together with their own privacy policies, is published at https://support.google.com/admanager/answer/9012903.',
-      'For a complete description of how Google uses information from sites and apps that use its services, see https://policies.google.com/technologies/partner-sites.',
+      'The Site does not display third-party advertising and does not use advertising cookies. If this changes, we will update this Policy before any advertising is shown.',
     ],
   },
   {
@@ -204,9 +187,9 @@ const sections: Section[] = [
           'Processes all payments. Payoneer independently collects the payment information required to complete the transaction. See https://www.payoneer.com/legal/privacy-policy/.',
       },
       {
-        title: 'Google LLC (AdSense, Analytics, Fonts)',
+        title: 'Google LLC (Analytics)',
         description:
-          'Serves advertising, measures traffic, and delivers the web fonts used on this Site. See https://policies.google.com/privacy.',
+          'Measures traffic on this Site through Google Analytics. See https://policies.google.com/privacy.',
       },
       {
         title: 'Vercel (hosting)',
@@ -220,7 +203,7 @@ const sections: Section[] = [
       },
     ],
     footer: [
-      'We do not sell your personal information for money. Some advertising-related data transfers under the CCPA/CPRA definitions can qualify as a "sale" or "sharing"; see Section 6 for how to opt out of those transfers.',
+      'We do not sell your personal information, and we do not share it for targeted advertising.',
     ],
   },
   {
@@ -243,7 +226,7 @@ const sections: Section[] = [
       {
         title: 'Consent',
         description:
-          'For non-essential cookies, personalised advertising, and newsletter subscriptions. You can withdraw consent at any time without affecting the lawfulness of processing before withdrawal.',
+          'For non-essential cookies and newsletter subscriptions. You can withdraw consent at any time without affecting the lawfulness of processing before withdrawal.',
       },
       {
         title: 'Legal obligation',
@@ -287,11 +270,6 @@ const sections: Section[] = [
         description:
           'Google Analytics 4 standard retention: 14 months, after which event-level data is automatically deleted by Google.',
       },
-      {
-        title: 'Advertising identifiers',
-        description:
-          'Cookie lifetimes are controlled by Google and its partners. You can clear them at any time through your browser settings.',
-      },
     ],
   },
   {
@@ -319,7 +297,7 @@ const sections: Section[] = [
       {
         title: 'Restriction and objection',
         description:
-          'Ask us to pause processing, or object to processing based on our legitimate interests, including direct marketing and personalised advertising.',
+          'Ask us to pause processing, or object to processing based on our legitimate interests, including direct marketing.',
       },
       {
         title: 'Portability',
@@ -329,7 +307,7 @@ const sections: Section[] = [
       {
         title: 'Opt out of "sale" or "sharing" (CCPA/CPRA and similar)',
         description:
-          'Opt out of personal-information transfers for advertising purposes. See Section 6 for how.',
+          'We do not sell or share personal information for advertising, but you can still ask us to confirm this for your data at any time.',
       },
       {
         title: 'Withdraw consent',
@@ -395,8 +373,8 @@ export default function PrivacyPage() {
             <span className={styles.badge}>Legal</span>
             <h1 className={styles.heroTitle}>Privacy Policy</h1>
             <p className={styles.heroDescription}>
-              How we collect, use, and protect your personal information — including the advertising,
-              analytics, and payment partners that power this site. Last updated: {EFFECTIVE_DATE}.
+              How we collect, use, and protect your personal information — including the analytics
+              and payment partners that power this site. Last updated: {EFFECTIVE_DATE}.
             </p>
           </div>
         </section>
