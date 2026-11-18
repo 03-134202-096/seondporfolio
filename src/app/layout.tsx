@@ -114,13 +114,13 @@ export const metadata: Metadata = {
   // Google Search Console: https://search.google.com/search-console
   // Bing Webmaster Tools: https://www.bing.com/webmasters
   // Yandex Webmaster: https://webmaster.yandex.com
+  // Google Search Console is verified through a DNS TXT record (Domain property).
   verification: {
-    // google: "REPLACE_WITH_GOOGLE_VERIFICATION_CODE",
-    // other: {
-    //   "msvalidate.01": "REPLACE_WITH_BING_VERIFICATION_CODE",
-    //   "yandex-verification": "REPLACE_WITH_YANDEX_VERIFICATION_CODE",
-    //   "facebook-domain-verification": "REPLACE_WITH_FACEBOOK_VERIFICATION_CODE",
-    // },
+    other: {
+      "msvalidate.01": "0275F6A5A255E251905FAFCD1D9899CD",
+      // "yandex-verification": "REPLACE_WITH_YANDEX_VERIFICATION_CODE",
+      // "facebook-domain-verification": "REPLACE_WITH_FACEBOOK_VERIFICATION_CODE",
+    },
   },
   other: {
     "msapplication-TileColor": "#0066ff",
