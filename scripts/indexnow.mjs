@@ -17,6 +17,11 @@ async function sitemapUrls() {
 }
 
 const args = process.argv.slice(2);
+// Git Bash on Windows rewrites "/path" arguments into "C:/Program Files/Git/path"
+if (args.some((a) => /^[A-Za-z]:[\\/]/.test(a))) {
+  console.error('An argument looks like a Windows path. Pass full URLs, or run with MSYS_NO_PATHCONV=1.');
+  process.exit(1);
+}
 const urlList = args.length
   ? args.map((p) => (p.startsWith('http') ? p : `${SITE}${p.startsWith('/') ? p : `/${p}`}`))
   : await sitemapUrls();
