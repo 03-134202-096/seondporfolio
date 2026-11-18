@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
 import styles from './about.module.css';
 
 export const metadata: Metadata = {
@@ -152,202 +153,205 @@ const stats = [
 
 export default function AboutPage() {
   return (
-    <main className={styles.aboutPage}>
-      <AboutPageJsonLd />
+    <>
       <Header />
+      <main className={styles.aboutPage}>
+        <AboutPageJsonLd />
 
-      {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className={styles.container}>
-          <div className={styles.heroContent}>
-            <span className={styles.badge}>About DeepDivers</span>
-            <h1 className={styles.heroTitle}>
-              Your Tasks. <span className={styles.highlight}>Our Experts.</span> Done Right.
-            </h1>
-            <p className={styles.heroDescription}>
-              DeepDivers is a professional task-handoff platform. You delegate your research, 
-              data science, AI, and development projects to us — and we assign dedicated experts 
-              who deliver with precision, on time, every time.
+        {/* Hero Section */}
+        <section className={styles.hero}>
+          <div className={styles.container}>
+            <div className={styles.heroContent}>
+              <span className={styles.badge}>About DeepDivers</span>
+              <h1 className={styles.heroTitle}>
+                Your Tasks. <span className={styles.highlight}>Our Experts.</span> Done Right.
+              </h1>
+              <p className={styles.heroDescription}>
+                DeepDivers is a professional task-handoff platform. You delegate your research, 
+                data science, AI, and development projects to us — and we assign dedicated experts 
+                who deliver with precision, on time, every time.
+              </p>
+              <div className={styles.heroButtons}>
+                <Link href="/#service-catalog" className={styles.btnPrimary}>
+                  Browse Services →
+                </Link>
+                <Link href="/#contact" className={styles.btnSecondary}>
+                  Get a Free Quote
+                </Link>
+              </div>
+            </div>
+            <div className={styles.heroVisual}>
+              <div className={styles.imageWrapper}>
+                <Image
+                  src="/ProfilePicture.webp"
+                  alt="Asad Farooq — Team Lead at DeepDivers"
+                  width={400}
+                  height={400}
+                  className={styles.heroImage}
+                  priority
+                />
+              </div>
+              <div className={styles.imageBadge}>
+                <strong>Asad Farooq</strong>
+                <span>Founder & Team Lead</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Mission Section */}
+        <section className={styles.mission}>
+          <div className={styles.container}>
+            <div className={styles.missionContent}>
+              <h2 className={styles.sectionTitle}>Our Mission</h2>
+              <p className={styles.missionText}>
+                We believe that brilliant ideas should never be held back by the complexity 
+                of execution. Whether you&apos;re a researcher needing a manuscript formatted for 
+                a top-tier journal, a student working on a thesis, or a business requiring 
+                AI-driven data solutions — <strong>you shouldn&apos;t have to do it all yourself</strong>.
+              </p>
+              <p className={styles.missionText}>
+                DeepDivers exists to bridge the gap between your vision and professional-grade 
+                execution. Hand over your project, and let our dedicated team of researchers, 
+                data scientists, and developers bring it to life.
+              </p>
+            </div>
+            <div className={styles.statsGrid}>
+              {stats.map((stat) => (
+                <div key={stat.label} className={styles.statCard}>
+                  <div className={styles.statValue}>{stat.value}</div>
+                  <div className={styles.statLabel}>{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works */}
+        <section className={styles.howItWorks}>
+          <div className={styles.container}>
+            <h2 className={styles.sectionTitle}>How It Works</h2>
+            <p className={styles.sectionSubtitle}>
+              From submission to delivery — a streamlined process designed for your convenience.
             </p>
-            <div className={styles.heroButtons}>
+            <div className={styles.stepsGrid}>
+              {howItWorks.map((item) => (
+                <div key={item.step} className={styles.stepCard}>
+                  <div className={styles.stepNumber}>{item.step}</div>
+                  <h3 className={styles.stepTitle}>{item.title}</h3>
+                  <p className={styles.stepDescription}>{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Guarantees */}
+        <section className={styles.guarantees}>
+          <div className={styles.container}>
+            <h2 className={styles.sectionTitle}>Our Guarantees</h2>
+            <p className={styles.sectionSubtitle}>
+              We stand behind every project with clear, enforceable commitments.
+            </p>
+            <div className={styles.guaranteesGrid}>
+              {guarantees.map((g) => (
+                <div key={g.title} className={styles.guaranteeCard}>
+                  <div className={styles.guaranteeIcon}>{g.icon}</div>
+                  <h3 className={styles.guaranteeTitle}>{g.title}</h3>
+                  <p className={styles.guaranteeDescription}>{g.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Team Section */}
+        <section className={styles.team}>
+          <div className={styles.container}>
+            <h2 className={styles.sectionTitle}>Meet the Team</h2>
+            <p className={styles.sectionSubtitle}>
+              A specialized team of AI and computer science professionals with 3+ years of academic services experience, collaborating with researchers worldwide.
+            </p>
+            <div className={styles.teamContent}>
+              <div className={styles.teamCard}>
+                <div className={styles.teamImageWrapper}>
+                  <Image
+                    src="/ProfilePicture.webp"
+                    alt="Asad Farooq — Founder & Team Lead"
+                    width={200}
+                    height={200}
+                    className={styles.teamImage}
+                  />
+                </div>
+                <h3>Asad Farooq</h3>
+                <span className={styles.teamRole}>Founder & Team Lead</span>
+                <p className={styles.teamBio}>
+                  Computer science graduate with a strong background in AI, machine learning, and
+                  academic publishing. Leading DeepDivers with a mission to deliver world-class
+                  research and technology solutions to clients globally.
+                </p>
+                <div className={styles.teamCredentials}>
+                  <span>📊 Python & Data Science</span>
+                  <span>🤖 ML/DL Frameworks</span>
+                  <span>💻 Next.js & Nest.js</span>
+                  <span>☁️ AWS Services</span>
+                  <span>📝 LaTeX Expert</span>
+                </div>
+              </div>
+              <div className={styles.teamInfo}>
+                <h3>Dedicated Experts at Your Service</h3>
+                <p>
+                  Beyond our team lead, DeepDivers operates with a dedicated network of
+                  researchers, data analysts, content writers, and developers — each with
+                  backgrounds in AI and computer science and 3+ years of hands-on experience
+                  in academic services. Every team member is assigned to projects that match
+                  their specialized expertise.
+                </p>
+                <ul className={styles.teamHighlights}>
+                  <li>✅ Domain-matched experts for every project</li>
+                  <li>✅ Peer-reviewed quality assurance</li>
+                  <li>✅ Direct communication throughout the project</li>
+                  <li>✅ Available across all major freelancing platforms</li>
+                  <li>✅ Published researchers with real-world credentials</li>
+                </ul>
+                <div className={styles.platformBadges}>
+                  <span className={styles.platformBadge}>🟢 Fiverr</span>
+                  <span className={styles.platformBadge}>🟢 Upwork</span>
+                  <span className={styles.platformBadge}>🔵 Freelancer</span>
+                  <span className={styles.platformBadge}>🔵 GitHub</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className={styles.cta}>
+          <div className={styles.container}>
+            <h2 className={styles.ctaTitle}>Ready to Hand Over Your Project?</h2>
+            <p className={styles.ctaDescription}>
+              Browse our catalog of 90+ services, get a free quote, and let our experts 
+              handle the rest. No commitment required.
+            </p>
+            <div className={styles.ctaButtons}>
               <Link href="/#service-catalog" className={styles.btnPrimary}>
                 Browse Services →
               </Link>
               <Link href="/#contact" className={styles.btnSecondary}>
-                Get a Free Quote
+                Contact Us
               </Link>
             </div>
           </div>
-          <div className={styles.heroVisual}>
-            <div className={styles.imageWrapper}>
-              <Image
-                src="/ProfilePicture.webp"
-                alt="Asad Farooq — Team Lead at DeepDivers"
-                width={400}
-                height={400}
-                className={styles.heroImage}
-                priority
-              />
-            </div>
-            <div className={styles.imageBadge}>
-              <strong>Asad Farooq</strong>
-              <span>Founder & Team Lead</span>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Mission Section */}
-      <section className={styles.mission}>
-        <div className={styles.container}>
-          <div className={styles.missionContent}>
-            <h2 className={styles.sectionTitle}>Our Mission</h2>
-            <p className={styles.missionText}>
-              We believe that brilliant ideas should never be held back by the complexity 
-              of execution. Whether you&apos;re a researcher needing a manuscript formatted for 
-              a top-tier journal, a student working on a thesis, or a business requiring 
-              AI-driven data solutions — <strong>you shouldn&apos;t have to do it all yourself</strong>.
-            </p>
-            <p className={styles.missionText}>
-              DeepDivers exists to bridge the gap between your vision and professional-grade 
-              execution. Hand over your project, and let our dedicated team of researchers, 
-              data scientists, and developers bring it to life.
-            </p>
-          </div>
-          <div className={styles.statsGrid}>
-            {stats.map((stat) => (
-              <div key={stat.label} className={styles.statCard}>
-                <div className={styles.statValue}>{stat.value}</div>
-                <div className={styles.statLabel}>{stat.label}</div>
-              </div>
-            ))}
-          </div>
+        {/* Back to Home */}
+        <div className={styles.backHome}>
+          <Link href="/" className={styles.backHomeLink}>
+            ← Back to Home
+          </Link>
         </div>
-      </section>
-
-      {/* How It Works */}
-      <section className={styles.howItWorks}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>How It Works</h2>
-          <p className={styles.sectionSubtitle}>
-            From submission to delivery — a streamlined process designed for your convenience.
-          </p>
-          <div className={styles.stepsGrid}>
-            {howItWorks.map((item) => (
-              <div key={item.step} className={styles.stepCard}>
-                <div className={styles.stepNumber}>{item.step}</div>
-                <h3 className={styles.stepTitle}>{item.title}</h3>
-                <p className={styles.stepDescription}>{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Guarantees */}
-      <section className={styles.guarantees}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>Our Guarantees</h2>
-          <p className={styles.sectionSubtitle}>
-            We stand behind every project with clear, enforceable commitments.
-          </p>
-          <div className={styles.guaranteesGrid}>
-            {guarantees.map((g) => (
-              <div key={g.title} className={styles.guaranteeCard}>
-                <div className={styles.guaranteeIcon}>{g.icon}</div>
-                <h3 className={styles.guaranteeTitle}>{g.title}</h3>
-                <p className={styles.guaranteeDescription}>{g.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className={styles.team}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>Meet the Team</h2>
-          <p className={styles.sectionSubtitle}>
-            A specialized team of AI and computer science professionals with 3+ years of academic services experience, collaborating with researchers worldwide.
-          </p>
-          <div className={styles.teamContent}>
-            <div className={styles.teamCard}>
-              <div className={styles.teamImageWrapper}>
-                <Image
-                  src="/ProfilePicture.webp"
-                  alt="Asad Farooq — Founder & Team Lead"
-                  width={200}
-                  height={200}
-                  className={styles.teamImage}
-                />
-              </div>
-              <h3>Asad Farooq</h3>
-              <span className={styles.teamRole}>Founder & Team Lead</span>
-              <p className={styles.teamBio}>
-                Computer science graduate with a strong background in AI, machine learning, and
-                academic publishing. Leading DeepDivers with a mission to deliver world-class
-                research and technology solutions to clients globally.
-              </p>
-              <div className={styles.teamCredentials}>
-                <span>📊 Python & Data Science</span>
-                <span>🤖 ML/DL Frameworks</span>
-                <span>💻 Next.js & Nest.js</span>
-                <span>☁️ AWS Services</span>
-                <span>📝 LaTeX Expert</span>
-              </div>
-            </div>
-            <div className={styles.teamInfo}>
-              <h3>Dedicated Experts at Your Service</h3>
-              <p>
-                Beyond our team lead, DeepDivers operates with a dedicated network of
-                researchers, data analysts, content writers, and developers — each with
-                backgrounds in AI and computer science and 3+ years of hands-on experience
-                in academic services. Every team member is assigned to projects that match
-                their specialized expertise.
-              </p>
-              <ul className={styles.teamHighlights}>
-                <li>✅ Domain-matched experts for every project</li>
-                <li>✅ Peer-reviewed quality assurance</li>
-                <li>✅ Direct communication throughout the project</li>
-                <li>✅ Available across all major freelancing platforms</li>
-                <li>✅ Published researchers with real-world credentials</li>
-              </ul>
-              <div className={styles.platformBadges}>
-                <span className={styles.platformBadge}>🟢 Fiverr</span>
-                <span className={styles.platformBadge}>🟢 Upwork</span>
-                <span className={styles.platformBadge}>🔵 Freelancer</span>
-                <span className={styles.platformBadge}>🔵 GitHub</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className={styles.cta}>
-        <div className={styles.container}>
-          <h2 className={styles.ctaTitle}>Ready to Hand Over Your Project?</h2>
-          <p className={styles.ctaDescription}>
-            Browse our catalog of 90+ services, get a free quote, and let our experts 
-            handle the rest. No commitment required.
-          </p>
-          <div className={styles.ctaButtons}>
-            <Link href="/#service-catalog" className={styles.btnPrimary}>
-              Browse Services →
-            </Link>
-            <Link href="/#contact" className={styles.btnSecondary}>
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Back to Home */}
-      <div className={styles.backHome}>
-        <Link href="/" className={styles.backHomeLink}>
-          ← Back to Home
-        </Link>
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }

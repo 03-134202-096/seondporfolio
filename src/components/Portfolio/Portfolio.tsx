@@ -178,7 +178,7 @@ export default function Portfolio() {
                 loading="lazy"
               />
               <div className={styles.portfolioOverlay}>
-                <h4 className={styles.portfolioItemTitle}>{item.title}</h4>
+                <h3 className={styles.portfolioItemTitle}>{item.title}</h3>
                 <p className={styles.portfolioItemCategory}>{item.description}</p>
               </div>
             </div>

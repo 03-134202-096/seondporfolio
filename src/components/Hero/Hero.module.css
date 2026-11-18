@@ -67,7 +67,6 @@
   margin-bottom: 1.5rem;
   color: var(--foreground);
   letter-spacing: -0.035em;
-  animation: fadeInUp 0.7s var(--ease-out-expo, ease) 0.1s both;
 }
 
 .heroHighlight {
@@ -94,7 +93,6 @@
   font-size: 1.25rem;
   margin-bottom: 2rem;
   max-width: 540px;
-  animation: fadeInUp 0.8s var(--ease-out-expo, ease) 0.15s both;
 }
 
 .heroButtons {

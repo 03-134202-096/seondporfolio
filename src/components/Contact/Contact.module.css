@@ -55,7 +55,7 @@
 }
 
 .contactMethodText a {
-  color: var(--primary);
+  color: var(--link-color);
 }
 
 .contactMethodText a:hover {
@@ -542,4 +542,13 @@
   .contactForm {
     padding: 1.5rem;
   }
+}
+
+/* Spam-trap field: kept out of view and out of the tab order */
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }

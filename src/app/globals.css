@@ -4,6 +4,7 @@
   --primary: #0066ff;
   --primary-dark: #0052cc;
   --primary-light: #e6f0ff;
+  --link-color: #0052cc;
   --secondary: #0b0f1a;
   --accent: #00d4aa;
   --accent-warm: #f59e0b;
@@ -65,6 +66,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --link-color: #6ea8ff;
     --background: #080b14;
     --background-alt: #10172a;
     --foreground: #eef2f8;
@@ -457,4 +459,16 @@ img {
 .card-elite:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
+}
+
+/* Room for the sticky contact bar on phones (see FloatingCTA) */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  }
+}
+
+/* Anchor targets land below the fixed header */
+section[id] {
+  scroll-margin-top: 80px;
 }

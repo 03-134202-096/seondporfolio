@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import styles from './ServiceCatalog.module.css';
 import { isPromoActive, getDiscountedPrice, PROMO_CONFIG } from '@/config/promo';
+import { whatsappLink } from '@/config/site';
 
 type ServiceCategory =
   | 'all'
@@ -569,13 +570,13 @@ export default function ServiceCatalog() {
               return (
                 <div key={service.name} className={`${styles.serviceCard} ${styles.serviceCardCustom}`}>
                   <span className={styles.customTag}>Custom</span>
-                  <h4 className={styles.serviceName}>{service.name}</h4>
+                  <h3 className={styles.serviceName}>{service.name}</h3>
                   <p className={styles.customDescription}>
                     Have a unique requirement? Describe your project and get a tailored quote.
                   </p>
                   <div className={styles.cardActions}>
                     <a
-                      href={`https://wa.me/923125065538?text=${encodeURIComponent('Hi DeepDivers! I have a custom project. Here are the details:')}`}
+                      href={whatsappLink('Hi DeepDivers! I have a custom project. Here are the details:')}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.customWhatsappBtn}
@@ -594,7 +595,7 @@ export default function ServiceCatalog() {
               <div key={service.name} className={styles.serviceCard}>
                 {service.popular && <span className={styles.popularTag}>Popular</span>}
                 {promoActive && <span className={styles.discountTag}>-{PROMO_CONFIG.DISCOUNT_PERCENT}%</span>}
-                <h4 className={styles.serviceName}>{service.name}</h4>
+                <h3 className={styles.serviceName}>{service.name}</h3>
                 <div className={styles.serviceMeta}>
                   {discount ? (
                     <span className={styles.servicePrice}>
@@ -625,7 +626,7 @@ export default function ServiceCatalog() {
                     Order Now →
                   </button>
                   <a
-                    href={`https://wa.me/923125065538?text=${encodeURIComponent(`Hi DeepDivers! I'm interested in: ${service.name}${discount ? ` (${discount.discounted})` : ` (${service.price})`}. Please share more details.`)}`}
+                    href={whatsappLink(`Hi DeepDivers! I'm interested in: ${service.name}${discount ? ` (${discount.discounted})` : ` (${service.price})`}. Please share more details.`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.whatsappBtn}
@@ -659,7 +660,7 @@ export default function ServiceCatalog() {
               className={styles.pageBtn}
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={currentPage === 1}
-              aria-label="Previous page"
+              aria-label="Prev, previous page"
             >
               ← Prev
             </button>

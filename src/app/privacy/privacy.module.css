@@ -52,6 +52,8 @@
 /* Content */
 .content {
   padding: 60px 0 40px;
+  /* Long URLs and email addresses wrap instead of widening the page on phones */
+  overflow-wrap: anywhere;
 }
 
 /* Table of Contents */

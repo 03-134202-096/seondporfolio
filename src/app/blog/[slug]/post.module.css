@@ -197,6 +197,7 @@
   font-size: 1.0625rem;
   line-height: 1.85;
   color: #c9d1d9;
+  overflow-wrap: break-word;
 }
 
 .articleBody h2 {
@@ -358,6 +359,27 @@
   color: #8b949e;
   line-height: 1.6;
   margin: 0;
+}
+
+.authorBoxName a,
+.metaAuthor a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.authorBoxName a:hover,
+.metaAuthor a:hover {
+  text-decoration: underline;
+}
+
+.authorBoxLinks {
+  margin: 6px 0 0;
+  font-size: 0.8125rem;
+  color: #8b949e;
+}
+
+.authorBoxLinks a {
+  color: #58a6ff;
 }
 
 /* ─── Related Posts ─── */
@@ -539,7 +561,12 @@
     font-size: 1rem;
   }
 
+  /* Wide comparison tables scroll sideways instead of widening the page */
   .articleBody table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     font-size: 0.8125rem;
   }
 

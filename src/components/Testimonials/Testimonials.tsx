@@ -1,5 +1,3 @@
-'use client';
-
 import styles from './Testimonials.module.css';
 
 const testimonials = [
@@ -56,7 +54,7 @@ export default function Testimonials() {
                   {item.name.split(' ').map(n => n[0]).join('')}
                 </div>
                 <div>
-                  <h4 className={styles.authorName}>{item.name}</h4>
+                  <p className={styles.authorName}>{item.name}</p>
                   <p className={styles.authorRole}>{item.role}</p>
                 </div>
               </div>

@@ -47,7 +47,7 @@ export async function GET() {
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
       <pubDate>${pubDate}</pubDate>
-      <author>support@deepdivers.services (${esc(post.author)})</author>
+      <author>teamdeepdivers@gmail.com (${esc(post.author)})</author>
       <description>${esc(post.excerpt || post.metaDescription)}</description>
 ${categories}
       <content:encoded><![CDATA[${post.content}]]></content:encoded>

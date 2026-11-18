@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
 import styles from './terms.module.css';
 
 export const metadata: Metadata = {
@@ -15,6 +17,7 @@ export const metadata: Metadata = {
       'Clear, fair, and transparent policies governing DeepDivers services. Refund policy, delivery guarantees, and confidentiality.',
     url: 'https://deepdivers.services/terms',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
 };
 
@@ -94,7 +97,7 @@ const sections = [
     ],
     footer: [
       'For milestone-based payments, each milestone is reviewed and approved before proceeding. Payments are made only after you verify and accept the deliverable at each stage — ensuring you always receive value before paying.',
-      'Refund requests must be submitted within 14 days of delivery via email at support@deepdivers.services.',
+      'Refund requests must be submitted within 14 days of delivery via email at teamdeepdivers@gmail.com.',
       'Refunds are processed within 5–10 business days through the original payment method.',
     ],
   },
@@ -121,7 +124,7 @@ const sections = [
     id: 'communication',
     title: '9. Communication & Support',
     content: [
-      'Our team is available 24/7 via email (support@deepdivers.services) and WhatsApp (+92 312 5065538).',
+      'Our team is available 24/7 via email (teamdeepdivers@gmail.com) and WhatsApp (+92 312 5065538).',
       'We aim to respond to all inquiries within 2–4 hours during business hours (9 AM – 12 AM PKT).',
       'Clients are expected to provide timely feedback and required materials to avoid delays in project delivery.',
     ],
@@ -168,79 +171,83 @@ const sections = [
 
 export default function TermsPage() {
   return (
-    <main className={styles.termsPage}>
-      <section className={styles.hero}>
-        <div className={styles.container}>
-          <span className={styles.badge}>Legal</span>
-          <h1 className={styles.heroTitle}>Terms & Conditions</h1>
-          <p className={styles.heroDescription}>
-            Clear, fair, and transparent policies governing our services. 
-            Last updated: March 2026.
-          </p>
-        </div>
-      </section>
-
-      <section className={styles.content}>
-        <div className={styles.container}>
-          <nav className={styles.toc}>
-            <h3>Table of Contents</h3>
-            <ul>
-              {sections.map((s) => (
-                <li key={s.id}>
-                  <a href={`#${s.id}`}>{s.title}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className={styles.sections}>
-            {sections.map((section) => (
-              <div key={section.id} id={section.id} className={styles.section}>
-                <h2 className={styles.sectionTitle}>{section.title}</h2>
-                {section.content.map((paragraph, i) => (
-                  <p key={i} className={styles.paragraph}>
-                    {paragraph}
-                  </p>
-                ))}
-                {section.list && (
-                  <div className={styles.policyList}>
-                    {section.list.map((item) => (
-                      <div key={item.title} className={styles.policyItem}>
-                        <h4 className={styles.policyItemTitle}>{item.title}</h4>
-                        <p className={styles.policyItemDesc}>{item.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {section.footer?.map((text, i) => (
-                  <p key={i} className={styles.paragraph}>
-                    {text}
-                  </p>
-                ))}
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.contact}>
-            <h3>Questions About Our Terms?</h3>
-            <p>
-              If you have any questions or concerns about these Terms & Conditions, 
-              please contact us at{' '}
-              <a href="mailto:support@deepdivers.services">support@deepdivers.services</a>{' '}
-              or via{' '}
-              <a href="https://wa.me/923125065538" target="_blank" rel="noopener noreferrer">
-                WhatsApp
-              </a>.
+    <>
+      <Header />
+      <main className={styles.termsPage}>
+        <section className={styles.hero}>
+          <div className={styles.container}>
+            <span className={styles.badge}>Legal</span>
+            <h1 className={styles.heroTitle}>Terms & Conditions</h1>
+            <p className={styles.heroDescription}>
+              Clear, fair, and transparent policies governing our services. 
+              Last updated: March 2026.
             </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <div className={styles.backHome}>
-        <Link href="/" className={styles.backHomeLink}>
-          ← Back to Home
-        </Link>
-      </div>
-    </main>
+        <section className={styles.content}>
+          <div className={styles.container}>
+            <nav className={styles.toc}>
+              <h3>Table of Contents</h3>
+              <ul>
+                {sections.map((s) => (
+                  <li key={s.id}>
+                    <a href={`#${s.id}`}>{s.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <div className={styles.sections}>
+              {sections.map((section) => (
+                <div key={section.id} id={section.id} className={styles.section}>
+                  <h2 className={styles.sectionTitle}>{section.title}</h2>
+                  {section.content.map((paragraph, i) => (
+                    <p key={i} className={styles.paragraph}>
+                      {paragraph}
+                    </p>
+                  ))}
+                  {section.list && (
+                    <div className={styles.policyList}>
+                      {section.list.map((item) => (
+                        <div key={item.title} className={styles.policyItem}>
+                          <h4 className={styles.policyItemTitle}>{item.title}</h4>
+                          <p className={styles.policyItemDesc}>{item.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {section.footer?.map((text, i) => (
+                    <p key={i} className={styles.paragraph}>
+                      {text}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.contact}>
+              <h3>Questions About Our Terms?</h3>
+              <p>
+                If you have any questions or concerns about these Terms & Conditions, 
+                please contact us at{' '}
+                <a href="mailto:teamdeepdivers@gmail.com">teamdeepdivers@gmail.com</a>{' '}
+                or via{' '}
+                <a href="https://wa.me/923125065538" target="_blank" rel="noopener noreferrer">
+                  WhatsApp
+                </a>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div className={styles.backHome}>
+          <Link href="/" className={styles.backHomeLink}>
+            ← Back to Home
+          </Link>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

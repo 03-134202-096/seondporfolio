@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect, FormEvent, ChangeEvent } from 'react';
+import { sendGAEvent } from '@next/third-parties/google';
+import { SITE, whatsappLink } from '@/config/site';
 import styles from './Contact.module.css';
 
 const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4MB in bytes
@@ -98,6 +100,7 @@ export default function Contact() {
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const serviceRequested = String(formData.get('service') || '');
 
     try {
       const response = await fetch('/api/contact', {
@@ -108,6 +111,9 @@ export default function Contact() {
       const result = await response.json();
 
       if (response.ok && result.success) {
+        if (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) {
+          sendGAEvent('event', 'generate_lead', { form_name: 'quote_request', service: serviceRequested });
+        }
         setSubmitStatus('success');
         form.reset();
         setSelectedFileName(null);
@@ -156,17 +162,13 @@ export default function Contact() {
                 <div className={styles.contactMethodText}>
                   <h4>Email Us</h4>
                   <p className={styles.contactWithCopy}>
-                    <a 
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=support@deepdivers.services" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      support@deepdivers.services
+                    <a href={`mailto:${SITE.email}`}>
+                      {SITE.email}
                     </a>
                     <button 
                       type="button"
                       className={styles.copyBtn}
-                      onClick={() => handleCopy('support@deepdivers.services', 'email')}
+                      onClick={() => handleCopy(SITE.email, 'email')}
                       title="Copy email"
                     >
                       {copiedField === 'email' ? '✓' : '📋'}
@@ -180,16 +182,16 @@ export default function Contact() {
                   <h4>WhatsApp</h4>
                   <p className={styles.contactWithCopy}>
                     <a
-                      href="https://wa.me/923125065538"
+                      href={whatsappLink()}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      +92 312 5065538
+                      {SITE.phoneDisplay}
                     </a>
                     <button 
                       type="button"
                       className={styles.copyBtn}
-                      onClick={() => handleCopy('+923125065538', 'phone')}
+                      onClick={() => handleCopy(SITE.phoneE164, 'phone')}
                       title="Copy number"
                     >
                       {copiedField === 'phone' ? '✓' : '📋'}
@@ -200,8 +202,8 @@ export default function Contact() {
               <div className={styles.contactMethod}>
                 <div className={styles.contactMethodIcon}>🌍</div>
                 <div className={styles.contactMethodText}>
-                  <h4>Location</h4>
-                  <p>Islamabad, Pakistan • Available Worldwide</p>
+                  <h4>Office</h4>
+                  <p>{SITE.address.display} • Working with clients worldwide</p>
                 </div>
               </div>
             </div>
@@ -249,12 +251,12 @@ export default function Contact() {
                   <p>{errorMessage}</p>
                   <p className={styles.errorHint}>
                     You can also reach us via{' '}
-                    <a href="https://wa.me/923125065538" target="_blank" rel="noopener noreferrer">
+                    <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
                       WhatsApp
                     </a>{' '}
                     or{' '}
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support@deepdivers.services" target="_blank" rel="noopener noreferrer">
-                      Email
+                    <a href={`mailto:${SITE.email}`}>
+                      email ({SITE.email})
                     </a>
                   </p>
                 </div>
@@ -302,6 +304,11 @@ export default function Contact() {
                   name="service"
                   value={serviceMode === 'catalog' ? selectedService : serviceMode === 'custom' ? customService : ''}
                 />
+                {/* Spam trap: hidden from people, bots tend to fill it in */}
+                <div className={styles.honeypot} aria-hidden="true">
+                  <label htmlFor="website">Leave this field empty</label>
+                  <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+                </div>
 
                 {serviceMode === 'catalog' && selectedService ? (
                   <div className={styles.selectedServiceDisplay}>

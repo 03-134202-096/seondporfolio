@@ -1,0 +1,85 @@
+.page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 1.5rem 4rem;
+  background: var(--background-alt);
+}
+
+.inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.code {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.text {
+  color: var(--foreground-muted);
+  font-size: 1.0625rem;
+  margin-bottom: 2rem;
+}
+
+.links {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  height: 100%;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card-bg);
+  color: var(--foreground);
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.cardLabel {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.cardText {
+  font-size: 0.9375rem;
+  color: var(--foreground-muted);
+}
+
+.help {
+  color: var(--foreground-muted);
+}
+
+.help a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .links {
+    grid-template-columns: 1fr;
+  }
+}

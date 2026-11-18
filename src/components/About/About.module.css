@@ -45,7 +45,6 @@
 
 .aboutImageBadge span {
   font-size: 0.75rem;
-  opacity: 0.9;
 }
 
 .aboutContent h3 {
@@ -87,7 +86,7 @@
   flex-shrink: 0;
 }
 
-.aboutFeatureText h4 {
+.aboutFeatureText h3 {
   font-size: 1rem;
   margin-bottom: 0.25rem;
   color: var(--foreground);
@@ -104,7 +103,7 @@
   border-top: 1px solid var(--border);
 }
 
-.credentials h4 {
+.credentials h3 {
   font-size: 1rem;
   margin-bottom: 1rem;
   color: var(--foreground);
@@ -139,10 +138,10 @@
   display: inline-block;
   padding: 12px 28px;
   background: transparent;
-  color: var(--primary);
+  color: var(--link-color);
   font-weight: 600;
   font-size: 0.9375rem;
-  border: 1px solid var(--primary);
+  border: 1px solid var(--link-color);
   border-radius: 10px;
   text-decoration: none;
   transition: all 0.3s ease;

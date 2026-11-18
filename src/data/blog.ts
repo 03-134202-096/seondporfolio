@@ -21,6 +21,8 @@ export interface BlogPost {
   author: string;
   /** ISO date string (YYYY-MM-DD) */
   publishedAt: string;
+  /** ISO date string (YYYY-MM-DD) of the last meaningful update, if any */
+  updatedAt?: string;
   /** Estimated reading time */
   readingTime: string;
   /** Category/tag for filtering */

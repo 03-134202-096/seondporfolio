@@ -1,5 +1,3 @@
-'use client';
-
 import styles from './WhyChooseUs.module.css';
 
 const reasons = [
@@ -81,7 +79,7 @@ export default function WhyChooseUs() {
             <a href="#contact" className={styles.ctaPrimary}>
               Get a Free Quote
             </a>
-            <a href="#services" className={styles.ctaSecondary}>
+            <a href="#service-catalog" className={styles.ctaSecondary}>
               View Services
             </a>
           </div>

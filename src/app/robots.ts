@@ -1,68 +1,32 @@
 import { MetadataRoute } from 'next';
+import { SITE } from '@/config/site';
 
 /**
- * Programmatic robots.txt — overrides public/robots.txt in Next.js App Router.
+ * Programmatic robots.txt (App Router).
  *
  * Rules:
- *  - All reputable bots: full site allowed, API/private assets blocked.
- *  - Googlebot & Bingbot: explicit allow + large preview permissions.
- *  - Known scraper/AI-training bots: explicitly blocked to protect content.
- *
- * NOTE: Delete `public/robots.txt` to avoid conflicts with this programmatic one.
+ *  - Every crawler may read the whole site except the API. /_next/ stays open:
+ *    search engines need the CSS and JS there to render pages properly.
+ *  - AI answer engines that cite and link back (ChatGPT search, Perplexity,
+ *    Claude search) are allowed, so the guides can be found there too.
+ *  - Crawlers that only collect AI training data are blocked.
  */
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = 'https://deepdivers.services';
-
   return {
     rules: [
-      // Default: allow all respectful bots, deny private endpoints
       {
         userAgent: '*',
         allow: ['/'],
-        disallow: ['/api/', '/_next/', '/private/', '/*.json$'],
-      },
-      // Googlebot — explicit for clarity on image, mobile & news surfaces
-      {
-        userAgent: 'Googlebot',
-        allow: ['/'],
         disallow: ['/api/'],
       },
-      {
-        userAgent: 'Googlebot-Image',
-        allow: ['/'],
-        disallow: ['/api/'],
-      },
-      // Bing
-      {
-        userAgent: 'Bingbot',
-        allow: ['/'],
-        disallow: ['/api/'],
-      },
-      // Google AdSense crawlers — explicit allow so Auto ads can serve
-      // and the AdSense policy crawler can verify page content.
-      {
-        userAgent: 'Mediapartners-Google',
-        allow: ['/'],
-      },
-      {
-        userAgent: 'AdsBot-Google',
-        allow: ['/'],
-      },
-      {
-        userAgent: 'AdsBot-Google-Mobile',
-        allow: ['/'],
-      },
-      // AI/training crawlers — block to protect proprietary catalog content.
-      // Comment any out if the user wants to allow it.
+      // AI training-only crawlers — blocked (no traffic comes back from these).
       { userAgent: 'GPTBot', disallow: ['/'] },
-      { userAgent: 'ChatGPT-User', disallow: ['/'] },
       { userAgent: 'CCBot', disallow: ['/'] },
+      { userAgent: 'Google-Extended', disallow: ['/'] },
       { userAgent: 'anthropic-ai', disallow: ['/'] },
       { userAgent: 'ClaudeBot', disallow: ['/'] },
-      { userAgent: 'PerplexityBot', disallow: ['/'] },
-      { userAgent: 'Google-Extended', disallow: ['/'] },
+      { userAgent: 'Bytespider', disallow: ['/'] },
     ],
-    sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl,
+    sitemap: `${SITE.url}/sitemap.xml`,
   };
 }

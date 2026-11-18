@@ -1,15 +1,5 @@
-'use client';
-
 import Image from 'next/image';
 import styles from './Hero.module.css';
-
-const scrollTo = (id: string) => {
-  const el = document.getElementById(id);
-  if (el) {
-    const offset = el.offsetTop - 80;
-    window.scrollTo({ top: offset, behavior: 'smooth' });
-  }
-};
 
 export default function Hero() {
   return (
@@ -29,12 +19,12 @@ export default function Hero() {
             what matters. We take care of the rest.
           </p>
           <div className={styles.heroButtons}>
-            <button onClick={() => scrollTo('service-catalog')} className="btn btn-primary" aria-label="Browse and order services">
+            <a href="#service-catalog" className="btn btn-primary">
               Browse Services →
-            </button>
-            <button onClick={() => scrollTo('contact')} className="btn btn-secondary" aria-label="Get a free quote">
+            </a>
+            <a href="#contact" className="btn btn-secondary">
               Get a Free Quote
-            </button>
+            </a>
           </div>
           <div className={styles.heroStats}>
             <div className={styles.statItem}>
@@ -52,7 +42,7 @@ export default function Hero() {
           </div>
         </div>
         <div className={styles.heroVisual}>
-          <div className={styles.heroImageWrapper} aria-hidden="false">
+          <div className={styles.heroImageWrapper}>
             {/* Decorative aurora halo — soft, pulsing (outermost layer) */}
             <div className={styles.heroImageHalo} aria-hidden="true" />
             {/* Rotating conic-gradient ring — the main "stirred light" */}
@@ -67,6 +57,7 @@ export default function Hero() {
               alt="DeepDivers Team - Professional Research and Data Science Experts"
               width={400}
               height={400}
+              sizes="(max-width: 768px) 300px, 400px"
               className={styles.heroImage}
               priority
             />

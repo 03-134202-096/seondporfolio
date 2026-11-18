@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
 import styles from './privacy.module.css';
 
 export const metadata: Metadata = {
@@ -15,6 +17,7 @@ export const metadata: Metadata = {
       'How DeepDivers collects, uses, and protects your personal data. Includes disclosures for Google AdSense, Google Analytics, Payoneer, and other third-party services.',
     url: 'https://deepdivers.services/privacy',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
 };
 
@@ -45,7 +48,7 @@ const sections: Section[] = [
     title: '2. Data Controller & Contact',
     content: [
       'For the purposes of the EU/UK General Data Protection Regulation (GDPR), the California Consumer Privacy Act (CCPA/CPRA), and comparable laws, DeepDivers is the data controller of the personal information collected through this Site.',
-      'For any privacy question, data-access request, deletion request, or opt-out request, contact us at support@deepdivers.services or via WhatsApp at +92 312 5065538. We respond to privacy requests within 30 days (sooner where required by law).',
+      'For any privacy question, data-access request, deletion request, or opt-out request, contact us at teamdeepdivers@gmail.com or via WhatsApp at +92 312 5065538. We respond to privacy requests within 30 days (sooner where required by law).',
     ],
   },
   {
@@ -165,7 +168,7 @@ const sections: Section[] = [
       'Google\'s use of advertising cookies enables Google and its partners to serve ads to you based on your visit to this Site and/or other sites on the internet.',
       'You may opt out of personalised advertising by Google by visiting Google Ads Settings at https://adssettings.google.com, and you may opt out of a third-party vendor\'s use of cookies for personalised advertising by visiting https://optout.aboutads.info and https://optout.networkadvertising.org.',
       'For visitors in the European Economic Area, the United Kingdom, or Switzerland, we use a Google-certified Consent Management Platform (Google Funding Choices) to request your consent for personalised advertising, in line with the IAB Transparency and Consent Framework and the Google EU user consent policy. You can change your consent choices at any time via the Site\'s consent-management link, which the CMP displays after your first visit.',
-      'For visitors in California, Virginia, Colorado, Connecticut, Utah, and other U.S. states granting a right to opt out of the "sale" or "sharing" of personal information for targeted advertising, you may exercise that right by configuring your browser to send a Global Privacy Control (GPC) signal, by using Google Ads Settings, or by emailing support@deepdivers.services with the subject "Do Not Sell or Share My Personal Information."',
+      'For visitors in California, Virginia, Colorado, Connecticut, Utah, and other U.S. states granting a right to opt out of the "sale" or "sharing" of personal information for targeted advertising, you may exercise that right by configuring your browser to send a Global Privacy Control (GPC) signal, by using Google Ads Settings, or by emailing teamdeepdivers@gmail.com with the subject "Do Not Sell or Share My Personal Information."',
       'A list of the third-party vendors that may participate in Google ad auctions on this Site, together with their own privacy policies, is published at https://support.google.com/admanager/answer/9012903.',
       'For a complete description of how Google uses information from sites and apps that use its services, see https://policies.google.com/technologies/partner-sites.',
     ],
@@ -340,7 +343,7 @@ const sections: Section[] = [
       },
     ],
     footer: [
-      'To exercise any of these rights, email support@deepdivers.services with the subject "Privacy Request." We may need to verify your identity before responding. We do not charge a fee for reasonable requests.',
+      'To exercise any of these rights, email teamdeepdivers@gmail.com with the subject "Privacy Request." We may need to verify your identity before responding. We do not charge a fee for reasonable requests.',
     ],
   },
   {
@@ -348,7 +351,7 @@ const sections: Section[] = [
     title: '13. Security',
     content: [
       'We maintain reasonable administrative, technical, and physical safeguards designed to protect personal information from unauthorised access, loss, misuse, or alteration. These include encrypted transport (HTTPS/TLS 1.2+), modern HTTP security headers (HSTS, X-Content-Type-Options, Referrer-Policy, Permissions-Policy), restricted access to our support inbox, and secure handling of project files.',
-      'No internet transmission is 100% secure. If you become aware of any security issue affecting the Site, please notify us immediately at support@deepdivers.services.',
+      'No internet transmission is 100% secure. If you become aware of any security issue affecting the Site, please notify us immediately at teamdeepdivers@gmail.com.',
     ],
   },
   {
@@ -377,85 +380,89 @@ const sections: Section[] = [
     title: '17. How to Contact Us',
     content: [
       'If you have any question about this Policy or our privacy practices, or you want to exercise any of the rights described above, please contact us at:',
-      'DeepDivers — support@deepdivers.services — WhatsApp +92 312 5065538 — Street 30, House 40B, F-8, Islamabad, Pakistan.',
+      'DeepDivers — teamdeepdivers@gmail.com — WhatsApp +92 312 5065538 — G-13, Islamabad, Pakistan.',
     ],
   },
 ];
 
 export default function PrivacyPage() {
   return (
-    <main className={styles.privacyPage}>
-      <section className={styles.hero}>
-        <div className={styles.container}>
-          <span className={styles.badge}>Legal</span>
-          <h1 className={styles.heroTitle}>Privacy Policy</h1>
-          <p className={styles.heroDescription}>
-            How we collect, use, and protect your personal information — including the advertising,
-            analytics, and payment partners that power this site. Last updated: {EFFECTIVE_DATE}.
-          </p>
-        </div>
-      </section>
-
-      <section className={styles.content}>
-        <div className={styles.container}>
-          <nav className={styles.toc} aria-label="Table of contents">
-            <h3>Table of Contents</h3>
-            <ul>
-              {sections.map((s) => (
-                <li key={s.id}>
-                  <a href={`#${s.id}`}>{s.title}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className={styles.sections}>
-            {sections.map((section) => (
-              <div key={section.id} id={section.id} className={styles.section}>
-                <h2 className={styles.sectionTitle}>{section.title}</h2>
-                {section.content.map((paragraph, i) => (
-                  <p key={i} className={styles.paragraph}>
-                    {paragraph}
-                  </p>
-                ))}
-                {section.list && (
-                  <div className={styles.policyList}>
-                    {section.list.map((item) => (
-                      <div key={item.title} className={styles.policyItem}>
-                        <h4 className={styles.policyItemTitle}>{item.title}</h4>
-                        <p className={styles.policyItemDesc}>{item.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {section.footer?.map((text, i) => (
-                  <p key={i} className={styles.paragraph}>
-                    {text}
-                  </p>
-                ))}
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.contactBox}>
-            <h3>Questions About Your Privacy?</h3>
-            <p>
-              Email us at{' '}
-              <a href="mailto:support@deepdivers.services">support@deepdivers.services</a>{' '}
-              or reach us on{' '}
-              <a href="https://wa.me/923125065538" target="_blank" rel="noopener noreferrer">
-                WhatsApp
-              </a>. We respond to privacy requests within 30 days.
+    <>
+      <Header />
+      <main className={styles.privacyPage}>
+        <section className={styles.hero}>
+          <div className={styles.container}>
+            <span className={styles.badge}>Legal</span>
+            <h1 className={styles.heroTitle}>Privacy Policy</h1>
+            <p className={styles.heroDescription}>
+              How we collect, use, and protect your personal information — including the advertising,
+              analytics, and payment partners that power this site. Last updated: {EFFECTIVE_DATE}.
             </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <div className={styles.backHome}>
-        <Link href="/" className={styles.backHomeLink}>
-          ← Back to Home
-        </Link>
-      </div>
-    </main>
+        <section className={styles.content}>
+          <div className={styles.container}>
+            <nav className={styles.toc} aria-label="Table of contents">
+              <h3>Table of Contents</h3>
+              <ul>
+                {sections.map((s) => (
+                  <li key={s.id}>
+                    <a href={`#${s.id}`}>{s.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <div className={styles.sections}>
+              {sections.map((section) => (
+                <div key={section.id} id={section.id} className={styles.section}>
+                  <h2 className={styles.sectionTitle}>{section.title}</h2>
+                  {section.content.map((paragraph, i) => (
+                    <p key={i} className={styles.paragraph}>
+                      {paragraph}
+                    </p>
+                  ))}
+                  {section.list && (
+                    <div className={styles.policyList}>
+                      {section.list.map((item) => (
+                        <div key={item.title} className={styles.policyItem}>
+                          <h4 className={styles.policyItemTitle}>{item.title}</h4>
+                          <p className={styles.policyItemDesc}>{item.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {section.footer?.map((text, i) => (
+                    <p key={i} className={styles.paragraph}>
+                      {text}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.contactBox}>
+              <h3>Questions About Your Privacy?</h3>
+              <p>
+                Email us at{' '}
+                <a href="mailto:teamdeepdivers@gmail.com">teamdeepdivers@gmail.com</a>{' '}
+                or reach us on{' '}
+                <a href="https://wa.me/923125065538" target="_blank" rel="noopener noreferrer">
+                  WhatsApp
+                </a>. We respond to privacy requests within 30 days.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div className={styles.backHome}>
+          <Link href="/" className={styles.backHomeLink}>
+            ← Back to Home
+          </Link>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

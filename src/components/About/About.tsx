@@ -34,7 +34,7 @@ export default function About() {
             <div className={styles.aboutImageWrapper}>
               <Image
                 src="/ProfilePicture.webp"
-                alt="ResearchFlow Team"
+                alt="Asad Farooq, founder of DeepDivers"
                 width={500}
                 height={600}
                 className={styles.aboutImg}
@@ -72,14 +72,14 @@ export default function About() {
                 <div key={feature.title} className={styles.aboutFeature}>
                   <div className={styles.aboutFeatureIcon}>{feature.icon}</div>
                   <div className={styles.aboutFeatureText}>
-                    <h4>{feature.title}</h4>
+                    <h3>{feature.title}</h3>
                     <p>{feature.description}</p>
                   </div>
                 </div>
               ))}
             </div>
             <div className={styles.credentials}>
-              <h4>Credentials & Tools</h4>
+              <h3>Credentials & Tools</h3>
               <div className={styles.credentialsList}>
                 <span className={styles.credentialItem}>
                   <span className={styles.credentialIcon}>📊</span> Python & Data Science
