@@ -216,12 +216,28 @@ export default function Contact({ defaultService = '' }: ContactProps) {
               <h4>Find Us On</h4>
               <div className={styles.platformsList}>
                 <a
+                  href={SITE.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.platformBadge}
+                >
+                  🔵 LinkedIn
+                </a>
+                <a
+                  href={SITE.social.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.platformBadge}
+                >
+                  🔴 YouTube
+                </a>
+                <a
                   href="https://github.com/03-134202-096"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.platformBadge}
                 >
-                  🔵 GitHub
+                  ⚫ GitHub
                 </a>
                 <span className={styles.platformBadge}>🟢 Fiverr</span>
                 <span className={styles.platformBadge}>🟢 Upwork</span>

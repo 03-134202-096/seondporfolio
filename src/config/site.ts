@@ -33,9 +33,13 @@ export const SITE = {
   ogImage: '/og-image.png',
 
   /** Verified public profiles. Add each social profile here as it goes live. */
-  sameAs: ['https://www.youtube.com/@teamdeepdivers'] as string[],
+  sameAs: [
+    'https://www.linkedin.com/company/deepdivers-services/',
+    'https://www.youtube.com/@teamdeepdivers',
+  ] as string[],
 
   social: {
+    linkedin: 'https://www.linkedin.com/company/deepdivers-services/',
     youtube: 'https://www.youtube.com/@teamdeepdivers',
   },
 
