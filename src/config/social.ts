@@ -17,3 +17,11 @@ export const SOCIAL_PROFILES: SocialProfile[] = [
   { network: 'youtube', label: 'YouTube', url: 'https://www.youtube.com/@teamdeepdivers' },
   { network: 'tiktok', label: 'TikTok', url: 'https://www.tiktok.com/@teamdeepdivers' },
 ];
+
+/**
+ * Business directory listings. These go in the Organization sameAs only (no icons).
+ * Add a listing once the directory has approved and published it.
+ */
+export const DIRECTORY_PROFILES: string[] = [
+  'https://www.crunchbase.com/organization/deepdivers',
+];

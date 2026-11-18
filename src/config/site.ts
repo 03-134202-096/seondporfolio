@@ -7,7 +7,7 @@
  * (pages, footer, structured data, directory listings). Change them here only.
  */
 
-import { SOCIAL_PROFILES } from './social';
+import { DIRECTORY_PROFILES, SOCIAL_PROFILES } from './social';
 
 export const SITE = {
   name: 'DeepDivers',
@@ -34,8 +34,8 @@ export const SITE = {
   logo: '/logo-512.png',
   ogImage: '/og-image.png',
 
-  /** Verified public profiles (edit the list in src/config/social.ts) */
-  sameAs: SOCIAL_PROFILES.map((profile) => profile.url),
+  /** Verified public profiles and directory listings (edit the lists in src/config/social.ts) */
+  sameAs: [...SOCIAL_PROFILES.map((profile) => profile.url), ...DIRECTORY_PROFILES],
 
   founder: {
     name: 'Asad Farooq',
