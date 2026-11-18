@@ -239,7 +239,7 @@ export const servicePages: ServicePage[] = [
         answer: 'Most formatting and referencing jobs take one to three days, depending on length and how many references need fixing.',
       },
     ],
-    relatedGuides: ['how-to-publish-research-paper-q1-journal-2026-guide', 'how-to-avoid-predatory-journals-2026-complete-guide'],
+    relatedGuides: ['apa-7-formatting-checklist-thesis-research-paper', 'how-to-publish-research-paper-q1-journal-2026-guide', 'how-to-avoid-predatory-journals-2026-complete-guide'],
   },
   {
     slug: 'systematic-review-support',

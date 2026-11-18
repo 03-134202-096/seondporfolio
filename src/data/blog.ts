@@ -37,6 +37,115 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'apa-7-formatting-checklist-thesis-research-paper',
+    title: 'APA 7 Formatting Checklist for Theses and Research Papers',
+    seoTitle: 'APA 7 Formatting Checklist for Theses (2026)',
+    excerpt:
+      'A practical APA 7th edition checklist for theses, dissertations and research papers: page setup, headings, title page, citations, references, tables, figures and statistics.',
+    coverImage: '/blogsThumnails/apa-7-checklist.webp',
+    coverImageAlt: 'APA 7 formatting checklist for theses and research papers',
+    author: 'Asad Farooq',
+    publishedAt: '2026-11-18',
+    readingTime: '8 min read',
+    category: 'Academic Research',
+    metaDescription:
+      'APA 7 formatting checklist for theses and papers: fonts, margins, spacing, the five heading levels, title page, in-text citations, references and tables.',
+    keywords: [
+      'APA 7 formatting checklist',
+      'APA 7th edition thesis format',
+      'APA heading levels',
+      'APA reference list format',
+      'APA in-text citation et al',
+      'APA tables and figures format',
+      'how to format a paper in APA 7',
+    ],
+    content: `
+      <p>Formatting mistakes are the easiest marks to lose and the easiest problems for an examiner or journal editor to spot. This checklist covers the rules of the <strong>APA Publication Manual, 7th edition</strong>, the style most universities in the US, Canada and Australia, and many in the UK, Europe and the Gulf, use for theses and research papers in the social, health and behavioural sciences. Each section links to the official APA Style pages so you can check the details.</p>
+      <p><strong>Check your own rules first.</strong> Universities often have thesis requirements that override APA, for example wider margins for binding or a fixed title page. Journals publish their own author guidelines. Where those differ from APA, follow your university or journal.</p>
+
+      <h2 id="page-setup">1. Page setup</h2>
+      <ul>
+        <li><strong>Font:</strong> use one readable font throughout, such as 11-point Calibri, 11-point Arial, 12-point Times New Roman, 11-point Georgia or 10-point Computer Modern (the LaTeX default). (<a href="https://apastyle.apa.org/style-grammar-guidelines/paper-format/font" rel="noopener" target="_blank">APA: Font</a>)</li>
+        <li><strong>Line spacing:</strong> double-space the whole paper, including the title page, abstract, headings, block quotations and the reference list. Tables and figures can use single, 1.5 or double spacing. (<a href="https://apastyle.apa.org/style-grammar-guidelines/paper-format/line-spacing" rel="noopener" target="_blank">APA: Line spacing</a>)</li>
+        <li><strong>Margins:</strong> 1 inch (2.54 cm) on all sides, unless your university says otherwise. (<a href="https://apastyle.apa.org/style-grammar-guidelines/paper-format/margins" rel="noopener" target="_blank">APA: Margins</a>)</li>
+        <li><strong>Paragraphs:</strong> left-aligned with a ragged right edge (not justified), and the first line of each paragraph indented 0.5 inch. (<a href="https://apastyle.apa.org/style-grammar-guidelines/paper-format/paragraph-alignment-indentation" rel="noopener" target="_blank">APA: Alignment and indentation</a>)</li>
+        <li><strong>Page numbers:</strong> top right corner of every page, starting with the title page. Student papers do not need a running head unless your instructor asks for one; professional papers do. (<a href="https://apastyle.apa.org/style-grammar-guidelines/paper-format/page-header" rel="noopener" target="_blank">APA: Page header</a>)</li>
+      </ul>
+
+      <h2 id="title-page">2. Title page</h2>
+      <p>APA has two versions. A <strong>student title page</strong> includes the paper title in bold, author name(s), affiliation (department and university), course number and name, instructor name, due date and page number. A <strong>professional title page</strong> includes the title, authors, affiliations, an author note, the running head and the page number. Theses usually follow the university's own title page template. (<a href="https://apastyle.apa.org/style-grammar-guidelines/paper-format/title-page" rel="noopener" target="_blank">APA: Title page setup</a>)</p>
+
+      <h2 id="headings">3. The five heading levels</h2>
+      <table>
+        <thead>
+          <tr><th>Level</th><th>Format</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Centered, Bold, Title Case Heading</td></tr>
+          <tr><td>2</td><td>Flush Left, Bold, Title Case Heading</td></tr>
+          <tr><td>3</td><td>Flush Left, Bold Italic, Title Case Heading</td></tr>
+          <tr><td>4</td><td>Indented, Bold, Title Case Heading, Ending With a Period. Text continues on the same line.</td></tr>
+          <tr><td>5</td><td>Indented, Bold Italic, Title Case Heading, Ending With a Period. Text continues on the same line.</td></tr>
+        </tbody>
+      </table>
+      <p>Use the levels in order and don't label the first section "Introduction": the paper title at the top of the first page of text does that job. (<a href="https://apastyle.apa.org/style-grammar-guidelines/paper-format/headings" rel="noopener" target="_blank">APA: Headings</a>)</p>
+
+      <h2 id="in-text-citations">4. In-text citations</h2>
+      <ul>
+        <li>Use the author-date format: (Smith, 2024) or Smith (2024). (<a href="https://apastyle.apa.org/style-grammar-guidelines/citations/basic-principles/author-date" rel="noopener" target="_blank">APA: Author-date citation system</a>)</li>
+        <li>Two authors: name both every time, joined by "&amp;" in parentheses and "and" in the sentence.</li>
+        <li>Three or more authors: use the first author plus "et al." from the first citation, for example (Hair et al., 2019). (<a href="https://apastyle.apa.org/style-grammar-guidelines/citations/basic-principles/same-format-multiple-authors" rel="noopener" target="_blank">APA: Works with multiple authors</a>)</li>
+        <li>Add page or paragraph numbers for direct quotations.</li>
+        <li>Every in-text citation must appear in the reference list, and every reference must be cited in the text. Checking this by hand is tedious; a reference manager such as Zotero or Mendeley helps.</li>
+      </ul>
+
+      <h2 id="reference-list">5. Reference list</h2>
+      <ul>
+        <li>Start on a new page with the label <strong>References</strong>, bold and centered.</li>
+        <li>Double-space all entries and use a 0.5-inch hanging indent.</li>
+        <li>Order entries alphabetically by the first author's surname.</li>
+        <li>Include up to 20 authors; for 21 or more, list the first 19, an ellipsis, then the final author.</li>
+        <li>Write DOIs as links, for example https://doi.org/10.xxxx/xxxxx, without "Retrieved from" or "DOI:". (<a href="https://apastyle.apa.org/style-grammar-guidelines/references/dois-urls" rel="noopener" target="_blank">APA: DOIs and URLs</a>)</li>
+        <li>Each entry has four elements: author, date, title and source. (<a href="https://apastyle.apa.org/style-grammar-guidelines/references/elements-list-entry" rel="noopener" target="_blank">APA: Elements of reference list entries</a>, <a href="https://apastyle.apa.org/style-grammar-guidelines/references/basic-principles" rel="noopener" target="_blank">basic principles</a>)</li>
+      </ul>
+
+      <h2 id="tables-figures">6. Tables and figures</h2>
+      <ul>
+        <li>Number tables and figures in the order you mention them: <strong>Table 1</strong>, <strong>Figure 1</strong> (bold).</li>
+        <li>Put the title one double-spaced line below the number, in <em>Italic Title Case</em>.</li>
+        <li>Add notes below the table or figure for abbreviations, sources and significance markers.</li>
+        <li>Mention every table and figure in the text, and don't repeat all of its numbers in the paragraph. (<a href="https://apastyle.apa.org/style-grammar-guidelines/tables-figures" rel="noopener" target="_blank">APA: Tables and figures</a>)</li>
+      </ul>
+
+      <h2 id="numbers-statistics">7. Numbers and statistics</h2>
+      <ul>
+        <li>Use numerals for 10 and above, and words for zero to nine, except for statistics, measurements, percentages, ages and similar values, which always use numerals.</li>
+        <li>Italicise statistical symbols such as <em>M</em>, <em>SD</em>, <em>t</em>, <em>F</em>, <em>r</em> and <em>p</em>.</li>
+        <li>Report exact <em>p</em> values (for example <em>p</em> = .032) and use <em>p</em> &lt; .001 for very small values.</li>
+        <li>Leave out the leading zero for values that cannot exceed 1, such as <em>p</em> and correlations (<em>r</em> = .45), but keep it for values that can (<em>M</em> = 0.75).</li>
+      </ul>
+
+      <h2 id="final-check">8. Final pre-submission check</h2>
+      <ol>
+        <li>Fonts, spacing and margins are consistent on every page, including tables and appendices.</li>
+        <li>Headings follow the five levels in order.</li>
+        <li>Every citation matches a reference, with matching spelling and years.</li>
+        <li>DOIs are present and formatted as links.</li>
+        <li>Tables and figures are numbered in order and referred to in the text.</li>
+        <li>Your university's thesis rules or the journal's guidelines have been applied where they differ from APA.</li>
+      </ol>
+
+      <h2 id="get-help">Want it checked or formatted for you?</h2>
+      <p>Our <a href="/services/journal-formatting-latex">formatting and referencing service</a> formats theses and manuscripts to APA 7, your university's rules or a journal template, in Word or LaTeX, and checks every citation against the reference list. If the language needs work too, see our <a href="/services/academic-editing-proofreading">academic editing service</a>.</p>
+
+      <h2 id="sources">Sources</h2>
+      <ul>
+        <li>American Psychological Association. (2020). <em>Publication manual of the American Psychological Association</em> (7th ed.). <a href="https://doi.org/10.1037/0000165-000" rel="noopener" target="_blank">https://doi.org/10.1037/0000165-000</a></li>
+        <li>APA Style. <a href="https://apastyle.apa.org/style-grammar-guidelines/paper-format" rel="noopener" target="_blank">Paper format</a>, <a href="https://apastyle.apa.org/style-grammar-guidelines/references/examples" rel="noopener" target="_blank">reference examples</a> and the pages linked above.</li>
+      </ul>
+    `,
+  },
+  {
     slug: 'how-to-report-pls-sem-results-smartpls',
     title: 'How to Report PLS-SEM Results from SmartPLS: A Step-by-Step Checklist',
     seoTitle: 'How to Report PLS-SEM (SmartPLS) Results',
