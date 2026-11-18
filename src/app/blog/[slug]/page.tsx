@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { blogPosts, getBlogPostBySlug, getAllBlogSlugs } from '@/data/blog';
 import { SITE, founderPerson } from '@/config/site';
+import { getServiceForGuide } from '@/data/servicePages';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import styles from './post.module.css';
@@ -123,6 +124,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) {
     notFound();
   }
+
+  const service = getServiceForGuide(post.slug);
 
   // Find related posts (same category, excluding current)
   const relatedPosts = blogPosts
@@ -255,14 +258,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* CTA */}
         <section className={styles.cta}>
           <div className={styles.container}>
-            <h2 className={styles.ctaTitle}>Need Professional Help With Your Research?</h2>
+            <h2 className={styles.ctaTitle}>
+              {service ? `Need help with ${service.shortName.toLowerCase()}?` : 'Need help with your research?'}
+            </h2>
             <p className={styles.ctaDescription}>
-              Our team of published researchers offers end-to-end research paper writing,
-              data analysis, AI/ML experiments, and journal submission support.
+              {service
+                ? service.summary
+                : 'Statistics, editing, formatting, systematic reviews and ML research support from published researchers.'}{' '}
+              You stay the author; we help you get it right.
             </p>
             <div className={styles.ctaButtons}>
-              <Link href="/#service-catalog" className={styles.btnPrimary}>
-                Browse Services →
+              <Link href={service ? `/services/${service.slug}` : '/services'} className={styles.btnPrimary}>
+                {service ? `See ${service.shortName} →` : 'Browse Services →'}
               </Link>
               <Link href="/#contact" className={styles.btnSecondary}>
                 Get a Free Quote

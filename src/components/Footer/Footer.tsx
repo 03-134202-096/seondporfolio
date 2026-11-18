@@ -4,12 +4,14 @@ import { useState, FormEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SITE, whatsappLink } from '@/config/site';
+import { servicePages } from '@/data/servicePages';
 import styles from './Footer.module.css';
 
 // Absolute "/#…" links so the footer also works on the about, blog and legal pages
 const quickLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Service Catalog', href: '/#service-catalog' },
+  { label: 'Services', href: '/services' },
+  { label: 'Prices', href: '/#service-catalog' },
   { label: 'How It Works', href: '/#process' },
   { label: 'Testimonials', href: '/#testimonials' },
   { label: 'Blog', href: '/blog' },
@@ -17,13 +19,10 @@ const quickLinks = [
   { label: 'Contact', href: '/#contact' },
 ];
 
-const services = [
-  { label: 'Academic & Research', category: 'academic' },
-  { label: 'Data, AI & ML', category: 'data-ai' },
-  { label: 'Writing & Content', category: 'writing' },
-  { label: 'Development', category: 'development' },
-  { label: 'Document Tools', category: 'tools' },
-];
+const services = servicePages.map((page) => ({
+  label: page.shortName,
+  href: `/services/${page.slug}`,
+}));
 
 function NewsletterForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -98,9 +97,8 @@ export default function Footer() {
               DeepDivers
             </h3>
             <p>
-              Your professional task-handoff platform. Delegate your research, data science, 
-              AI, and development projects to dedicated experts. Unlimited revisions, refund 
-              guarantees, and 24/7 support.
+              Research support from published researchers: statistics, editing, formatting,
+              systematic reviews and machine learning. You stay the author.
             </p>
             <div className={styles.footerSocials}>
               <a
@@ -144,18 +142,8 @@ export default function Footer() {
             <h4>Services</h4>
             <ul className={styles.footerLinks}>
               {services.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href="/#service-catalog"
-                    onClick={() => {
-                      // On the homepage this also filters the catalog to the chosen category
-                      window.dispatchEvent(
-                        new CustomEvent('filter-catalog', { detail: { category: link.category } })
-                      );
-                    }}
-                  >
-                    {link.label}
-                  </Link>
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
                 </li>
               ))}
             </ul>

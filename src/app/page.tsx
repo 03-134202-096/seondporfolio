@@ -4,6 +4,7 @@ import {
   CollapsibleSection,
   WhyChooseUs,
   ServiceCatalog,
+  ServicesOverview,
   Pricing,
   Testimonials,
   Publications,
@@ -40,7 +41,7 @@ function HomePageJsonLd() {
         '@type': 'WebPage',
         '@id': `${SITE.url}/#webpage`,
         url: SITE.url,
-        name: 'DeepDivers | Research, Data Analysis & Academic Support Services',
+        name: 'DeepDivers | Research Support, Statistics & Academic Editing',
         isPartOf: { '@id': `${SITE.url}/#website` },
         about: { '@id': `${SITE.url}/#organization` },
         primaryImageOfPage: { '@type': 'ImageObject', url: `${SITE.url}${SITE.ogImage}` },
@@ -74,6 +75,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <ServicesOverview />
         <ServiceCatalog />
         <Pricing />
         <Process />

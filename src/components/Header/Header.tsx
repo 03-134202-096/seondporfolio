@@ -8,8 +8,8 @@ import styles from './Header.module.css';
 
 const navItems = [
   { label: 'Home', href: '#hero' },
-  { label: 'Catalog', href: '#service-catalog' },
-  { label: 'Process', href: '#process' },
+  { label: 'Services', href: '/services', external: true },
+  { label: 'Prices', href: '#service-catalog' },
   { label: 'Portfolio', href: '#portfolio' },
   { label: 'About', href: '/about', external: true },
   { label: 'Blog', href: '/blog', external: true },

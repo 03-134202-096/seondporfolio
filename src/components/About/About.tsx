@@ -51,15 +51,14 @@ export default function About() {
             </div>
             <div className={styles.aboutText}>
               <p>
-                We are <strong>DeepDivers</strong> — a professional task-handoff platform
-                where you delegate your research, data science, and development projects
-                to dedicated experts. Based in Pakistan, serving clients worldwide.
+                We are <strong>DeepDivers</strong>, a research support team led by published
+                researchers. Based in Islamabad, Pakistan, we work with students, researchers
+                and organisations worldwide.
               </p>
               <p>
-                Simply hand over your project — whether it&apos;s a manuscript for a 
-                top-tier journal, a machine learning experiment, a statistical analysis, 
-                or a full-stack web application — and our team delivers polished, 
-                professional results on time.
+                Whether you need a dataset analysed, a manuscript edited and formatted for a
+                top-tier journal, a systematic review screened or a machine learning experiment
+                run, we work alongside you and deliver polished, documented results on time.
               </p>
               <p>
                 With unlimited revisions, refund guarantees, and 24/7 support, 

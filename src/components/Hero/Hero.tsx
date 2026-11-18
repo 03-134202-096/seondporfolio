@@ -7,20 +7,20 @@ export default function Hero() {
       <div className={styles.heroInner}>
         <div className={styles.heroContent}>
           <span className={`badge ${styles.heroBadge}`}>
-            🚀 90+ Services • Hand Over Any Task • We Deliver
+            🎓 Published researchers • Clients worldwide • Quotes in 24h
           </span>
           <h1 className={styles.heroTitle}>
-            Hand Over Your <span className={styles.heroHighlight}>Projects</span>.{' '}
-            We Handle <span className={styles.heroHighlight}>Everything</span>.
+            Expert <span className={styles.heroHighlight}>research support</span> for your
+            thesis, papers and <span className={styles.heroHighlight}>data</span>.
           </h1>
           <p className={styles.heroDescription}>
-            Stop doing it all yourself. Submit your research, data science, AI, or development 
-            project and let our dedicated experts deliver professional results. You focus on 
-            what matters. We take care of the rest.
+            Statistics, academic editing, journal formatting, systematic reviews and machine
+            learning experiments by published researchers. You stay the author; we make the
+            work stronger, clearer and ready to submit.
           </p>
           <div className={styles.heroButtons}>
-            <a href="#service-catalog" className="btn btn-primary">
-              Browse Services →
+            <a href="#services" className="btn btn-primary">
+              Explore Services →
             </a>
             <a href="#contact" className="btn btn-secondary">
               Get a Free Quote
@@ -36,8 +36,8 @@ export default function Hero() {
               <div className={styles.statLabel}>Client Reach</div>
             </div>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>100%</div>
-              <div className={styles.statLabel}>Satisfaction Guarantee</div>
+              <div className={styles.statNumber}>5</div>
+              <div className={styles.statLabel}>Peer-Reviewed Papers</div>
             </div>
           </div>
         </div>

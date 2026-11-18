@@ -4,7 +4,7 @@ const processSteps = [
   {
     step: '01',
     title: 'Browse & Select Service',
-    description: 'Explore our catalog of 90+ services. Pick the one you need, or describe a custom project. Attach files and requirements via our order form.',
+    description: 'Explore our services and catalog of 90+ items. Pick what you need, or describe a custom project. Attach files and requirements via our quote form.',
     icon: '🔍'
   },
   {
@@ -71,7 +71,7 @@ export default function Process() {
           <div className={styles.guaranteeItem}>
             <span className={styles.guaranteeIcon}>🛡️</span>
             <div>
-              <h4>100% Satisfaction Guarantee</h4>
+              <h4>Free Revisions</h4>
               <p>Free revisions until you&apos;re happy</p>
             </div>
           </div>

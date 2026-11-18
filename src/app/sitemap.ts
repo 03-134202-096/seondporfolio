@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { blogPosts } from '@/data/blog';
+import { servicePages } from '@/data/servicePages';
 import { SITE } from '@/config/site';
 
 /**
@@ -16,6 +17,7 @@ import { SITE } from '@/config/site';
 /** Dates the static pages last changed in a meaningful way (YYYY-MM-DD). */
 const PAGE_UPDATED = {
   home: '2026-11-18',
+  services: '2026-11-18',
   about: '2026-11-18',
   blog: '2026-11-18',
   terms: '2026-11-18',
@@ -60,6 +62,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const servicePageUrls: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/services`,
+      lastModified: new Date(PAGE_UPDATED.services),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    ...servicePages.map((page) => ({
+      url: `${baseUrl}/services/${page.slug}`,
+      lastModified: new Date(PAGE_UPDATED.services),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    })),
+  ];
+
   const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.updatedAt ?? post.publishedAt),
@@ -70,5 +87,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       : undefined,
   }));
 
-  return [...staticPages, ...blogPages];
+  return [...staticPages, ...servicePageUrls, ...blogPages];
 }

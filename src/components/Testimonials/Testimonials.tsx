@@ -25,7 +25,7 @@ const testimonials = [
 ];
 
 const trustBadges = [
-  { icon: '🛡️', label: '100% Satisfaction' },
+  { icon: '🛡️', label: 'Free Revisions' },
   { icon: '🔒', label: 'NDA Protected' },
   { icon: '♻️', label: 'Unlimited Revisions' },
   { icon: '⚡', label: '24hr Response' },

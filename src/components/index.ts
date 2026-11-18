@@ -3,6 +3,7 @@ export { default as Hero } from './Hero/Hero';
 export { default as CollapsibleSection } from './CollapsibleSection/CollapsibleSection';
 export { default as WhyChooseUs } from './WhyChooseUs/WhyChooseUs';
 export { default as ServiceCatalog } from './ServiceCatalog/ServiceCatalog';
+export { default as ServicesOverview } from './ServicesOverview/ServicesOverview';
 export { default as Pricing } from './Pricing/Pricing';
 export { default as Testimonials } from './Testimonials/Testimonials';
 export { default as Publications } from './Publications/Publications';

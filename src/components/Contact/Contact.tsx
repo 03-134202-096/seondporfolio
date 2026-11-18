@@ -8,15 +8,20 @@ import styles from './Contact.module.css';
 const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4MB in bytes
 const MAX_FILE_SIZE_DISPLAY = '4MB';
 
-export default function Contact() {
+interface ContactProps {
+  /** Pre-selects a service in the quote form (used on the service pages) */
+  defaultService?: string;
+}
+
+export default function Contact({ defaultService = '' }: ContactProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [copiedField, setCopiedField] = useState<'email' | 'phone' | null>(null);
   const [fileError, setFileError] = useState<string | null>(null);
   const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
-  const [selectedService, setSelectedService] = useState('');
-  const [serviceMode, setServiceMode] = useState<'none' | 'catalog' | 'custom'>('none');
+  const [selectedService, setSelectedService] = useState(defaultService);
+  const [serviceMode, setServiceMode] = useState<'none' | 'catalog' | 'custom'>(defaultService ? 'catalog' : 'none');
   const [customService, setCustomService] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -118,8 +123,8 @@ export default function Contact() {
         form.reset();
         setSelectedFileName(null);
         setFileError(null);
-        setSelectedService('');
-        setServiceMode('none');
+        setSelectedService(defaultService);
+        setServiceMode(defaultService ? 'catalog' : 'none');
         setCustomService('');
         // Scroll to success message
         formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -145,16 +150,16 @@ export default function Contact() {
         <div className="section-header">
           <h2>Get in Touch</h2>
           <p>
-            Ready to hand over your project? Tell us what you need and our team 
-            will provide a free quote within hours.
+            Tell us what you need and we&apos;ll reply with a free, fixed quote
+            within 24 hours. No account or sign-up needed.
           </p>
         </div>
         <div className={styles.contactGrid}>
           <div className={styles.contactInfo}>
             <h3>Let&apos;s Work Together</h3>
             <p>
-              Hand over your project to our team of dedicated experts. 
-              We&apos;re available 24/7 with unlimited revisions and a full refund guarantee.
+              Share your files and deadline in confidence. We reply within 24 hours,
+              work across time zones, and agree the scope and price before any work starts.
             </p>
             <div className={styles.contactMethods}>
               <div className={styles.contactMethod}>
@@ -351,6 +356,8 @@ export default function Contact() {
                         if (catalogEl) {
                           const top = catalogEl.getBoundingClientRect().top + window.scrollY - 80;
                           window.scrollTo({ top, behavior: 'smooth' });
+                        } else {
+                          window.location.href = '/#service-catalog';
                         }
                       }}
                     >

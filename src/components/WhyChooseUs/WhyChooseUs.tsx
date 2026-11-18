@@ -14,8 +14,8 @@ const reasons = [
     highlight: '24hr Quote Response'
   },
   {
-    icon: '💯',
-    title: '100% Satisfaction',
+    icon: '🔄',
+    title: 'Free Revisions',
     description: 'Unlimited revisions until you\'re completely satisfied with the final deliverable.',
     highlight: 'Free Revisions'
   },
@@ -40,7 +40,7 @@ const reasons = [
 ];
 
 const stats = [
-  { value: '100%', label: 'Client Satisfaction' },
+  { value: '24h', label: 'Quote Response' },
   { value: '90+', label: 'Services Offered' },
   { value: '5+', label: 'Published Papers' },
   { value: '24/7', label: 'Support Available' }

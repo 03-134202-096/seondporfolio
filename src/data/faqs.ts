@@ -27,6 +27,10 @@ export const faqs: FaqItem[] = [
     answer: 'Our primary payment method is Payoneer (credit/debit card, bank transfer, Payoneer balance). For projects through freelance platforms (Fiverr, Upwork, Freelancer), we also accept platform escrow payments. Contact us if you need alternative payment arrangements.'
   },
   {
+    question: 'Do you write assignments or take exams for students?',
+    answer: "No. We provide analysis, editing, formatting, guidance and training, and you remain the author of your work. We don't write assignments to be submitted as your own, take exams, or guarantee grades, acceptance or publication."
+  },
+  {
     question: 'How long does a typical project take?',
     answer: 'Project timelines vary based on complexity. Simple tasks (data entry, basic analysis, proofreading) take 1-3 days. Research papers, ML models, and complex analyses typically take 1-2 weeks. Web development projects take 1-4 weeks. We always provide an estimated timeline with your quote and prioritize meeting your deadlines.'
   },
@@ -48,11 +52,11 @@ export const faqs: FaqItem[] = [
   },
   {
     question: 'What if I\'m not satisfied with the work?',
-    answer: 'Your satisfaction is our priority. We offer free revisions to address any concerns. If you\'re still not satisfied after revisions, we provide partial or full refunds on a case-by-case basis. We\'ve maintained a 100% satisfaction rate with our clients.'
+    answer: 'Your satisfaction is our priority. We offer free revisions to address any concerns. If you\'re still not satisfied after revisions, we provide partial or full refunds on a case-by-case basis. See our Refund & Revision Policy for details.'
   },
   {
     question: 'Do you provide plagiarism reports?',
-    answer: 'Yes, for all written content and research papers, we provide plagiarism reports upon request at no extra cost. We guarantee 100% original work using premium plagiarism checking tools.'
+    answer: 'Yes. Everything we deliver is original, and on request we run a plagiarism check and share the report at no extra cost.'
   },
   {
     question: 'Can you work on projects in different time zones?',

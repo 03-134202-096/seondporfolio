@@ -43,12 +43,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default:
-      "DeepDivers | Research Paper Writing, Data Analysis, ML/AI & Development Services",
+    default: "DeepDivers | Research Support, Statistics & Academic Editing",
     template: "%s | DeepDivers",
   },
   description:
-    "Hire published researchers & data scientists for research papers, data analysis, ML/AI model training, web scraping, LaTeX formatting, Next.js development & more. 90+ services, unlimited revisions, 24/7 support — from $25.",
+    "Statistical analysis, academic editing, journal formatting, systematic reviews and ML research support from published researchers. You stay the author.",
   applicationName: "DeepDivers",
   authors: [{ name: "DeepDivers Team", url: siteUrl }],
   creator: "DeepDivers",
@@ -71,10 +70,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    title:
-      "DeepDivers | Research Paper Writing, Data Analysis, ML/AI & Development Services",
+    title: "DeepDivers | Research Support, Statistics & Academic Editing",
     description:
-      "Published researchers & data scientists offering research papers, data analysis, ML/AI, web scraping, LaTeX, and development services. Unlimited revisions. Refund guarantee. Available 24/7 worldwide.",
+      "Statistics, editing, journal formatting, systematic reviews and ML research support from published researchers, for clients worldwide. You stay the author.",
     siteName: "DeepDivers",
     images: [
       {
@@ -88,9 +86,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DeepDivers | Research, Data Science & AI Services",
+    title: "DeepDivers | Research Support, Statistics & Academic Editing",
     description:
-      "Research papers, AI/ML, data analysis, LaTeX & dev services from published researchers. 100% satisfaction. From $25.",
+      "Statistics, editing, formatting, systematic reviews and ML research support from published researchers. Quotes in 24 hours.",
     images: ["/og-image.png"],
   },
   robots: {
